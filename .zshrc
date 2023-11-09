@@ -47,3 +47,8 @@ alias vhist="vim <(history -n | tail -r)"
 ###############################################################################
 # Evals                                                                       #
 ###############################################################################
+
+# This section is designated for 'eval' expressions that are necessary for 
+# initializing version management tools such as pyenv, nvm, or others. These tools 
+# often require an 'eval' command to be executed to set up the environment 
+# correctly by modifying PATH or other shell variables.
