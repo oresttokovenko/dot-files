@@ -15,7 +15,7 @@ ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 # Miscelleanious                                                              #
 ###############################################################################
 
-# Removes the title from the terminal window
+# Remove the title from the terminal window
 DISABLE_AUTO_TITLE="true"
 
 # Prevent neofetch from being printing in vs code
