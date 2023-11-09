@@ -44,6 +44,9 @@ alias ll="exa --long --header --group --git --modified --color-scale"
 # Output the terminal history into a vim buffer
 alias vhist="vim <(history -n | tail -r)"
 
+# Measure the internet connection performance 
+alias speedtest="networkQuality -v"
+
 ###############################################################################
 # Evals                                                                       #
 ###############################################################################
