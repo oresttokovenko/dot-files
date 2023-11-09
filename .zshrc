@@ -1,0 +1,49 @@
+###############################################################################
+# ohmyzsh Config                                                              #
+###############################################################################
+
+plugins=(git zsh-vi-mode)
+
+###############################################################################
+# zsh-vi-mode Config                                                          #
+###############################################################################
+
+# Custom escape for zsh-vi-mode
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+
+###############################################################################
+# Miscelleanious                                                              #
+###############################################################################
+
+# Removes the title from the terminal window
+DISABLE_AUTO_TITLE="true"
+
+# Prevent neofetch from being printing in vs code
+if [ "$TERM_PROGRAM" != "vscode" ]; then
+    neofetch
+fi
+
+# Convert Jira ticket names into branch names
+branchify() {
+    local result="$(echo $1 | tr '[:upper:]' '[:lower:]')"
+    result="${result// /_}"
+    result="${result%%_}"
+    echo "$result"
+}
+
+###############################################################################
+# Aliases                                                                     #
+###############################################################################
+
+# Modern equivalent of cat
+alias cat="bat --paging=never"
+
+# Modern equivalent of ls
+alias ll="exa --long --header --group --git --modified --color-scale"
+
+# Output the terminal history into a vim buffer
+alias vhist="vim <(history -n | tail -r)"
+
+###############################################################################
+# Evals                                                                       #
+###############################################################################
