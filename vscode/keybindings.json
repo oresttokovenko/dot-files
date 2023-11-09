@@ -42,7 +42,7 @@
         "command":"editor.action.selectHighlights"
 
     },
-    // Move to the previous/next editor.
+    // Move to the previous/next tab
     {
         "key": "cmd+k",
         "command": "workbench.action.nextEditor"
@@ -66,7 +66,7 @@
             "to": "right"
         }
     },
-    // Traverse VSCode IntelliSense suggestions with vim keybindings.
+    // Traverse VSCode IntelliSense suggestions with vim keybindings
     {
         "key": "cmd+j",
         "command": "selectNextSuggestion",
@@ -77,7 +77,7 @@
         "command": "selectPrevSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
-    // Traverse VSCode quick open options with vim keybindings.
+    // Traverse VSCode quick open options with vim keybindings
     {
         "key": "cmd+j",
         "command": "workbench.action.quickOpenSelectNext",
@@ -98,7 +98,7 @@
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "terminalFocus"
     }, 
-      // Ensure that tab button works in vim.
+      // Ensure that tab button works in vim
     {
         "key": "tab",
         "command": "tab",
@@ -109,7 +109,7 @@
         "command": "outdent",
         "when": "editorTextFocus && !editorTabMovesFocus"
     }
-    // addressing ctrl + o bug
+    // addressing ctrl + o bug - WIP
     // {
     //     "key": "ctrl+o",
     //     "command": "workbench.action.navigateBack"
