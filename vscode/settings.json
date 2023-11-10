@@ -95,6 +95,7 @@
     "vim.sneak": true,
     "vim.gdefault": true,
     "vim.camelCaseMotion.enable": true,
+    "vim.easymotion": true,
     "vim.insertModeKeyBindingsNonRecursive": [
       {
         "before": ["j", "k"],
@@ -120,6 +121,10 @@
       },
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
+      {
+        "before": ["<leader>", "s"],
+        "after": ["<leader>", "<leader>", "2", "s"]
+      },
       {
         "after": [
           "g",
