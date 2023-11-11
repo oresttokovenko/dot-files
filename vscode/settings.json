@@ -85,6 +85,8 @@
     "symbols.hidesExplorerArrows": false,
     "symbols.files.associations": {
       "requirements.txt": "code-gray",
+      ".gitconfig.local": "git",
+      ".vimrc": "shell",
       "*.txt": "text"
     },
     "livePreview.notifyOnOpenLooseFile": false,
