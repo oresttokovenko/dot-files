@@ -119,7 +119,7 @@
       {
         "before": ["L"],
         "after": ["$"]
-      },
+      }
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
       {
@@ -156,7 +156,7 @@
       {
         "before": ["K"],
         "after": ["5", "k"]
-      },
+      }
      ],
      "vim.otherModesKeyBindingsNonRecursive": [
       {
