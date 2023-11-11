@@ -6,7 +6,7 @@ function InstallHomebrew() {
 }
 
 function InstallBrewfile() {
-    brew bundle --file=.
+    brew bundle --file=./Brewfile
 }
 
 # Install Homebrew if not found, then install packages from Brewfile
