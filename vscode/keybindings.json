@@ -1,5 +1,6 @@
 [   
     // Navigate File Explorer
+    // NOTE: Default behaviour deictates that the spacebar is used to open and close folders
     {
         "command": "workbench.files.action.focusFilesExplorer",
         "key": "ctrl+e",
