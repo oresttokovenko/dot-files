@@ -126,6 +126,10 @@
         "after": ["<leader>", "<leader>", "2", "s"]
       },
       {
+        "before": ["<leader>", "j"],
+        "after": ["<leader>", "<leader>", "<leader>", "j"]
+      },
+      {
         "after": [
           "g",
           "g",
