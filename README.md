@@ -3,6 +3,6 @@
 ### Setup
 1. `bash setup.sh`
 2. `bash macos.sh`
-3. `mv .vimrc ~/`
-4. `mv .zshrc ~/`
-5. `mv git/.gitconfig.local ~/`
+3. `cp .vimrc ~/`
+4. `cp .zshrc ~/`
+5. `cp git/.gitconfig.local ~/`
