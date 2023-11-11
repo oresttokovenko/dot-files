@@ -5,6 +5,7 @@ function InstallHomebrew() {
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 
+# Install casks and formulae from Brewfile
 function InstallBrewfile() {
     brew bundle --file=./Brewfile
 }
