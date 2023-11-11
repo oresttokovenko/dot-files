@@ -80,6 +80,7 @@
     "scm.inputFontFamily": "editor",
     "debug.console.fontFamily": "editor",
     "dbt.versionCheck": "neither",
+    "editor.lineNumbers": "relative",
 
     // Icons settings
     "symbols.hidesExplorerArrows": false,
@@ -89,8 +90,6 @@
       ".vimrc": "shell",
       "*.txt": "text"
     },
-    "livePreview.notifyOnOpenLooseFile": false,
-    "editor.lineNumbers": "relative",
 
     // Vim Settings
     "vim.leader": "<space>",
@@ -141,10 +140,6 @@
         "before": [
           "<c-a>"
         ]
-      },
-      {
-        "before": ["<leader>", "e", "f"],
-        "commands": ["workbench.explorer.fileView.focus"]
       },
       {
         "before": ["H"],

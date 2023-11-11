@@ -6,6 +6,11 @@
         "when": "editorTextFocus"
     },
     {
+        "command": "workbench.action.focusActiveEditorGroup",
+        "key": "ctrl+e",
+        "when": "filesExplorerFocus"
+    },
+    {
         "command": "explorer.newFile",
         "key": "a",
         "when": "filesExplorerFocus && !inputFocus"
