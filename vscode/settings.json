@@ -97,6 +97,7 @@
     "vim.gdefault": true,
     "vim.camelCaseMotion.enable": true,
     "vim.easymotion": true,
+    "vim.easymotionKeys": "hklyuiopnm,qwertzxcvbasdgjf",
     "vim.insertModeKeyBindingsNonRecursive": [
       {
         "before": ["j", "k"],

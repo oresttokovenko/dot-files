@@ -16,7 +16,7 @@ if ! command -v brew >/dev/null 2>&1; then
     if [ $? -eq 0 ]; then
         InstallBrewfile
     else
-        echo "Failed to install Homebrew."
+        echo "Failed to install Homebrew"
         exit 1
     fi
 else
