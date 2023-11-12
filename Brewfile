@@ -80,6 +80,7 @@ vscode "AykutSarac.jsoncrack-vscode"
 mas "SnippetsLab", id: 1006087419
 mas "Gifski", id: 1351639930
 mas "Dropover - Easier Drag & Drop", id: 1355679052
+mas "Gapplin", id: 768053424
 
 # Mac App Store Apps - Personal
 mas "Twitter", id: 1482454543
