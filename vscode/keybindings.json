@@ -1,6 +1,7 @@
 [   
     // Navigate File Explorer
-    // NOTE: Default behaviour deictates that the spacebar is used to open and close folders
+    // NOTE: The spacebar is used to open and close folders while focused on the 
+    // File Explorer by default so this behaviour is not defined explicity in these settings
     {
         "command": "workbench.files.action.focusFilesExplorer",
         "key": "ctrl+e",
