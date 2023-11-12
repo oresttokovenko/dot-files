@@ -65,7 +65,6 @@ cask "telegram"
 
 # VS Code Themes and Basics
 vscode "bierner.markdown-mermaid"
-vscode "bradlc.vscode-tailwindcss"
 vscode "davidbwaters.macos-modern-theme"
 vscode "GitHub.github-vscode-theme"
 vscode "vscodevim.vim"
