@@ -5,4 +5,4 @@
 2. `bash macos.sh`
 3. `cp .vimrc ~/`
 4. `cp .zshrc ~/`
-5. `cp git/.gitconfig.local ~/`
+5. `cp git/.gitconfig ~/`
