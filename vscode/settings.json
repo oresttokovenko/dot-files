@@ -119,7 +119,7 @@
       },
       {
         "before": ["L"],
-        "after": ["g_"]
+        "after": ["g","_"]
       }
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
@@ -148,7 +148,7 @@
       },
       {
         "before": ["L"],
-        "after": ["g_"]
+        "after": ["g","_"]
       },
       {
         "before": ["J"],
