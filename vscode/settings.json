@@ -129,7 +129,7 @@
       },
       {
         "before": ["<leader>", "j"],
-        "after": ["<leader>", "<leader>", "<leader>", "j"]
+        "after": ["<leader>", "<leader>", "<leader>", "b", "d", "w"]
       },
       {
         "after": [
