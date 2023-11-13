@@ -48,6 +48,5 @@ vnoremap H ^
 vnoremap L g_
 
 " EasyMotion Remaps
-map <Leader> <Plug>(easymotion-prefix)
-map s <Plug>(easymotion-s2)
-map j <Plug>(easymotion-j)
+map <Leader>s <Plug>(easymotion-s2)
+map <Leader>j <Plug>(easymotion-j)
