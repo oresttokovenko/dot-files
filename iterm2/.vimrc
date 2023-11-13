@@ -38,14 +38,14 @@ inoremap jk <Esc>
 nnoremap J 5j
 nnoremap K 5k
 nnoremap H ^
-nnoremap L $
+nnoremap L g_
 nnoremap <Leader>a ggVG
 
 " Visual Mode
 vnoremap J 5j
 vnoremap K 5k
 vnoremap H ^
-vnoremap L $
+vnoremap L g_
 
 " EasyMotion Remaps
 map <Leader> <Plug>(easymotion-prefix)
