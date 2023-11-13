@@ -11,6 +11,12 @@ plugins=(git zsh-vi-mode)
 # Custom escape for zsh-vi-mode
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
+# Custom keymaps
+bindkey -M vicmd "H" beginning-of-line
+bindkey -M vicmd "L" end-of-line
+bindkey -M visual "H" beginning-of-line
+bindkey -M visual "L" end-of-line
+
 ###############################################################################
 # Miscelleanious                                                              #
 ###############################################################################
@@ -39,7 +45,8 @@ branchify() {
 alias cat="bat --paging=never"
 
 # Modern equivalent of ls
-alias ll="exa --long --header --group --git --modified --color-scale"
+alias ll="exa --long --header --icons --no-permissions --no-user --modified --color-scale"
+alias la="exa --long --header --icons --no-permissions --no-user --modified --color-scale --all"
 
 # Output the terminal history into a vim buffer
 alias vhist="vim <(history -n | tail -r)"
