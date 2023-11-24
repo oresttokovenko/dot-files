@@ -44,6 +44,15 @@
     "files.associations": {
       "*.sql": "jinja-sql"
     },
+    
+    // File Settings
+    "files.insertFinalNewline":"true",
+    "files.trimTrailingWhiteSpace": "true",
+
+    // Search Settings
+    "search.exclude": {
+      // directories go here
+    },
   
     // Terminal Settings
     "terminal.integrated.env.osx" : {
@@ -102,9 +111,21 @@
       {
         "before": ["j", "k"],
         "after": ["<Esc>"]
+      },
+      {
+        "before": ["J", "K"],
+        "after": ["<Esc>"]
       }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
+      {
+          "before": ["<leader>", "o"],
+          "after": ["*"]
+      },
+      {
+          "before": ["<leader>", "l"],
+          "after": ["#"]
+      },
       {
           "before": ["J"],
           "after": ["5", "j"]
