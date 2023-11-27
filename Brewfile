@@ -86,3 +86,4 @@ mas "SnippetsLab", id: 1006087419
 mas "AdBlock for Safari", id: 1402042596
 mas "Messenger", id: 1480068668
 mas "Twitter", id: 1482454543
+mas "Vimari", id: 1480933944
