@@ -2,7 +2,7 @@
     // Editor & UI Settings
     "workbench.startupEditor": "newUntitledFile",
     "editor.accessibilitySupport" : "off",
-    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
     "editor.fontSize": 15,
     "editor.inlineSuggest.enabled": true,
     "editor.minimap.enabled": false,
