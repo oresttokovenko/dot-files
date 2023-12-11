@@ -2,7 +2,6 @@ tap "homebrew/bundle"
 tap "homebrew/cask-versions"
 tap "homebrew/services"
 brew "awscli"
-brew "appcleaner"
 brew "bat"
 brew "btop"
 brew "cask"
@@ -29,7 +28,9 @@ brew "youtube-dl", args: ["HEAD"]
 brew "zsh-vi-mode"
 
 # General
+cask "appcleaner"
 cask "caffeine"
+cask "codewhisperer"
 cask "datagrip"
 cask "docker"
 cask "fig"
