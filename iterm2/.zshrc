@@ -48,11 +48,14 @@ alias cat="bat --paging=never"
 alias ll="exa --long --header --icons --no-permissions --no-user --modified --color-scale"
 alias la="exa --long --header --icons --no-permissions --no-user --modified --color-scale --all"
 
-# Output the terminal history into a vim buffer
-alias vhist="vim <(history -n | tail -r)"
+# Output the terminal history into a fzf buffer
+alias fhist="history -n | fzf --tac | pbcopy"
 
 # Measure the internet connection performance 
 alias speedtest="networkQuality -v"
+
+# Easily open .zshrc file in VS Code
+alias ezsh="code -n ~/.zshrc"
 
 ###############################################################################
 # Evals                                                                       #
