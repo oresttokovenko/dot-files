@@ -39,9 +39,9 @@
     },
     // Github copilot suggestions
     {
-    "key": "shift+enter",
-    "command": "editor.action.inlineSuggest.commit",
-    "when": "inlineSuggestionVisible"
+        "key": "shift+enter",
+        "command": "editor.action.inlineSuggest.commit",
+        "when": "inlineSuggestionVisible"
     },
     // Select all occurences of current occurence
     {
@@ -105,6 +105,11 @@
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "terminalFocus"
     }, 
+    {
+        "key": "cmd+shift+m",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "terminalFocus"
+    },
       // Ensure that tab button works in vim
     {
         "key": "tab",
