@@ -46,7 +46,8 @@ alias cat="bat --paging=never"
 
 # Modern equivalent of ls
 alias ll="exa --long --header --icons --no-permissions --no-user --modified --color-scale"
-alias la="exa --long --header --icons --no-permissions --no-user --modified --color-scale --all"
+alias lt="exa --long --header --icons --no-permissions --no-user --modified --color-scale --tree"
+alias ls="exa --header --icons --no-permissions --no-user --modified --color-scale --all --grid"
 
 # Output the terminal history into a fzf buffer
 alias fhist="history -n | fzf --tac | pbcopy"
