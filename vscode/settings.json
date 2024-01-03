@@ -4,6 +4,19 @@
     "editor.accessibilitySupport" : "off",
     "editor.fontFamily": "JetBrainsMono Nerd Font",
     "editor.fontSize": 15,
+
+    // Custom UI Elements
+    "apc.parts.font.family": {
+      "sidebar": "JetBrainsMono Nerd Font",
+      "titlebar": "JetBrainsMono Nerd Font",
+      "activityBar": "JetBrainsMono Nerd Font",
+      "panel": "JetBrainsMono Nerd Font",
+      "tabs": "JetBrainsMono Nerd Font",
+      "statusbar": "JetBrainsMono Nerd Font",
+      "settings-body": "JetBrainsMono Nerd Font",
+      "extension-editor": "JetBrainsMono Nerd Font",
+      "monaco-menu": "JetBrainsMono Nerd Font"
+    },
     "editor.inlineSuggest.enabled": true,
     "editor.minimap.enabled": false,
     "editor.wordWrap": "on",
