@@ -69,22 +69,25 @@
   
     // Terminal Settings
     "terminal.integrated.env.osx" : {
-      "FIG_NEW_SESSION": "1",
+      "CW_NEW_SESSION": "1",
       "terminal.integrated.shell.osx": "/bin/zsh"
     },
     "terminal.integrated.inheritEnv": false,
     "terminal.integrated.fontSize": 14,
     "terminal.explorerKind": "external",
+    "terminal.external.osxExec": "Alacritty.app",
   
     // Language-Specific Settings
     "[python]": {
       "editor.defaultFormatter": "ms-python.black-formatter"
     },
     "[javascript]": {
-      "editor.guides.bracketPairs": true
+      "editor.guides.bracketPairs": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[typescript]": {
-      "editor.guides.bracketPairs": true
+      "editor.guides.bracketPairs": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[jinja-sql]": {
       "editor.commentingToggles.lineComment": "--",
