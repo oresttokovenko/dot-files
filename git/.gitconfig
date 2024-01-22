@@ -2,7 +2,7 @@
 	name = Orest Tokovenko
 	email = hi@oresttokovenko.com
 [core]
-	editor = code --wait
+	editor = code -w
 	excludesfile = ~/.gitignore_global
 [color]
     ui = auto

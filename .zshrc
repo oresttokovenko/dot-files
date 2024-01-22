@@ -56,7 +56,7 @@ alias fhist="history -n | fzf --tac | pbcopy"
 alias speedtest="networkQuality -v"
 
 # Easily open .zshrc file in VS Code
-alias ezsh="code -n ~/.zshrc"
+alias ezsh="code -n -w ~/.zshrc"
 
 # Open ChatGPT as a Chrome App
 alias chatgpt="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --app=http://chat.openai.com"
