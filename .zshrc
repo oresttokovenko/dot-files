@@ -24,12 +24,12 @@ bindkey -M visual "L" end-of-line
 # Remove the title from the terminal window
 DISABLE_AUTO_TITLE="true"
 
-# Prevent neofetch from being printing in vs code
+# Prevent fastfetch from being printing in vs code
 if [ "$TERM_PROGRAM" != "vscode" ]; then
     fastfetch fastfetch --config ~/.config/fastfetch/config.jsonc
 fi
 
-# Convert Jira ticket names into branch names
+# Convert ticket names into branch names
 branchify() {
     local result="$(echo $1 | tr '[:upper:]' '[:lower:]')"
     result="${result// /_}"
