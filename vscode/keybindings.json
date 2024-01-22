@@ -24,7 +24,7 @@
     },
     {
         "command": "filesExplorer.copy",
-        "key": "c",
+        "key": "y",
         "when": "filesExplorerFocus && !inputFocus"
     },
     {

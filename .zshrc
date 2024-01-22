@@ -26,7 +26,7 @@ DISABLE_AUTO_TITLE="true"
 
 # Prevent neofetch from being printing in vs code
 if [ "$TERM_PROGRAM" != "vscode" ]; then
-    fastfetch
+    fastfetch fastfetch --config ~/.config/fastfetch/config.jsonc
 fi
 
 # Convert Jira ticket names into branch names
