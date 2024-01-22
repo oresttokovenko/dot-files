@@ -1,6 +1,8 @@
 {
     // Editor & UI Settings
     "workbench.startupEditor": "newUntitledFile",
+    "workbench.list.openMode": "singleClick",
+    "workbench.editor.enablePreview": false,
     "editor.accessibilitySupport" : "off",
     "editor.fontFamily": "JetBrainsMono Nerd Font",
     "editor.fontSize": 15,
