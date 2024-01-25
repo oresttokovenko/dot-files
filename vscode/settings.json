@@ -6,6 +6,7 @@
     "editor.accessibilitySupport" : "off",
     "editor.fontFamily": "JetBrainsMono Nerd Font",
     "editor.fontSize": 15,
+    "apc.extension.enable": true,
 
     // Custom UI Elements
     "apc.parts.font.family": {
