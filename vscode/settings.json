@@ -126,6 +126,7 @@
     "vim.leader": "<space>",
     "vim.sneak": true,
     "vim.gdefault": true,
+    "vim.useSystemClipboard": true,
     "vim.camelCaseMotion.enable": true,
     "vim.easymotion": true,
     "vim.easymotionKeys": "hklyuiopnm,qwertzxcvbasdgjf",

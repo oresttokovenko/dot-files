@@ -37,6 +37,11 @@
         "key": "d",
         "when": "filesExplorerFocus && !inputFocus"
     },
+    {
+        "command": "explorer.newFolder",
+        "key": "n",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
     // Github copilot suggestions
     {
         "key": "shift+enter",
