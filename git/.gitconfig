@@ -12,3 +12,6 @@
 	autoSetupRemote = True
 [alias]
 	logp = log --graph --abbrev-commit --decorate --first-parent master..
+	contributors = shortlog -sn
+	diffs = diff --name-only origin/main..HEAD
+	# diffs = diff --name-only origin/master..HEAD
