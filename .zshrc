@@ -59,7 +59,7 @@ alias speedtest="networkQuality -v"
 alias vim="nvim"
 
 # Easily open .zshrc file in VS Code
-alias ezsh="code -n -w ~/.zshrc"
+alias ezsh="nvim ~/.zshrc"
 
 # Open ChatGPT as a Chrome App
 alias chatgpt="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --app=http://chat.openai.com"

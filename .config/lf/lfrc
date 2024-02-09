@@ -2,7 +2,7 @@
 # Remaps                                                                      #
 ###############################################################################
 
-map o open-code
+map o nvim
 map J down;down;down;down;down
 map K up;up;up;up;up
 map . set hidden!
@@ -11,6 +11,6 @@ map . set hidden!
 # Commands                                                                    #
 ###############################################################################
 
-cmd open-code ${{
-    code -n -w "$f" &
+cmd nvim ${{
+    nvim "$f" &
 }}
