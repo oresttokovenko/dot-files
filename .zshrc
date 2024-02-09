@@ -55,6 +55,9 @@ alias fhist="history -n | fzf --tac | pbcopy"
 # Measure the internet connection performance 
 alias speedtest="networkQuality -v"
 
+# remapping neovim to vim
+alias vim="nvim"
+
 # Easily open .zshrc file in VS Code
 alias ezsh="code -n -w ~/.zshrc"
 
