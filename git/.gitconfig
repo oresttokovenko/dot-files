@@ -10,6 +10,9 @@
     pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [push]
 	autoSetupRemote = True
+[maintenance]
+	auto = False
+	strategy = incremental
 [alias]
 	logp = log --graph --abbrev-commit --decorate --first-parent main..
 	# logp = log --graph --abbrev-commit --decorate --first-parent master..
