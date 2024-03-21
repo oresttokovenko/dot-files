@@ -24,6 +24,9 @@ bindkey -M visual "L" end-of-line
 # Remove the title from the terminal window
 DISABLE_AUTO_TITLE="true"
 
+# Home directory
+XDG_CONFIG_HOME="$HOME/.config"
+
 # Prevent fastfetch from being printing in vs code
 if [ "$TERM_PROGRAM" != "vscode" ]; then
     fastfetch --config ~/.config/fastfetch/config.jsonc
