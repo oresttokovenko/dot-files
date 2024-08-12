@@ -11,6 +11,8 @@ brew "ffmpeg"
 brew "fnm"
 brew "fuzzy-find"
 brew "jump"
+# tapping the formula to get frequent updates
+brew "jesseduffield/lazydocker/lazydocker"
 brew "ghostscript"
 brew "gifsicle"
 brew "glow"
