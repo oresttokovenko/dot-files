@@ -119,7 +119,8 @@
       "requirements.txt": "code-gray",
       ".gitconfig.local": "git",
       ".vimrc": "shell",
-      "*.txt": "text"
+      "*.txt": "text",
+      "justfile": "gear"
     },
 
     // Vim Settings
