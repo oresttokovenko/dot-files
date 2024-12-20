@@ -1,8 +1,9 @@
 ###############################################################################
-# ohmyzsh Config                                                              #
+# zinit Config                                                                #
 ###############################################################################
 
-plugins=(git zsh-vi-mode)
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
 
 ###############################################################################
 # zsh-vi-mode Config                                                          #
@@ -20,6 +21,8 @@ bindkey -M visual "L" end-of-line
 ###############################################################################
 # Miscelleanious                                                              #
 ###############################################################################
+
+export STARSHIP_CONFIG=~/.config/starship.toml
 
 # Remove the title from the terminal window
 DISABLE_AUTO_TITLE="true"
@@ -48,24 +51,15 @@ branchify() {
 alias cat="bat --paging=never"
 
 # Modern equivalent of ls
-alias ll="exa --long --header --icons --no-permissions --no-user --modified --color-scale"
-alias lt="exa --long --header --icons --no-permissions --no-user --modified --color-scale --tree"
-alias ls="exa --header --icons --no-permissions --no-user --modified --color-scale --all --grid"
-
-# Output the terminal history into a fzf buffer
-alias fhist="history -n | fzf --tac | pbcopy"
-
-# Measure the internet connection performance 
-alias speedtest="networkQuality -v"
+alias ll="eza --long --header --icons --no-permissions --no-user --modified --color-scale"
+alias lt="eza --long --header --icons --no-permissions --no-user --modified --color-scale --tree"
+alias ls="eza --header --icons --no-permissions --no-user --modified --color-scale --all --grid"
 
 # remapping neovim to vim
 alias vim="nvim"
 
 # Easily open .zshrc file in VS Code
 alias ezsh="nvim ~/.zshrc"
-
-# Open ChatGPT as a Chrome App
-alias chatgpt="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --app=http://chat.openai.com"
 
 ###############################################################################
 # Evals                                                                       #
