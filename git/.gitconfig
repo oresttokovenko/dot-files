@@ -14,10 +14,15 @@
 	auto = False
 	strategy = incremental
 [alias]
-	logp = log --graph --abbrev-commit --decorate --first-parent main..
-	# logp = log --graph --abbrev-commit --decorate --first-parent master..
+	# Adding all files in staging + commit with message + push to remote
+    acp = "!f() { git add -A ; git commit -m '$1'; git push; }; f"
 
+	# Shows a graphical log of commits from the main branch to HEAD in the feature branch
+	logp = log --graph --abbrev-commit --decorate --first-parent main..
+	logp = log --graph --abbrev-commit --decorate --first-parent master..
+
+	# Listing all contributors to the git project
 	contributors = shortlog -sn
 
 	diffs = diff --name-only origin/main..HEAD
-	# diffs = diff --name-only origin/master..HEAD
+	diffs = diff --name-only origin/master..HEAD
