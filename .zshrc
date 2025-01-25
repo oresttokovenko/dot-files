@@ -4,6 +4,7 @@
 
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
+zinit snippet OMZP::terraform # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/terraform
 
 ###############################################################################
 # zsh-vi-mode Config                                                          #
