@@ -5,6 +5,8 @@
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
 zinit snippet OMZP::terraform # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/terraform
+zinit snippet OMZP::colored-man-pages # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/colored-man-pages
+zinit snippet OMZP::command-not-found # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/command-not-found
 
 ###############################################################################
 # zsh-vi-mode Config                                                          #
