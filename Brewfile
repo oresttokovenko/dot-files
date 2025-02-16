@@ -1,5 +1,7 @@
 brew "bat"
 brew "btop"
+# docker formula not cask
+brew "docker"
 brew "cask"
 brew "colima"
 brew "eza"
@@ -30,8 +32,9 @@ brew "zsh-vi-mode"
 # General
 cask "appcleaner"
 cask "caffeine"
+cask "chatgpt"
+cask "chatgpt"
 cask "datagrip"
-cask "docker"
 cask "font-jetbrains-mono-nerd-font"
 cask "google-chrome"
 cask "google-drive"

@@ -1,218 +1,202 @@
 {
-    // Editor & UI Settings
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.list.openMode": "singleClick",
-    "workbench.editor.enablePreview": false,
-    "editor.accessibilitySupport" : "off",
-    "editor.fontFamily": "JetBrainsMono Nerd Font",
-    "editor.fontSize": 15,
-    "apc.extension.enable": true,
+  // Editor & UI Settings
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.list.openMode": "singleClick",
+  "workbench.editor.enablePreview": false,
+  "editor.accessibilitySupport": "off",
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontSize": 15,
+  "editor.inlineSuggest.enabled": true,
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "on",
+  "editor.suggest.showMethods": true,
+  "editor.suggest.preview": true,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.snippetSuggestions": "top",
+  "workbench.colorCustomizations": {
+    // Borders
+    "panel.border": "#202428",
+    "sideBar.border": "#202428",
+    "editorGroup.border": "#202428",
+    "tab.border": "#202428",
+    "tab.activeBorder": "#202428",
+    "tab.inactiveBorder": "#202428",
+    "activityBar.border": "#202428",
+    "editorGroupHeader.tabsBorder": "#202428",
+    "statusBar.border": "#202428",
+    "titleBar.border": "#202428",
+    "breadcrumb.border": "#202428",
+    "editorGroup.dropBackground": "#202428",
+    "panelTitle.activeBorder": "#202428",
 
-    // Custom UI Elements
-    "apc.parts.font.family": {
-      "sidebar": "JetBrainsMono Nerd Font",
-      "titlebar": "JetBrainsMono Nerd Font",
-      "activityBar": "JetBrainsMono Nerd Font",
-      "panel": "JetBrainsMono Nerd Font",
-      "tabs": "JetBrainsMono Nerd Font",
-      "statusbar": "JetBrainsMono Nerd Font",
-      "settings-body": "JetBrainsMono Nerd Font",
-      "extension-editor": "JetBrainsMono Nerd Font",
-      "monaco-menu": "JetBrainsMono Nerd Font"
-    },
-    "editor.inlineSuggest.enabled": true,
-    "editor.minimap.enabled": false,
-    "editor.wordWrap": "on",
-    "editor.suggest.showMethods": true,
-    "editor.suggest.preview": true,
-    "editor.acceptSuggestionOnEnter": "on",
-    "editor.snippetSuggestions": "top",
-    "workbench.colorCustomizations": {
+    // Badge colours
+    "activityBarBadge.background": "#EA8872",
+    "badge.background": "#EA8872",
+    "badge.foreground": "#FFFFFF"
+  },
+  "workbench.colorTheme": "GitHub Dark Dimmed",
+  "workbench.productIconTheme": "macos-modern",
+  "workbench.iconTheme": "symbols",
 
-      // Borders
-      "panel.border": "#202428",
-      "sideBar.border": "#202428",
-      "editorGroup.border": "#202428",
-      "tab.border": "#202428",
-      "tab.activeBorder": "#202428",
-      "tab.inactiveBorder": "#202428",
-      "activityBar.border": "#202428",
-      "editorGroupHeader.tabsBorder": "#202428",
-      "statusBar.border": "#202428",
-      "titleBar.border": "#202428",
-      "breadcrumb.border": "#202428",
-      "editorGroup.dropBackground": "#202428",
-      "panelTitle.activeBorder": "#202428",
+  // File Associations
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "files.associations": {
+    "*.sql": "jinja-sql"
+  },
 
-      // Badge colours 
-      "activityBarBadge.background": "#EA8872",
-      "badge.background": "#EA8872",
-      "badge.foreground": "#FFFFFF"
-    },
-    "workbench.colorTheme": "GitHub Dark Dimmed",
-    "workbench.productIconTheme": "macos-modern",
-    "workbench.iconTheme": "symbols",
-  
-    // File Associations
-    "workbench.editorAssociations" : {
-      "*.ipynb" : "jupyter.notebook.ipynb"
-    },
-    "files.associations": {
-      "*.sql": "jinja-sql"
-    },
-    
-    // File Settings
-    "files.insertFinalNewline":"true",
-    "files.trimTrailingWhiteSpace": "true",
+  // File Settings
+  "files.insertFinalNewline": "true",
+  "files.trimTrailingWhiteSpace": "true",
 
-    // Search Settings
-    "search.exclude": {
-      // directories go here
-    },
-  
-    // Terminal Settings
-    "terminal.integrated.env.osx" : {
-      "CW_NEW_SESSION": "1",
-      "terminal.integrated.shell.osx": "/bin/zsh"
-    },
-    "terminal.integrated.inheritEnv": false,
-    "terminal.integrated.fontSize": 14,
-    "terminal.explorerKind": "external",
-    "terminal.external.osxExec": "Alacritty.app",
-  
-    // Language-Specific Settings
-    "[python]": {
-      "editor.defaultFormatter": "ms-python.black-formatter"
-    },
-    "[javascript]": {
-      "editor.guides.bracketPairs": true,
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescript]": {
-      "editor.guides.bracketPairs": true,
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[jinja-sql]": {
-      "editor.commentingToggles.lineComment": "--",
-      "editor.commentingToggles.blockComment": [ "/*", "*/" ]
-    },
-    "latex.linter.enabled": false,
-  
-    // Git Settings
-    "git.ignoreMissingGitWarning": true,
-    "git.openRepositoryInParentFolders": "never",
-  
-    // Miscellaneous Settings
-    "cSpell.diagnosticLevel": "Hint",
-    "json.schemas": [],
-    "security.workspace.trust.untrustedFiles": "open",
-    "window.commandCenter": true,
-    "go.toolsManagement.autoUpdate": true,
-    "scm.inputFontFamily": "editor",
-    "debug.console.fontFamily": "editor",
-    "dbt.versionCheck": "neither",
-    "editor.lineNumbers": "relative",
+  // Search Settings
+  "search.exclude": {
+    // directories go here
+  },
 
-    // Icons settings
-    "symbols.hidesExplorerArrows": false,
-    "symbols.files.associations": {
-      "requirements.txt": "code-gray",
-      ".gitconfig.local": "git",
-      ".vimrc": "shell",
-      "*.txt": "text",
-      "justfile": "gear"
-    },
+  // Terminal Settings
+  "terminal.integrated.env.osx": {
+    "CW_NEW_SESSION": "1",
+    "terminal.integrated.shell.osx": "/bin/zsh"
+  },
+  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.fontSize": 14,
+  "terminal.explorerKind": "external",
+  "terminal.external.osxExec": "Alacritty.app",
 
-    // Vim Settings
-    "vim.leader": "<space>",
-    "vim.sneak": true,
-    "vim.gdefault": true,
-    "vim.useSystemClipboard": true,
-    "vim.camelCaseMotion.enable": true,
-    "vim.easymotion": true,
-    "vim.easymotionKeys": "hklyuiopnm,qwertzxcvbasdgjf",
-    "vim.insertModeKeyBindingsNonRecursive": [
-      {
-        "before": ["j", "k"],
-        "after": ["<Esc>"]
-      },
-      {
-        "before": ["J", "K"],
-        "after": ["<Esc>"]
-      }
-    ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-      {
-          "before": ["<leader>", "o"],
-          "after": ["*"]
-      },
-      {
-          "before": ["<leader>", "l"],
-          "after": ["#"]
-      },
-      {
-          "before": ["J"],
-          "after": ["5", "j"]
-      },
-      {
-          "before": ["K"],
-          "after": ["5", "k"]
-      },
-      {
-        "before": ["H"],
-        "after": ["^"]
-      },
-      {
-        "before": ["L"],
-        "after": ["g","_"]
-      }
-    ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-      {
-        "before": ["<leader>", "s"],
-        "after": ["<leader>", "<leader>", "2", "s"]
-      },
-      {
-        "before": ["<leader>", "j"],
-        "after": ["<leader>", "<leader>", "<leader>", "b", "d", "w"]
-      },
-      {
-        "after": [
-          "g",
-          "g",
-          "V",
-          "G"
-        ],
-        "before": [
-          "<c-a>"
-        ]
-      },
-      {
-        "before": ["H"],
-        "after": ["^"]
-      },
-      {
-        "before": ["L"],
-        "after": ["g","_"]
-      },
-      {
-        "before": ["J"],
-        "after": ["5", "j"]
-      },
-      {
-        "before": ["K"],
-        "after": ["5", "k"]
-      }
-     ],
-     "vim.otherModesKeyBindingsNonRecursive": [
-      {
-        "before": [ "<leader>", "o" ],
-        "after": ["o", "<Esc>", "k"]
-      },
-      {
-        "before": [ "<leader>", "O" ],
-        "after": ["O", "<Esc>", "j"]
-      }
-      ]
-  }
-  
+  // Spelling
+  "cSpell.language": "en",
+  "cSpell.enabledFileTypes": {
+    "markdown": true,
+    "plaintext": true
+  },
+
+  "cSpell.diagnosticLevel": "Hint",
+  // Language-Specific Settings
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "[javascript]": {
+    "editor.guides.bracketPairs": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.guides.bracketPairs": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jinja-sql]": {
+    "editor.commentingToggles.lineComment": "--",
+    "editor.commentingToggles.blockComment": ["/*", "*/"]
+  },
+  "latex.linter.enabled": false,
+
+  // Git Settings
+  "git.ignoreMissingGitWarning": true,
+  "git.openRepositoryInParentFolders": "never",
+
+  // Miscellaneous Settings
+  "json.schemas": [],
+  "security.workspace.trust.untrustedFiles": "open",
+  "window.commandCenter": true,
+  "go.toolsManagement.autoUpdate": true,
+  "scm.inputFontFamily": "editor",
+  "debug.console.fontFamily": "editor",
+  "dbt.versionCheck": "neither",
+  "editor.lineNumbers": "relative",
+
+  // Icons settings
+  "symbols.hidesExplorerArrows": false,
+  "symbols.files.associations": {
+    "requirements.txt": "code-gray",
+    ".gitconfig.local": "git",
+    ".vimrc": "shell",
+    "*.txt": "text",
+    "justfile": "gear"
+  },
+
+  // Vim Settings
+  "vim.leader": "<space>",
+  "vim.sneak": true,
+  "vim.gdefault": true,
+  "vim.useSystemClipboard": true,
+  "vim.camelCaseMotion.enable": true,
+  "vim.easymotion": true,
+  "vim.easymotionKeys": "hklyuiopnm,qwertzxcvbasdgjf",
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["J", "K"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "o"],
+      "after": ["*"]
+    },
+    {
+      "before": ["<leader>", "l"],
+      "after": ["#"]
+    },
+    {
+      "before": ["J"],
+      "after": ["5", "j"]
+    },
+    {
+      "before": ["K"],
+      "after": ["5", "k"]
+    },
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    {
+      "before": ["L"],
+      "after": ["g", "_"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "s"],
+      "after": ["<leader>", "<leader>", "2", "s"]
+    },
+    {
+      "before": ["<leader>", "j"],
+      "after": ["<leader>", "<leader>", "<leader>", "b", "d", "w"]
+    },
+    {
+      "after": ["g", "g", "V", "G"],
+      "before": ["<c-a>"]
+    },
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    {
+      "before": ["L"],
+      "after": ["g", "_"]
+    },
+    {
+      "before": ["J"],
+      "after": ["5", "j"]
+    },
+    {
+      "before": ["K"],
+      "after": ["5", "k"]
+    }
+  ],
+  "vim.otherModesKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "o"],
+      "after": ["o", "<Esc>", "k"]
+    },
+    {
+      "before": ["<leader>", "O"],
+      "after": ["O", "<Esc>", "j"]
+    }
+  ]
+}
