@@ -43,7 +43,8 @@
     "*.ipynb": "jupyter.notebook.ipynb"
   },
   "files.associations": {
-    "*.sql": "jinja-sql"
+    // "*.sql": "jinja-sql"
+    "*.sql": "snowflake-sql"
   },
 
   // File Settings
@@ -74,21 +75,33 @@
 
   "cSpell.diagnosticLevel": "Hint",
   // Language-Specific Settings
+
+  // Python Settings
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
+  "python.REPL.sendToNativeREPL": false,
+
+  // JavaScript & TypeScript Settings
   "[javascript]": {
     "editor.guides.bracketPairs": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
     "editor.guides.bracketPairs": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+
+  // Astro Settings
+  "[astro]": {
+    "editor.guides.bracketPairs": true,
+  },
+
+  // dbt Settings
   "[jinja-sql]": {
     "editor.commentingToggles.lineComment": "--",
-    "editor.commentingToggles.blockComment": ["/*", "*/"]
+    "editor.commentingToggles.blockComment": [ "/*", "*/" ]
   },
+
+  // LaTeX Settings
   "latex.linter.enabled": false,
 
   // Git Settings
