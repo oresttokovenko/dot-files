@@ -1,0 +1,20 @@
+# --- Colors / Theme ---
+theme = GitHub Dark Dimmed
+bold-color = bright
+
+# --- Fonts ---
+font-family = "JetBrainsMono Nerd Font Mono"
+font-size = 16
+
+# --- Terminal behavior ---
+copy-on-select = true
+selection-clear-on-typing = true
+
+# Inherit cwd when opening new windows/tabs (handy with AstroNvim)
+window-inherit-working-directory = true
+
+# --- Look and Feel ---
+window-padding-x = 10
+window-padding-y = 10
+macos-icon = custom
+
