@@ -33,9 +33,9 @@ DISABLE_AUTO_TITLE="true"
 # Home directory
 XDG_CONFIG_HOME="$HOME/.config"
 
-# Prevent fastfetch from being printing in vs code
-if [ "$TERM_PROGRAM" != "vscode" ]; then
-    fastfetch --config ~/.config/fastfetch/config.jsonc
+# Prevent fastfetch from being printing in vs code and neovim
+if [ "$TERM_PROGRAM" != "vscode" ] && [ -z "$NVIM" ]; then
+    /opt/homebrew/bin/fastfetch --config ~/.config/fastfetch/config.jsonc
 fi
 
 # Convert ticket names into branch names
