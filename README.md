@@ -1,10 +1,15 @@
-# Dotfiles
+ _____    ______   ______    ______  __   __       ______   ______   
+/\  __-. /\  __ \ /\__  _\  /\  ___\/\ \ /\ \     /\  ___\ /\  ___\  
+\ \ \/\ \\ \ \/\ \\/_/\ \/  \ \  __\\ \ \\ \ \____\ \  __\ \ \___  \ 
+ \ \____- \ \_____\  \ \_\   \ \_\   \ \_\\ \_____\\ \_____\\/\_____\
+  \/____/  \/_____/   \/_/    \/_/    \/_/ \/_____/ \/_____/ \/_____/
 
-### Setup
-```
+```bash
 bash setup.sh
 bash macos.sh
+
 touch ~/.hushlogin
-cp {.zshrc,.ideavimrc} git/{.gitconfig,.gitignore_global} ~/
-cp -r .config/* ~/.config
+
+cp .zshrc ~/
+cp git/{.gitconfig,.gitignore_global} ~/
 ```
