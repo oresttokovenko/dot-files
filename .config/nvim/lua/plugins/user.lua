@@ -62,18 +62,21 @@ return {
       }
 
       -- map Shift+Enter to accept Copilot suggestion
-      vim.keymap.set("i", "<S-CR>", function()
-        return vim.fn["copilot#Accept"]("<CR>")
-      end, { expr = true, replace_keycodes = false })
+      vim.keymap.set(
+        "i",
+        "<S-CR>",
+        function() return vim.fn["copilot#Accept"] "<CR>" end,
+        { expr = true, replace_keycodes = false }
+      )
     end,
   },
   -- Markdown Support
   {
-      'MeanderingProgrammer/render-markdown.nvim',
-      dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-      ---@module 'render-markdown'
-      ---@type render.md.UserConfig
-      opts = {},
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -120,7 +123,7 @@ return {
     end,
   },
   -- Override enter so that it auto selects the first completion item
- {
+  {
     "saghen/blink.cmp",
     opts = function(_, opts)
       opts = opts or {}
@@ -147,5 +150,22 @@ return {
     opts = {
       lang = "python",
     },
-  }
+  },
+  {
+    "VonHeikemen/fine-cmdline.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    opts = {
+      cmdline = {
+        smartHistory = true,
+      },
+      popup = {
+        border = {
+          style = "double",
+        },
+      },
+    },
+    keys = {
+      { ":", "<cmd>FineCmdline<CR>", mode = "n", noremap = true, silent = true },
+    },
+  },
 }
