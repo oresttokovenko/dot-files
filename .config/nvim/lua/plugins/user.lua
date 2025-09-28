@@ -6,12 +6,6 @@ return {
       dashboard = {
         preset = {
           header = table.concat({
-            " █████  ███████ ████████ ██████   ██████ ",
-            "██   ██ ██         ██    ██   ██ ██    ██",
-            "███████ ███████    ██    ██████  ██    ██",
-            "██   ██      ██    ██    ██   ██ ██    ██",
-            "██   ██ ███████    ██    ██   ██  ██████ ",
-            "",
             "███    ██ ██    ██ ██ ███    ███",
             "████   ██ ██    ██ ██ ████  ████",
             "██ ██  ██ ██    ██ ██ ██ ████ ██",
@@ -133,9 +127,7 @@ return {
 
       -- Make <CR> accept the first item (or current selection), otherwise newline
       opts.keymap["<CR>"] = {
-        -- this is equivalent to: function(cmp) return cmp.select_and_accept() end
-        "select_and_accept",
-        "fallback",
+        -- this is equivalent to: function(cmp) return cmp.select_and_accept() end "select_and_accept", "fallback",
       }
       return opts
     end,
@@ -151,6 +143,7 @@ return {
       lang = "python",
     },
   },
+  -- Floating command line
   {
     "VonHeikemen/fine-cmdline.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
@@ -160,12 +153,36 @@ return {
       },
       popup = {
         border = {
-          style = "double",
+          style = "rounded",
         },
       },
     },
+    config = function(_, opts)
+      require("fine-cmdline").setup(opts)
+      vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#FFFFFF", bg = "NONE" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+    end,
     keys = {
       { ":", "<cmd>FineCmdline<CR>", mode = "n", noremap = true, silent = true },
     },
+  },
+  -- Venv selector for Python
+  {
+    "linux-cultist/venv-selector.nvim",
+    enabled = vim.fn.executable "fd" == 1 or vim.fn.executable "fdfind" == 1 or vim.fn.executable "fd-find" == 1,
+    dependencies = {
+      {
+        "AstroNvim/astrocore",
+        opts = {
+          mappings = {
+            n = {
+              ["<Leader>lv"] = { "<Cmd>VenvSelect<CR>", desc = "Select VirtualEnv" },
+            },
+          },
+        },
+      },
+    },
+    opts = {},
+    cmd = "VenvSelect",
   },
 }

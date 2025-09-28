@@ -12,4 +12,7 @@ touch ~/.hushlogin
 
 cp .zshrc ~/
 cp git/{.gitconfig,.gitignore_global} ~/
+cp -r .docker ~/.docker
+cp -r .config ~/.config
+
 ```
