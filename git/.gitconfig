@@ -3,7 +3,6 @@
 	email = hi@oresttokovenko.com
 [core]
 	editor = vim
-	excludesfile = ~/.gitignore_global
 [color]
     ui = auto
 [format]
