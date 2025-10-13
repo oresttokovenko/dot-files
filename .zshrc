@@ -20,12 +20,11 @@ bindkey -M vicmd "H" beginning-of-line
 bindkey -M vicmd "L" end-of-line
 bindkey -M visual "H" beginning-of-line
 bindkey -M visual "L" end-of-line
+bindkey '^R' fzf-history-widget
 
 ###############################################################################
 # Miscelleanious                                                              #
 ###############################################################################
-
-export STARSHIP_CONFIG=~/.config/starship.toml
 
 # Home directory
 XDG_CONFIG_HOME="$HOME/.config"
