@@ -5,21 +5,40 @@ bold-color = bright
 # --- Fonts ---
 font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 15
-# Disabling ligatures
 font-feature = -calt
 
 # --- Terminal behavior ---
 copy-on-select = true
 selection-clear-on-typing = true
 
-# Inherit cwd when opening new windows/tabs (handy with AstroNvim)
+# It's hard to hit cmd+opt so switching to cmd+shift
+keybind = cmd+shift+left=goto_split:left
+keybind = cmd+shift+right=goto_split:right
+keybind = cmd+shift+up=goto_split:top
+keybind = cmd+shift+down=goto_split:bottom
+
+# Custom name for the current surface (tab or split)
+keybind = cmd+shift+r=prompt_surface_title
+
+# Inherit cwd when opening new windows/tabs
 window-inherit-working-directory = true
+
+# Autodetect shell for behaviours
+shell-integration = detect
 
 # --- Look and Feel ---
 window-padding-x = 10
 window-padding-y = 10
+
+# Setting a custom icon for the app
 macos-icon = custom
-title = " "
+
 macos-titlebar-proxy-icon = hidden
-shell-integration-features = no-title
+macos-titlebar-style = tabs
+
+# When resizing the thing rings a million times
+audible-bell = false
+
+# Don't need to highlight the focused split, I can see it
+unfocused-split-opacity = 1.0
 
