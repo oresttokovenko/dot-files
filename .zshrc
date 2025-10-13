@@ -27,9 +27,6 @@ bindkey -M visual "L" end-of-line
 
 export STARSHIP_CONFIG=~/.config/starship.toml
 
-# Remove the title from the terminal window
-DISABLE_AUTO_TITLE="true"
-
 # Home directory
 XDG_CONFIG_HOME="$HOME/.config"
 
@@ -40,9 +37,8 @@ fi
 
 # Convert ticket names into branch names
 branchify() {
-    local result="$(echo $1 | tr '[:upper:]' '[:lower:]')"
-    result="${result// /_}"
-    result="${result%%_}"
+    local result="${1// /_}"
+    result="${result,,}"
     echo "$result" | pbcopy
 }
 

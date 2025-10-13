@@ -2,7 +2,7 @@
 	name = Orest Tokovenko
 	email = hi@oresttokovenko.com
 [core]
-	editor = nvim
+	editor = vim
 	excludesfile = ~/.gitignore_global
 [color]
     ui = auto
@@ -10,19 +10,15 @@
     pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [push]
 	autoSetupRemote = True
-[maintenance]
-	auto = False
-	strategy = incremental
 [alias]
 	# Adding all files in staging + commit with message + push to remote
-    acp = "!f() { git add -A ; git commit -m '$1'; git push; }; f"
+    acp = "!f() { git add -A ; git commit -m \"$1\"; git push; }; f"
 
-	# Shows a graphical log of commits from the main branch to HEAD in the feature branch
-	logp = log --graph --abbrev-commit --decorate --first-parent main..
-	logp = log --graph --abbrev-commit --decorate --first-parent master..
+	# Shows a graphical log of commits from the upstream branch to HEAD
+	logp = log --graph --abbrev-commit --decorate --first-parent @{u}..
 
 	# Listing all contributors to the git project
 	contributors = shortlog -sn
 
-	diffs = diff --name-only origin/main..HEAD
-	diffs = diff --name-only origin/master..HEAD
+	# Show diff from upstream to HEAD
+	diffs = diff --name-only @{u}..HEAD
