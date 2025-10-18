@@ -12,10 +12,11 @@ copy-on-select = true
 selection-clear-on-typing = true
 
 # It's hard to hit cmd+opt so switching to cmd+shift
-keybind = cmd+shift+left=goto_split:left
-keybind = cmd+shift+right=goto_split:right
-keybind = cmd+shift+up=goto_split:top
-keybind = cmd+shift+down=goto_split:bottom
+# also using vim style keys
+keybind = cmd+shift+h=goto_split:left
+keybind = cmd+shift+l=goto_split:right
+keybind = cmd+shift+k=goto_split:top
+keybind = cmd+shift+j=goto_split:bottom
 
 # Custom name for the current surface (tab or split)
 keybind = cmd+shift+r=prompt_surface_title
@@ -37,7 +38,7 @@ macos-titlebar-proxy-icon = hidden
 macos-titlebar-style = tabs
 
 # When resizing the thing rings a million times
-audible-bell = false
+bell-features = no-attention,no-title
 
 # Don't need to highlight the focused split, I can see it
 unfocused-split-opacity = 1.0
