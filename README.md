@@ -19,7 +19,7 @@ bash macos.sh
 touch ~/.hushlogin
 
 cp .zshrc ~/
-cp git/{.gitconfig,.gitignore_global} ~/
+cp git/.gitconfig ~/
 cp -r .docker ~/.docker
 cp -r .config ~/.config
 
