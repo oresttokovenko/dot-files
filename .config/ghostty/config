@@ -18,6 +18,16 @@ keybind = cmd+shift+l=goto_split:right
 keybind = cmd+shift+k=goto_split:top
 keybind = cmd+shift+j=goto_split:bottom
 
+# Resizing panes with vim style keys
+keybind = cmd+ctrl+h=resize_split:left,10
+keybind = cmd+ctrl+j=resize_split:down,10
+keybind = cmd+ctrl+k=resize_split:up,10
+keybind = cmd+ctrl+l=resize_split:right,10
+
+# Navigate tabs with Opt+h/l
+keybind = alt+h=previous_tab
+keybind = alt+l=next_tab
+
 # Custom name for the current surface (tab or split)
 keybind = cmd+shift+r=prompt_surface_title
 
@@ -34,12 +44,9 @@ window-padding-y = 10
 # Setting a custom icon for the app
 macos-icon = custom
 
+# Cleaning up the titlebar
 macos-titlebar-proxy-icon = hidden
-macos-titlebar-style = tabs
 
-# When resizing the thing rings a million times
-bell-features = no-attention,no-title
-
-# Don't need to highlight the focused split, I can see it
-unfocused-split-opacity = 1.0
-
+# Dimming
+unfocused-split-opacity = 0.9
+cursor-style-blink = true
