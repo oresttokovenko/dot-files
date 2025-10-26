@@ -7,6 +7,21 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export EDITOR="nvim"
 
 ###############################################################################
+# Amazon Q Integration                                                        #
+###############################################################################
+
+# Amazon Q pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
+
+###############################################################################
+# Ghostty Shell Integration                                                   #
+###############################################################################
+
+if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
+  builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/zsh/ghostty-integration"
+fi
+
+###############################################################################
 # Zinit Bootstrap                                                             #
 ###############################################################################
 
