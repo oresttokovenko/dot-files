@@ -10,8 +10,8 @@ export EDITOR="nvim"
 # Amazon Q Integration                                                        #
 ###############################################################################
 
-# Amazon Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && \
+  builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 
 ###############################################################################
 # Ghostty Shell Integration                                                   #
@@ -55,8 +55,11 @@ export FZF_CTRL_R_OPTS="
 bindkey '^R' fzf-history-widget
 
 ###############################################################################
-# zsh-vi-mode Config                                                          #
+# Vi Mode & Keybindings                                                       #
 ###############################################################################
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
 
 # Custom escape for zsh-vi-mode
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
@@ -66,6 +69,8 @@ bindkey -M vicmd "H" beginning-of-line
 bindkey -M vicmd "L" end-of-line
 bindkey -M visual "H" beginning-of-line
 bindkey -M visual "L" end-of-line
+bindkey '^R' fzf-history-widget
+bindkey '^O' edit-command-line
 
 ###############################################################################
 # Zinit Plugins                                                               #
@@ -128,3 +133,17 @@ alias ezsh="nvim ~/.zshrc"
 # This section is designated for 'eval' expressions required to initialize
 # version management tools such as pyenv, nvm, or others. These tools often
 # require an 'eval' command to modify PATH or other shell variables properly.
+
+# Starship bug - https://github.com/starship/starship/issues/3418#issuecomment-1711630970
+type starship_zle-keymap-select >/dev/null || \
+  {
+    echo "Load starship"
+    eval "$(/usr/local/bin/starship init zsh)"
+  }
+
+###############################################################################
+# Amazon Q Integration                                                        #
+###############################################################################
+
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && \
+    builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
