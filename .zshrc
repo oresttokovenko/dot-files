@@ -85,6 +85,8 @@ zinit wait lucid for \
   OMZP::colored-man-pages \
   OMZP::command-not-found
 
+autoload -Uz compinit && compinit
+
 # Replay compiled completions from cache
 zinit cdreplay -q
 
