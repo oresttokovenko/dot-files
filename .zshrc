@@ -1,31 +1,29 @@
 ###############################################################################
+# Env Vars
+###############################################################################
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export EDITOR="nvim"
+
+###############################################################################
 # Zinit Bootstrap                                                             #
 ###############################################################################
 
-# Automatically install Zinit if not already present
-if [[ ! -f ${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git/zinit.zsh ]]; then
-  echo "Installing Zinit..."
-  mkdir -p ${XDG_DATA_HOME:-${HOME}/.local/share}/zinit
-  git clone https://github.com/zdharma-continuum/zinit.git \
-    ${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git
-fi
-source ${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git/zinit.zsh
+zinit_home="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $zinit_home ] && mkdir -p "$(dirname $zinit_home)"
+[ ! -d $zinit_home/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$zinit_home"
+source "${zinit_home}/zinit.zsh"
 
 ###############################################################################
 # fzf Integration (Homebrew install)                                          #
 ###############################################################################
 
-# Load fzf key bindings and completion (Homebrew paths)
+# Load fzf key bindings and completion
 if [[ -x "$(command -v fzf)" ]]; then
-  # Key bindings
-  if [[ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ]]; then
-    source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
-  fi
-
-  # Completions
-  if [[ -f /opt/homebrew/opt/fzf/shell/completion.zsh ]]; then
-    source /opt/homebrew/opt/fzf/shell/completion.zsh
-  fi
+  fzf_home="$(brew --prefix fzf)/shell"
+  [[ -f "$fzf_home/key-bindings.zsh" ]] && source "$fzf_home/key-bindings.zsh"
+  [[ -f "$fzf_home/completion.zsh" ]] && source "$fzf_home/completion.zsh"
 fi
 
 # Customize fzf Ctrl-R (reverse search) behavior
@@ -76,9 +74,6 @@ alias zinit-update='zinit self-update && zinit update --parallel'
 ###############################################################################
 # Miscellaneous                                                               #
 ###############################################################################
-
-# Home directory
-XDG_CONFIG_HOME="$HOME/.config"
 
 # Convert ticket names into branch names
 branchify() {
