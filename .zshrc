@@ -59,6 +59,7 @@ bindkey '^R' fzf-history-widget
 # Vi Mode & Keybindings                                                       #
 ###############################################################################
 
+# Opens the current command line in nvim for simple multi-line editing
 autoload -Uz edit-command-line
 zle -N edit-command-line
 
