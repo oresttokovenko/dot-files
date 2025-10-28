@@ -18,17 +18,13 @@ vim.opt.clipboard = "unnamedplus"
 
 -- Enable current line highlighting but not for line numbers
 vim.opt.cursorline = true
-vim.opt.cursorlineopt = "line"  -- Only highlight the text line, not the number
+vim.opt.cursorlineopt = "line" -- Only highlight the text line, not the number
 
 -- Toggle relative/absolute line numbers based on mode
-vim.api.nvim_create_autocmd({"InsertEnter"}, {
-  callback = function()
-    vim.opt.relativenumber = false
-  end,
+vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+  callback = function() vim.opt.relativenumber = false end,
 })
 
-vim.api.nvim_create_autocmd({"InsertLeave"}, {
-  callback = function()
-    vim.opt.relativenumber = true
-  end,
+vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+  callback = function() vim.opt.relativenumber = true end,
 })

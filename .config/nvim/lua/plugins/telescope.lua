@@ -1,4 +1,4 @@
-require("telescope").setup({
+require("telescope").setup {
   defaults = {
     prompt_prefix = "   ",
     selection_caret = " ",
@@ -13,4 +13,4 @@ require("telescope").setup({
       height = 0.80,
     },
   },
-})
+}

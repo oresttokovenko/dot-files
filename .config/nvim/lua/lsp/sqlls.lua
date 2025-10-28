@@ -4,4 +4,4 @@ vim.lsp.config.sqlls = {
   root_markers = { ".git" },
 }
 
-vim.lsp.enable("sqlls")
+vim.lsp.enable "sqlls"

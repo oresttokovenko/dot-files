@@ -1,4 +1,4 @@
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter.configs").setup {
   ensure_installed = {
     "lua",
     "vim",
@@ -14,8 +14,8 @@ require("nvim-treesitter.configs").setup({
     "bash",
     "regex",
   },
-	modules = {},
-	ignore_install = {},
+  modules = {},
+  ignore_install = {},
   sync_install = false,
   auto_install = true,
   highlight = {
@@ -25,4 +25,4 @@ require("nvim-treesitter.configs").setup({
   indent = {
     enable = true,
   },
-})
+}

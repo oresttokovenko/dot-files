@@ -1,4 +1,4 @@
-require("diffview").setup({
+require("diffview").setup {
   enhanced_diff_hl = true,
   view = {
     default = {
@@ -8,4 +8,4 @@ require("diffview").setup({
       layout = "diff3_horizontal",
     },
   },
-})
+}

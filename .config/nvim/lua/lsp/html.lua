@@ -4,4 +4,4 @@ vim.lsp.config.html = {
   root_markers = { "package.json", ".git" },
 }
 
-vim.lsp.enable("html")
+vim.lsp.enable "html"

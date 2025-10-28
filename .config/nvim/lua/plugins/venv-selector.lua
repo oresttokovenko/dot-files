@@ -1,3 +1,3 @@
-require("venv-selector").setup({
+require("venv-selector").setup {
   auto_refresh = true,
-})
+}

@@ -4,4 +4,4 @@ vim.lsp.config.terraformls = {
   root_markers = { ".terraform", ".git" },
 }
 
-vim.lsp.enable("terraformls")
+vim.lsp.enable "terraformls"

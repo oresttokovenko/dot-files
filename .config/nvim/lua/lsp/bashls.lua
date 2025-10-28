@@ -4,4 +4,4 @@ vim.lsp.config.bashls = {
   root_markers = { ".git" },
 }
 
-vim.lsp.enable("bashls")
+vim.lsp.enable "bashls"

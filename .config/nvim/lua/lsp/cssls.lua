@@ -4,4 +4,4 @@ vim.lsp.config.cssls = {
   root_markers = { "package.json", ".git" },
 }
 
-vim.lsp.enable("cssls")
+vim.lsp.enable "cssls"

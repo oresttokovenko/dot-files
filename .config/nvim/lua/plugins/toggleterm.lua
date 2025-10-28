@@ -1,4 +1,4 @@
-require("toggleterm").setup({
+require("toggleterm").setup {
   size = 20,
   open_mapping = [[<c-\>]],
   hide_numbers = true,
@@ -14,4 +14,4 @@ require("toggleterm").setup({
     border = "curved",
     winblend = 0,
   },
-})
+}

@@ -1,10 +1,10 @@
-require("mason").setup({
+require("mason").setup {
   ui = {
     border = "rounded",
-  }
-})
+  },
+}
 
-require("mason-lspconfig").setup({
+require("mason-lspconfig").setup {
   ensure_installed = {
     "lua_ls",
     "basedpyright",
@@ -27,11 +27,10 @@ require("mason-lspconfig").setup({
     "clangd",
   },
   automatic_installation = true,
-})
+}
 
 -- Add nvim-cmp capabilities to LSP servers
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-vim.lsp.config('*', {
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+vim.lsp.config("*", {
   capabilities = capabilities,
 })
-

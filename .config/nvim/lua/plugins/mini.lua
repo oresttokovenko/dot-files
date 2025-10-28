@@ -1,103 +1,103 @@
 -- mini.statusline
-require('mini.statusline').setup({
+require("mini.statusline").setup {
   use_icons = true,
   set_vim_settings = true,
-})
+}
 
 -- mini.ai (text objects)
-require('mini.ai').setup({
+require("mini.ai").setup {
   n_lines = 500,
-})
+}
 
 -- mini.comment
-require('mini.comment').setup({
+require("mini.comment").setup {
   options = {
     ignore_blank_line = true,
   },
-})
+}
 
 -- mini.surround
-require('mini.surround').setup({
+require("mini.surround").setup {
   mappings = {
-    add = 'sa',
-    delete = 'sd',
-    find = 'sf',
-    find_left = 'sF',
-    highlight = 'sh',
-    replace = 'sr',
-    update_n_lines = 'sn',
+    add = "sa",
+    delete = "sd",
+    find = "sf",
+    find_left = "sF",
+    highlight = "sh",
+    replace = "sr",
+    update_n_lines = "sn",
   },
-})
+}
 
 -- mini.operators
-require('mini.operators').setup({
+require("mini.operators").setup {
   evaluate = {
-    prefix = 'g=',
+    prefix = "g=",
   },
   exchange = {
-    prefix = 'gx',
+    prefix = "gx",
   },
   multiply = {
-    prefix = 'gm',
+    prefix = "gm",
   },
   replace = {
-    prefix = 'gr',
+    prefix = "gr",
   },
   sort = {
-    prefix = 'gs',
+    prefix = "gs",
   },
-})
+}
 
 -- mini.jump2d (flash.nvim style)
-require('mini.jump2d').setup({
+require("mini.jump2d").setup {
   view = {
     dim = true,
     n_steps_ahead = 2,
   },
-  labels = 'abcdefghijklmnopqrstuvwxyz',
+  labels = "abcdefghijklmnopqrstuvwxyz",
   silent = false,
-})
+}
 
 -- mini.pairs
-require('mini.pairs').setup({})
+require("mini.pairs").setup {}
 
 -- mini.clue (which-key alternative)
-local miniclue = require('mini.clue')
-miniclue.setup({
+local miniclue = require "mini.clue"
+miniclue.setup {
   triggers = {
     -- Leader triggers
-    { mode = 'n', keys = '<Leader>' },
-    { mode = 'x', keys = '<Leader>' },
+    { mode = "n", keys = "<Leader>" },
+    { mode = "x", keys = "<Leader>" },
 
     -- Built-in completion
-    { mode = 'i', keys = '<C-x>' },
+    { mode = "i", keys = "<C-x>" },
 
     -- `g` key
-    { mode = 'n', keys = 'g' },
-    { mode = 'x', keys = 'g' },
+    { mode = "n", keys = "g" },
+    { mode = "x", keys = "g" },
 
     -- Marks
-    { mode = 'n', keys = "'" },
-    { mode = 'n', keys = '`' },
-    { mode = 'x', keys = "'" },
-    { mode = 'x', keys = '`' },
+    { mode = "n", keys = "'" },
+    { mode = "n", keys = "`" },
+    { mode = "x", keys = "'" },
+    { mode = "x", keys = "`" },
 
     -- Registers
-    { mode = 'n', keys = '"' },
-    { mode = 'x', keys = '"' },
-    { mode = 'i', keys = '<C-r>' },
-    { mode = 'c', keys = '<C-r>' },
+    { mode = "n", keys = '"' },
+    { mode = "x", keys = '"' },
+    { mode = "i", keys = "<C-r>" },
+    { mode = "c", keys = "<C-r>" },
 
     -- Window commands
-    { mode = 'n', keys = '<C-w>' },
+    { mode = "n", keys = "<C-w>" },
 
     -- `z` key
-    { mode = 'n', keys = 'z' },
-    { mode = 'x', keys = 'z' },
+    { mode = "n", keys = "z" },
+    { mode = "x", keys = "z" },
 
     -- Surround
-    { mode = 'n', keys = 's' },
-    { mode = 'x', keys = 's' },
+    { mode = "n", keys = "s" },
+    { mode = "x", keys = "s" },
   },
 
   clues = {
@@ -113,14 +113,14 @@ miniclue.setup({
   window = {
     delay = 200,
     config = {
-      width = 'auto',
-      border = 'rounded',
+      width = "auto",
+      border = "rounded",
     },
   },
-})
+}
 
 -- mini.notify
-require('mini.notify').setup({
+require("mini.notify").setup {
   content = {
     format = nil,
     sort = nil,
@@ -131,12 +131,12 @@ require('mini.notify').setup({
   },
   window = {
     config = {
-      border = 'rounded',
+      border = "rounded",
     },
     max_width_share = 0.382,
     winblend = 0,
   },
-})
+}
 
 -- Set mini.notify as the default notification handler
-vim.notify = require('mini.notify').make_notify()
+vim.notify = require("mini.notify").make_notify()
