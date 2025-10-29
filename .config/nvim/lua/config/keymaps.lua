@@ -1,7 +1,7 @@
 vim.keymap.set("i", "jk", "<Esc>")
 
 -- General
-vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
+vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file", nowait = true })
 vim.keymap.set("n", "<leader>W", "<cmd>wa<CR>", { desc = "Save all files" })
 vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit" })
 vim.keymap.set("n", "<leader>x", "<cmd>x<CR>", { desc = "Save and quit" })
@@ -36,8 +36,8 @@ vim.keymap.set("n", "<C-M-k>", "<cmd>resize +2<CR>", { desc = "Increase window h
 vim.keymap.set("n", "<C-M-j>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
 
 -- Window management
-vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<CR>", { desc = "Split window vertically" })
-vim.keymap.set("n", "<leader>wh", "<cmd>split<CR>", { desc = "Split window horizontally" })
+vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Split window vertically" })
+vim.keymap.set("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split window horizontally" })
 vim.keymap.set("n", "<leader>=", "<C-w>=", { desc = "Equalize windows" })
 
 -- Window maximize/zoom toggle

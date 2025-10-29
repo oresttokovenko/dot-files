@@ -4,6 +4,42 @@ require("mini.statusline").setup {
   set_vim_settings = true,
 }
 
+-- Customize statusline sections
+local statusline = require("mini.statusline")
+
+-- Override location section to show percentage instead of line:column
+statusline.section_location = function(args)
+  if statusline.is_truncated(args.trunc_width) then return '%P' end
+  return '%P'
+end
+
+-- Hide diagnostics (errors/warnings/info/hints)
+statusline.section_diagnostics = function(args)
+  return ''
+end
+
+-- Override fileinfo to remove file size (keep filetype, encoding, format)
+statusline.section_fileinfo = function(args)
+  local filetype = vim.bo.filetype
+
+  -- Add filetype icon (same logic as default)
+  local mini_icons_available, mini_icons = pcall(require, "mini.icons")
+  if mini_icons_available and filetype ~= '' then
+    local icon, _, _ = mini_icons.get('filetype', filetype)
+    filetype = icon .. ' ' .. filetype
+  end
+
+  -- Return just filetype if truncated or not normal buffer
+  if statusline.is_truncated(args.trunc_width) or vim.bo.buftype ~= '' then
+    return filetype
+  end
+
+  -- Show filetype, encoding, and format (NO file size)
+  local encoding = vim.bo.fileencoding or vim.bo.encoding
+  local format = vim.bo.fileformat
+  return string.format('%s%s%s[%s]', filetype, filetype == '' and '' or ' ', encoding, format)
+end
+
 -- mini.ai (text objects)
 require("mini.ai").setup {
   n_lines = 500,
