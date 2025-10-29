@@ -50,6 +50,9 @@ require("mini.operators").setup {
 
 -- mini.jump2d (flash.nvim style)
 require("mini.jump2d").setup {
+  mappings = {
+    start_jumping = "",
+  },
   view = {
     dim = true,
     n_steps_ahead = 2,

@@ -18,8 +18,9 @@ vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format buffer" }
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Show diagnostic" })
+vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
 
-vim.keymap.set("t", "jk", "<C-\\><C-n>", { desc = "Enter normal mode in terminal" })
+vim.keymap.set("t", ";;", "<C-\\><C-n>", { desc = "Enter normal mode in terminal" })
 
 -- Window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
@@ -27,13 +28,25 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
+-- Window resizing
+vim.keymap.set("n", "<C-M-h>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-M-l>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
+vim.keymap.set("n", "<C-M-k>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-M-j>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
+
 vim.keymap.set({ "n", "v", "o" }, "H", "^")
 vim.keymap.set({ "n", "v", "o" }, "L", "$")
+
+vim.keymap.set("n", "<Tab>", ">>", { desc = "Indent" })
+vim.keymap.set("n", "<Tab>", "<<", { desc = "Unindent" })
+vim.keymap.set("v", "<Tab>", ">gv", { desc = "Indent" })
+vim.keymap.set("v", "<S-Tab>", "<gv", { desc = "Unindent" })
 
 vim.keymap.set({ "n", "v" }, "<leader>p", '"0p')
 vim.keymap.set({ "n", "v" }, "<leader>P", '"0P')
 
 vim.keymap.set("n", "<leader>e", "<cmd>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm<CR>", { desc = "Toggle terminal" })
 
 -- Telescope
 local builtin = require "telescope.builtin"
