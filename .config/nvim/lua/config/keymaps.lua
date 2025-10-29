@@ -1,10 +1,12 @@
 vim.keymap.set("i", "jk", "<Esc>")
 
+-- General
 vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
 vim.keymap.set("n", "<leader>W", "<cmd>wa<CR>", { desc = "Save all files" })
 vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit" })
 vim.keymap.set("n", "<leader>x", "<cmd>x<CR>", { desc = "Save and quit" })
 vim.keymap.set("n", "<leader>Q", "<cmd>qa!<CR>", { desc = "Quit all (force)" })
+vim.keymap.set("n", "<leader>bd", "<cmd>bd!<CR>", { desc = "Delete buffer (force)" })
 
 -- LSP keymaps
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
@@ -15,11 +17,10 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format buffer" })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Show diagnostic" })
 vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
 
+-- ToggleTerm
 vim.keymap.set("t", ";;", "<C-\\><C-n>", { desc = "Enter normal mode in terminal" })
 
 -- Window navigation
@@ -33,6 +34,23 @@ vim.keymap.set("n", "<C-M-h>", "<cmd>vertical resize -2<CR>", { desc = "Decrease
 vim.keymap.set("n", "<C-M-l>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 vim.keymap.set("n", "<C-M-k>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 vim.keymap.set("n", "<C-M-j>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
+
+-- Window management
+vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<CR>", { desc = "Split window vertically" })
+vim.keymap.set("n", "<leader>wh", "<cmd>split<CR>", { desc = "Split window horizontally" })
+vim.keymap.set("n", "<leader>=", "<C-w>=", { desc = "Equalize windows" })
+
+-- Window maximize/zoom toggle
+vim.keymap.set("n", "<leader>m", function()
+  if vim.t.maximized then
+    vim.cmd "wincmd ="
+    vim.t.maximized = false
+  else
+    vim.cmd "wincmd |"
+    vim.cmd "wincmd _"
+    vim.t.maximized = true
+  end
+end, { desc = "Toggle maximize window" })
 
 vim.keymap.set({ "n", "v", "o" }, "H", "^")
 vim.keymap.set({ "n", "v", "o" }, "L", "$")

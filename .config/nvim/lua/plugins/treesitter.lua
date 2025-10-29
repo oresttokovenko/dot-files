@@ -13,10 +13,12 @@ require("nvim-treesitter.configs").setup {
     "markdown_inline",
     "bash",
     "regex",
+    "go",
   },
   modules = {},
   ignore_install = {},
   sync_install = false,
+  -- If parser isn't already installed, get it
   auto_install = true,
   highlight = {
     enable = true,

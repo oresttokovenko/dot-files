@@ -1,30 +1,47 @@
+-- Line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
+
+-- Indentation
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+
+-- UI
 vim.opt.winborder = "rounded"
-
--- Keep signcolumn always visible to prevent shifting
 vim.opt.signcolumn = "yes"
-
--- Disable native mode indicator (mini.statusline shows it already)
+---- Disable native mode indicator (mini.statusline shows it already)
 vim.opt.showmode = false
-
--- Auto-reload files changed outside Neovim
--- prevents a W11 warning when LLMs make changes to buffers
-vim.opt.autoread = true
-vim.opt.clipboard = "unnamedplus"
-
--- Enable current line highlighting but not for line numbers
+---- Hide command line when not in use
+vim.opt.cmdheight = 0
 vim.opt.cursorline = true
-vim.opt.cursorlineopt = "line" -- Only highlight the text line, not the number
+vim.opt.cursorlineopt = "line"
+vim.opt.termguicolors = true
 
--- Toggle relative/absolute line numbers based on mode
-vim.api.nvim_create_autocmd({ "InsertEnter" }, {
-  callback = function() vim.opt.relativenumber = false end,
-})
+-- Splits
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
-vim.api.nvim_create_autocmd({ "InsertLeave" }, {
-  callback = function() vim.opt.relativenumber = true end,
-})
+-- Search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- Scrolling
+-- vim.opt.scrolloff = 8 -- Keep 8 lines above/below cursor
+-- vim.opt.sidescrolloff = 8 -- Keep 8 columns left/right of cursor
+
+-- Swap/Backup/Undo files
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.stdpath "data" .. "/undo"
+
+-- Performance
+vim.opt.updatetime = 250
+
+-- Clipboard/Autoread
+vim.opt.clipboard = "unnamedplus"
+---- Auto-reload files changed outside Neovim (prevents W11 warning)
+vim.opt.autoread = true

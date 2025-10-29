@@ -84,6 +84,10 @@
       "rev": "b9fd522",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
+    "snacks.nvim": {
+      "rev": "14ead48",
+      "src": "https://github.com/folke/snacks.nvim"
+    },
     "telescope.nvim": {
       "rev": "b4da76b",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
