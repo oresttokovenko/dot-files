@@ -26,17 +26,18 @@ vim.keymap.set("t", ";;", "<C-\\><C-n>", { desc = "Enter normal mode in terminal
 
 -- Inline completion (Copilot ghost text)
 vim.keymap.set("i", "<S-CR>", function()
-  if not vim.lsp.inline_completion.get() then return "<CR>" end
+  if not vim.lsp.inline_completion.get() then
+    return "<CR>"
+  end
 end, { expr = true, replace_keycodes = true, desc = "Accept inline completion" })
 
-vim.keymap.set("i", "<M-n>", function() vim.lsp.inline_completion.select({}) end, { desc = "Next inline completion" })
+vim.keymap.set("i", "<M-n>", function()
+  vim.lsp.inline_completion.select({})
+end, { desc = "Next inline completion" })
 
-vim.keymap.set(
-  "i",
-  "<M-p>",
-  function() vim.lsp.inline_completion.select({ count = -1 }) end,
-  { desc = "Previous inline completion" }
-)
+vim.keymap.set("i", "<M-p>", function()
+  vim.lsp.inline_completion.select({ count = -1 })
+end, { desc = "Previous inline completion" })
 
 -- Window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
@@ -86,12 +87,9 @@ local builtin = require("telescope.builtin")
 
 -- Find files
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
-vim.keymap.set(
-  "n",
-  "<leader>fa",
-  function() builtin.find_files({ hidden = true, no_ignore = true }) end,
-  { desc = "Find all files" }
-)
+vim.keymap.set("n", "<leader>fa", function()
+  builtin.find_files({ hidden = true, no_ignore = true })
+end, { desc = "Find all files" })
 
 -- Find words
 vim.keymap.set("n", "<leader>fw", builtin.live_grep, { desc = "Find words" })
@@ -141,10 +139,9 @@ vim.keymap.set("n", "<leader>vc", "<cmd>VenvSelectCached<CR>", { desc = "Select 
 
 -- Mini.jump2d (flash-like navigation)
 local jump2d = require("mini.jump2d")
-vim.keymap.set(
-  "n",
-  "s",
-  function() jump2d.start(jump2d.builtin_opts.single_character) end,
-  { desc = "Jump to character" }
-)
-vim.keymap.set("n", "S", function() jump2d.start(jump2d.builtin_opts.line_start) end, { desc = "Jump to line start" })
+vim.keymap.set("n", "s", function()
+  jump2d.start(jump2d.builtin_opts.single_character)
+end, { desc = "Jump to character" })
+vim.keymap.set("n", "S", function()
+  jump2d.start(jump2d.builtin_opts.line_start)
+end, { desc = "Jump to line start" })

@@ -9,12 +9,16 @@ local statusline = require("mini.statusline")
 
 -- Override location section to show percentage instead of line:column
 statusline.section_location = function(args)
-  if statusline.is_truncated(args.trunc_width) then return "%P" end
+  if statusline.is_truncated(args.trunc_width) then
+    return "%P"
+  end
   return "%P"
 end
 
 -- Hide diagnostics (errors/warnings/info/hints)
-statusline.section_diagnostics = function(args) return "" end
+statusline.section_diagnostics = function(args)
+  return ""
+end
 
 -- Override fileinfo to remove file size (keep filetype, encoding, format)
 statusline.section_fileinfo = function(args)
@@ -28,7 +32,9 @@ statusline.section_fileinfo = function(args)
   end
 
   -- Return just filetype if truncated or not normal buffer
-  if statusline.is_truncated(args.trunc_width) or vim.bo.buftype ~= "" then return filetype end
+  if statusline.is_truncated(args.trunc_width) or vim.bo.buftype ~= "" then
+    return filetype
+  end
 
   -- Show filetype, encoding, and format (NO file size)
   local encoding = vim.bo.fileencoding or vim.bo.encoding

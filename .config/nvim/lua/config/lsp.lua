@@ -32,7 +32,9 @@ local mason_registry = require("mason-registry")
 
 for _, tool in ipairs(ensure_installed) do
   local p = mason_registry.get_package(tool)
-  if not p:is_installed() then p:install() end
+  if not p:is_installed() then
+    p:install()
+  end
 end
 
 -- Add nvim-cmp capabilities to LSP servers

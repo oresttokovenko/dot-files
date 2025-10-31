@@ -1,14 +1,20 @@
 -- Reset maximized state when opening a terminal
 vim.api.nvim_create_autocmd("TermOpen", {
-  callback = function() vim.t.maximized = false end,
+  callback = function()
+    vim.t.maximized = false
+  end,
 })
 
 -- Toggle relative/absolute line numbers based on mode
 vim.api.nvim_create_autocmd({ "InsertEnter" }, {
-  callback = function() vim.opt.relativenumber = false end,
+  callback = function()
+    vim.opt.relativenumber = false
+  end,
 })
 vim.api.nvim_create_autocmd({ "InsertLeave" }, {
-  callback = function() vim.opt.relativenumber = true end,
+  callback = function()
+    vim.opt.relativenumber = true
+  end,
 })
 
 -- LSP inline completion (for Copilot ghost text)
@@ -28,13 +34,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking text",
   group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
-  callback = function() vim.highlight.on_yank() end,
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
 -- Enable line wrapping for text-based files, disabled by default
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "mdx", "text", "txt", "gitcommit" },
-  callback = function() vim.opt_local.wrap = true end,
+  callback = function()
+    vim.opt_local.wrap = true
+  end,
 })
 
 -- Auto-update treesitter parsers when nvim-treesitter plugin updates

@@ -13,9 +13,13 @@ snacks.setup({
     animate = { enabled = false },
   },
   scope = {
-    filter = function(bufnr) return vim.bo[bufnr].buftype == "" and vim.api.nvim_buf_line_count(bufnr) < 10000 end,
+    filter = function(bufnr)
+      return vim.bo[bufnr].buftype == "" and vim.api.nvim_buf_line_count(bufnr) < 10000
+    end,
   },
 })
 
 -- Toggle indent guides keymap
-vim.keymap.set("n", "<leader>ui", function() snacks.toggle.indent():toggle() end, { desc = "Toggle indent guides" })
+vim.keymap.set("n", "<leader>ui", function()
+  snacks.toggle.indent():toggle()
+end, { desc = "Toggle indent guides" })
