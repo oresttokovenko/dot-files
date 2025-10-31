@@ -1,8 +1,8 @@
-require("mason").setup {
+require("mason").setup({
   ui = {
     border = "rounded",
   },
-}
+})
 
 -- Ensure these Mason packages are installed
 local ensure_installed = {
@@ -25,9 +25,10 @@ local ensure_installed = {
   "terraform-ls",
   "helm-ls",
   "clangd",
+  "copilot-language-server",
 }
 
-local mason_registry = require "mason-registry"
+local mason_registry = require("mason-registry")
 
 for _, tool in ipairs(ensure_installed) do
   local p = mason_registry.get_package(tool)
@@ -41,22 +42,23 @@ vim.lsp.config("*", {
 })
 
 -- Load all LSP server configurations
-require "lsp.lua_ls"
-require "lsp.basedpyright"
-require "lsp.ruff"
-require "lsp.tinymist"
-require "lsp.html"
-require "lsp.cssls"
-require "lsp.ts_ls"
-require "lsp.kotlin_language_server"
-require "lsp.gopls"
-require "lsp.sqlls"
-require "lsp.rust_analyzer"
-require "lsp.bashls"
-require "lsp.yamlls"
-require "lsp.taplo"
-require "lsp.jsonls"
-require "lsp.dockerls"
-require "lsp.terraformls"
-require "lsp.helm_ls"
-require "lsp.clangd"
+require("lsp.lua_ls")
+require("lsp.basedpyright")
+require("lsp.ruff")
+require("lsp.tinymist")
+require("lsp.html")
+require("lsp.cssls")
+require("lsp.ts_ls")
+require("lsp.kotlin_language_server")
+require("lsp.gopls")
+require("lsp.sqlls")
+require("lsp.rust_analyzer")
+require("lsp.bashls")
+require("lsp.yamlls")
+require("lsp.taplo")
+require("lsp.jsonls")
+require("lsp.dockerls")
+require("lsp.terraformls")
+require("lsp.helm_ls")
+require("lsp.clangd")
+require("lsp.copilot")

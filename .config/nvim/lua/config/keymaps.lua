@@ -19,9 +19,24 @@ vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" }
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format buffer" })
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Show diagnostic" })
 vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+vim.keymap.set("n", "<leader>li", "<cmd>checkhealth vim.lsp<CR>", { desc = "LSP info" })
 
 -- ToggleTerm
 vim.keymap.set("t", ";;", "<C-\\><C-n>", { desc = "Enter normal mode in terminal" })
+
+-- Inline completion (Copilot ghost text)
+vim.keymap.set("i", "<S-CR>", function()
+  if not vim.lsp.inline_completion.get() then return "<CR>" end
+end, { expr = true, replace_keycodes = true, desc = "Accept inline completion" })
+
+vim.keymap.set("i", "<M-n>", function() vim.lsp.inline_completion.select({}) end, { desc = "Next inline completion" })
+
+vim.keymap.set(
+  "i",
+  "<M-p>",
+  function() vim.lsp.inline_completion.select({ count = -1 }) end,
+  { desc = "Previous inline completion" }
+)
 
 -- Window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
@@ -43,11 +58,11 @@ vim.keymap.set("n", "<leader>=", "<C-w>=", { desc = "Equalize windows" })
 -- Window maximize/zoom toggle
 vim.keymap.set("n", "<leader>m", function()
   if vim.t.maximized then
-    vim.cmd "wincmd ="
+    vim.cmd("wincmd =")
     vim.t.maximized = false
   else
-    vim.cmd "wincmd |"
-    vim.cmd "wincmd _"
+    vim.cmd("wincmd |")
+    vim.cmd("wincmd _")
     vim.t.maximized = true
   end
 end, { desc = "Toggle maximize window" })
@@ -67,14 +82,14 @@ vim.keymap.set("n", "<leader>e", "<cmd>Oil<CR>", { desc = "Open parent directory
 vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm<CR>", { desc = "Toggle terminal" })
 
 -- Telescope
-local builtin = require "telescope.builtin"
+local builtin = require("telescope.builtin")
 
 -- Find files
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
 vim.keymap.set(
   "n",
   "<leader>fa",
-  function() builtin.find_files { hidden = true, no_ignore = true } end,
+  function() builtin.find_files({ hidden = true, no_ignore = true }) end,
   { desc = "Find all files" }
 )
 
@@ -102,7 +117,7 @@ vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Git branches" 
 vim.keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "Git commits" })
 
 -- Gitsigns
-local gitsigns = require "gitsigns"
+local gitsigns = require("gitsigns")
 vim.keymap.set("n", "]h", gitsigns.next_hunk, { desc = "Next git hunk" })
 vim.keymap.set("n", "[h", gitsigns.prev_hunk, { desc = "Previous git hunk" })
 vim.keymap.set("n", "<leader>gp", gitsigns.preview_hunk, { desc = "Preview git hunk" })
@@ -125,7 +140,7 @@ vim.keymap.set("n", "<leader>vs", "<cmd>VenvSelect<CR>", { desc = "Select Python
 vim.keymap.set("n", "<leader>vc", "<cmd>VenvSelectCached<CR>", { desc = "Select cached venv" })
 
 -- Mini.jump2d (flash-like navigation)
-local jump2d = require "mini.jump2d"
+local jump2d = require("mini.jump2d")
 vim.keymap.set(
   "n",
   "s",

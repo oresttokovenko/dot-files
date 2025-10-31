@@ -19,6 +19,7 @@ vim.opt.cmdheight = 0
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "line"
 vim.opt.termguicolors = true
+vim.opt.wrap = false
 
 -- Splits
 vim.opt.splitright = true
@@ -36,7 +37,7 @@ vim.opt.smartcase = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
-vim.opt.undodir = vim.fn.stdpath "data" .. "/undo"
+vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
 
 -- Performance
 vim.opt.updatetime = 250

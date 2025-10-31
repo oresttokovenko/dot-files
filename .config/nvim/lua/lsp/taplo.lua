@@ -4,4 +4,4 @@ vim.lsp.config.taplo = {
   root_markers = { "*.toml", ".git" },
 }
 
-vim.lsp.enable "taplo"
+vim.lsp.enable("taplo")

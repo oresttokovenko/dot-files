@@ -1,4 +1,4 @@
-require("markview").setup {
+require("markview").setup({
   preview = {
     modes = { "n", "no", "c" },
     hybrid_modes = { "n" },
@@ -9,4 +9,4 @@ require("markview").setup {
       end,
     },
   },
-}
+})

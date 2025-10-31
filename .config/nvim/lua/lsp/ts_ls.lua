@@ -4,4 +4,4 @@ vim.lsp.config.ts_ls = {
   root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
 }
 
-vim.lsp.enable "ts_ls"
+vim.lsp.enable("ts_ls")

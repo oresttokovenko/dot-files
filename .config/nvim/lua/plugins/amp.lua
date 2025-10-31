@@ -1,3 +1,3 @@
-require("amp").setup {
+require("amp").setup({
   log_level = "warn",
-}
+})

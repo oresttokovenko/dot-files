@@ -1,4 +1,4 @@
-require("github-theme").setup {
+require("github-theme").setup({
   groups = {
     all = {
       -- Colors from: https://github.com/projekt0n/github-nvim-theme/blob/main/lua/github-theme/palette/primitives/dark_dimmed.lua
@@ -9,8 +9,8 @@ require("github-theme").setup {
       TermCursor = { bg = "#636e7b" },
     },
   },
-}
+})
 
-vim.cmd.colorscheme "github_dark_dimmed"
+vim.cmd.colorscheme("github_dark_dimmed")
 
 vim.opt.guicursor = "n-v-c:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor"

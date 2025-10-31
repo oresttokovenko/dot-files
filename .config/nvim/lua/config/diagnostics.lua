@@ -1,4 +1,4 @@
-vim.diagnostic.config {
+vim.diagnostic.config({
   virtual_text = {
     spacing = 4,
     source = "if_many",
@@ -12,4 +12,4 @@ vim.diagnostic.config {
     source = "if_many",
     border = "rounded",
   },
-}
+})

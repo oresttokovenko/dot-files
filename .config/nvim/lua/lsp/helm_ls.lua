@@ -4,4 +4,4 @@ vim.lsp.config.helm_ls = {
   root_markers = { "Chart.yaml", ".git" },
 }
 
-vim.lsp.enable "helm_ls"
+vim.lsp.enable("helm_ls")

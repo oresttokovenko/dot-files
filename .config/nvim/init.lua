@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.pack.add {
+vim.pack.add({
   -- Dependencies
   { src = "https://github.com/nvim-lua/plenary.nvim" },
 
@@ -40,25 +40,25 @@ vim.pack.add {
   -- Language Specific
   { src = "https://github.com/linux-cultist/venv-selector.nvim" },
   { src = "https://github.com/OXY2DEV/markview.nvim" },
-}
+})
 
-require "config.options"
-require "config.keymaps"
-require "config.autocmds"
-require "config.diagnostics"
-require "config.lsp"
-require "config.colorscheme"
-require "plugins.devicons"
-require "plugins.mini"
-require "plugins.treesitter"
-require "plugins.gitsigns"
-require "plugins.snacks"
-require "plugins.toggleterm"
-require "plugins.ts-comments"
-require "plugins.venv-selector"
-require "plugins.markview"
-require "plugins.diffview"
-require "plugins.oil"
-require "plugins.telescope"
-require "plugins.amp"
-require "plugins.nvim-cmp"
+require("config.options")
+require("config.keymaps")
+require("config.autocmds")
+require("config.diagnostics")
+require("config.lsp")
+require("config.colorscheme")
+require("plugins.devicons")
+require("plugins.mini")
+require("plugins.treesitter")
+require("plugins.gitsigns")
+require("plugins.snacks")
+require("plugins.toggleterm")
+require("plugins.ts-comments")
+require("plugins.venv-selector")
+require("plugins.markview")
+require("plugins.diffview")
+require("plugins.oil")
+require("plugins.telescope")
+require("plugins.amp")
+require("plugins.nvim-cmp")
