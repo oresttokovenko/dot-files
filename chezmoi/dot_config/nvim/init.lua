@@ -1,5 +1,3 @@
--- chezmoi auto-push test
--- chezmoi auto-push test v2
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
