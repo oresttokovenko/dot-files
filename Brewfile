@@ -23,6 +23,7 @@ brew "httpie"            # User-friendly HTTP client
 brew "jq"                # JSON processor
 brew "jump"              # Quick directory navigation
 brew "mas"               # Mac App Store command line interface
+brew "opam"              # OCaml package manager
 brew "poetry"            # Legacy Python packaging
 brew "rbenv"             # Ruby version manager
 brew "ripgrep"           # Modern alternative for grep
