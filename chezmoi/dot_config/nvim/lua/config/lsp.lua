@@ -26,6 +26,10 @@ local ensure_installed = {
   "helm-ls",
   "clangd",
   "copilot-language-server",
+  "just-lsp",
+  "docker-compose-language-service",
+  "ocaml-lsp",
+  "gh-actions-language-server",
 }
 
 local mason_registry = require("mason-registry")
@@ -64,3 +68,7 @@ require("lsp.terraformls")
 require("lsp.helm_ls")
 require("lsp.clangd")
 require("lsp.copilot")
+require("lsp.just")
+require("lsp.docker_compose_language_service")
+require("lsp.ocamllsp")
+require("lsp.gh_actions_ls")
