@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+-- Disable ocamllsp default keybindings
+vim.g.ocaml_no_mappings = 1
 
 vim.pack.add({
   -- Dependencies
