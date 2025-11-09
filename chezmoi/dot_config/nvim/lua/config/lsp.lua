@@ -5,6 +5,8 @@ require("mason").setup({
 })
 
 -- Ensure these Mason packages are installed
+-- Ocaml LSP is intalled manually via Opam 
+-- so that it plays nicely with the switch system
 local ensure_installed = {
   "lua-language-server",
   "basedpyright",
@@ -28,7 +30,6 @@ local ensure_installed = {
   "copilot-language-server",
   "just-lsp",
   "docker-compose-language-service",
-  "ocaml-lsp",
   "gh-actions-language-server",
 }
 
@@ -70,5 +71,9 @@ require("lsp.clangd")
 require("lsp.copilot")
 require("lsp.just")
 require("lsp.docker_compose_language_service")
-require("lsp.ocamllsp")
+-- OCaml LSP - only load if available (installed via opam)
+local ok, _ = pcall(require, "lsp.ocamllsp")
+if not ok then
+  vim.notify("ocaml-lsp-server not found - install via: opam install ocaml-lsp-server", vim.log.levels.WARN)
+end
 require("lsp.gh_actions_ls")
