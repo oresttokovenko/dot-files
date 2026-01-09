@@ -87,6 +87,7 @@ require("mini.operators").setup({
 })
 
 -- mini.jump2d (flash.nvim style)
+-- Using custom two-char logic in keymaps.lua
 require("mini.jump2d").setup({
   mappings = {
     start_jumping = "",

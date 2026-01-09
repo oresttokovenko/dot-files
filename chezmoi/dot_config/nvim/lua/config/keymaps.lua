@@ -54,8 +54,8 @@ vim.keymap.set("n", "<C-M-k>", "<cmd>resize +2<CR>", { desc = "Increase window h
 vim.keymap.set("n", "<C-M-j>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
 
 -- Window management
-vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Split window vertically" })
-vim.keymap.set("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split window horizontally" })
+vim.keymap.set("n", "<leader>ov", "<cmd>vsplit<CR>", { desc = "Split window vertically" })
+vim.keymap.set("n", "<leader>oh", "<cmd>split<CR>", { desc = "Split window horizontally" })
 vim.keymap.set("n", "<leader>=", "<C-w>=", { desc = "Equalize windows" })
 
 -- Window maximize/zoom toggle
@@ -74,7 +74,7 @@ vim.keymap.set({ "n", "v", "o" }, "H", "^")
 vim.keymap.set({ "n", "v", "o" }, "L", "$")
 
 vim.keymap.set("n", "<Tab>", ">>", { desc = "Indent" })
-vim.keymap.set("n", "<Tab>", "<<", { desc = "Unindent" })
+vim.keymap.set("n", "<S-Tab>", "<<", { desc = "Unindent" })
 vim.keymap.set("v", "<Tab>", ">gv", { desc = "Indent" })
 vim.keymap.set("v", "<S-Tab>", "<gv", { desc = "Unindent" })
 
@@ -92,6 +92,14 @@ end, { desc = "Copy file path with @ prefix" })
 
 vim.keymap.set("n", "<leader>e", "<cmd>Oil<CR>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm<CR>", { desc = "Toggle terminal" })
+
+-- Oil.nvim buffer-local keymaps
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "oil",
+  callback = function(args)
+    vim.keymap.set("n", "<BS>", "-", { buffer = args.buf, desc = "Go to parent directory", remap = true })
+  end,
+})
 
 -- Telescope
 local builtin = require("telescope.builtin")
@@ -153,9 +161,19 @@ vim.keymap.set("n", "<leader>pt", "<cmd>TypstPreviewToggle<CR>", { desc = "Toggl
 
 -- Mini.jump2d (flash-like navigation)
 local jump2d = require("mini.jump2d")
-vim.keymap.set("n", "s", function()
-  jump2d.start(jump2d.builtin_opts.single_character)
-end, { desc = "Jump to character" })
-vim.keymap.set("n", "S", function()
+-- Custom two-char jump (sneak-style)
+vim.keymap.set("n", "<leader>s", function()
+  local c1 = vim.fn.getcharstr()
+  local c2 = vim.fn.getcharstr()
+  jump2d.start({ spotter = jump2d.gen_spotter.pattern(vim.pesc(c1 .. c2)) })
+end, { desc = "Jump to 2 chars" })
+vim.keymap.set("n", "<leader>S", function()
   jump2d.start(jump2d.builtin_opts.line_start)
 end, { desc = "Jump to line start" })
+-- Old single-char mappings (commented out due to mini.surround conflict)
+-- vim.keymap.set("n", "s", function()
+--   jump2d.start(jump2d.builtin_opts.single_character)
+-- end, { desc = "Jump to character" })
+-- vim.keymap.set("n", "S", function()
+--   jump2d.start(jump2d.builtin_opts.line_start)
+-- end, { desc = "Jump to line start" })
