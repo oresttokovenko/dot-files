@@ -8,13 +8,6 @@ export EDITOR="nvim"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
 ###############################################################################
-# Amazon Q Integration                                                        #
-###############################################################################
-
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && \
-  builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
-
-###############################################################################
 # Ghostty Shell Integration                                                   #
 ###############################################################################
 
@@ -31,16 +24,12 @@ zinit_home="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $zinit_home/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$zinit_home"
 source "${zinit_home}/zinit.zsh"
 
-###############################################################################
-# fzf Integration (Homebrew install)                                          #
-###############################################################################
+# Load zsh-autocomplete
+zinit light marlonrichert/zsh-autocomplete
 
-# Load fzf key bindings and completion
-if [[ -x "$(command -v fzf)" ]]; then
-  fzf_home="$(brew --prefix fzf)/shell"
-  [[ -f "$fzf_home/key-bindings.zsh" ]] && source "$fzf_home/key-bindings.zsh"
-  [[ -f "$fzf_home/completion.zsh" ]] && source "$fzf_home/completion.zsh"
-fi
+###############################################################################
+# fzf Configuration                                                           #
+###############################################################################
 
 # Customize fzf Ctrl-R (reverse search) behavior
 export FZF_CTRL_R_OPTS="
@@ -52,14 +41,10 @@ export FZF_CTRL_R_OPTS="
   --preview 'echo {}' --preview-window down:3:hidden:wrap
 "
 
-# Rebind Ctrl-R to fuzzy history search
-bindkey '^R' fzf-history-widget
-
 ###############################################################################
 # Vi Mode & Keybindings                                                       #
 ###############################################################################
 
-# Opens the current command line in nvim for simple multi-line editing
 autoload -Uz edit-command-line
 zle -N edit-command-line
 
@@ -87,11 +72,6 @@ zinit wait lucid for \
   OMZP::colored-man-pages \
   OMZP::command-not-found
 
-autoload -Uz compinit && compinit
-
-# Replay compiled completions from cache
-zinit cdreplay -q
-
 # Alias to update all Zinit plugins easily
 alias zinit-update='zinit self-update && zinit update --parallel'
 
@@ -102,14 +82,15 @@ alias zinit-update='zinit self-update && zinit update --parallel'
 # Convert ticket names into branch names
 branchify() {
   local result="${1// /_}"
-  result="${result,,}"
+  result="${(L)result}"
   echo "$result" | pbcopy
 }
 
 # Modern Tree replacement
 tree() {
   local level=${1:-2}
-  eza --tree --level="$level" --icons
+  shift 2>/dev/null
+  eza --tree --level="$level" --icons "$@"
 }
 
 ###############################################################################
@@ -134,20 +115,19 @@ alias ezsh="nvim ~/.zshrc"
 # Evals                                                                       #
 ###############################################################################
 
-# This section is designated for 'eval' expressions required to initialize
-# version management tools such as pyenv, nvm, or others. These tools often
-# require an 'eval' command to modify PATH or other shell variables properly.
+# eval "$(fnm env --use-on-cd)"
+eval "$(starship init zsh)"
+eval "$(jump shell)"
+eval "$(fzf --zsh)"
 
-# Starship bug - https://github.com/starship/starship/issues/3418#issuecomment-1711630970
-type starship_zle-keymap-select >/dev/null || \
-  {
-    echo "Load starship"
-    eval "$(/usr/local/bin/starship init zsh)"
-  }
-
-###############################################################################
-# Amazon Q Integration                                                        #
-###############################################################################
-
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && \
-    builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+# Lazy-load NVM for faster shell startup
+export NVM_DIR="$HOME/.nvm"
+lazy_load_nvm() {
+  unset -f nvm node npm npx
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+}
+nvm() { lazy_load_nvm && nvm "$@"; }
+node() { lazy_load_nvm && node "$@"; }
+npm() { lazy_load_nvm && npm "$@"; }
+npx() { lazy_load_nvm && npx "$@"; }
