@@ -8,6 +8,17 @@ export EDITOR="nvim"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
 ###############################################################################
+# PATH
+###############################################################################
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export PATH="$HOME/.local/share/bob/nvim-bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+###############################################################################
 # Ghostty Shell Integration                                                   #
 ###############################################################################
 
