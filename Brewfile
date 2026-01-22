@@ -3,7 +3,7 @@ brew "awscli"            # AWS command line interface
 brew "bat"               # cat with syntax highlighting
 brew "bob"               # Neovim version manager
 brew "btop"              # Resource monitor (CPU, memory, etc.)
-brew "bun"               # JavaScript/TypeScript runtime
+brew "oven-sh/bun/bun"   # JavaScript/TypeScript runtime (official tap)
 brew "chezmoi"           # Manage your dotfiles across multiple machines
 brew "colima"            # Container runtime for Docker or Containerd
 brew "docker"            # Docker CLI (container platform)
