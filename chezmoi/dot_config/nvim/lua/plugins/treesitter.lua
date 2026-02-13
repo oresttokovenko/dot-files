@@ -1,3 +1,6 @@
+-- Use the markdown parser for mdx files
+vim.treesitter.language.register("markdown", "mdx")
+
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "lua",

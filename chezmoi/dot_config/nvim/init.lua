@@ -39,6 +39,7 @@ vim.pack.add({
   { src = "https://github.com/echasnovski/mini.nvim" },
   { src = "https://github.com/akinsho/toggleterm.nvim" },
   { src = "https://github.com/sourcegraph/amp.nvim" },
+  { src = "https://github.com/coder/claudecode.nvim" },
 
   -- Language Specific
   { src = "https://github.com/linux-cultist/venv-selector.nvim" },
@@ -66,4 +67,5 @@ require("plugins.diffview")
 require("plugins.oil")
 require("plugins.telescope")
 require("plugins.amp")
+require("plugins.claudecode")
 require("plugins.nvim-cmp")

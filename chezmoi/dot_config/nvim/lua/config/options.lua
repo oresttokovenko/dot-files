@@ -21,6 +21,9 @@ vim.opt.cursorlineopt = "line"
 vim.opt.termguicolors = true
 vim.opt.wrap = false
 
+-- Register .mdx files as the "mdx" filetype
+vim.filetype.add({ extension = { mdx = "mdx" } })
+
 -- Splits
 vim.opt.splitright = true
 vim.opt.splitbelow = true

@@ -31,6 +31,8 @@ local ensure_installed = {
   "just-lsp",
   "docker-compose-language-service",
   "gh-actions-language-server",
+  "mdx-analyzer",
+  "marksman",
 }
 
 local mason_registry = require("mason-registry")
@@ -77,3 +79,5 @@ if not ok then
   vim.notify("ocaml-lsp-server not found - install via: opam install ocaml-lsp-server", vim.log.levels.WARN)
 end
 require("lsp.gh_actions_ls")
+require("lsp.mdx_analyzer")
+require("lsp.marksman")

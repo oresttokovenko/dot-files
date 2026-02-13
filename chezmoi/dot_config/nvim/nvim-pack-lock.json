@@ -8,6 +8,10 @@
       "rev": "621f1ca",
       "src": "https://github.com/sourcegraph/amp.nvim"
     },
+    "claudecode.nvim": {
+      "rev": "aa9a5cebebdbfa449c1c5ff229ba5d98e66bafed",
+      "src": "https://github.com/coder/claudecode.nvim"
+    },
     "cmp-buffer": {
       "rev": "b74fab3",
       "src": "https://github.com/hrsh7th/cmp-buffer"
