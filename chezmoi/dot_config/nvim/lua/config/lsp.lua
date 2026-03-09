@@ -86,7 +86,10 @@ if not ok then
   vim.notify("ocaml-lsp-server not found - install via: opam install ocaml-lsp-server", vim.log.levels.WARN)
 end
 require("lsp.gh_actions_ls")
-require("lsp.mdx_analyzer")
+local ok_mdx, _ = pcall(require, "lsp.mdx_analyzer")
+if not ok_mdx then
+  vim.notify("mdx-analyzer not found - install via Mason: :MasonInstall mdx-analyzer", vim.log.levels.WARN)
+end
 require("lsp.marksman")
 require("lsp.bzl")
 require("lsp.bazelrc_ls")
