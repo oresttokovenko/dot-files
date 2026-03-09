@@ -45,8 +45,10 @@ local ensure_installed = {
 local mason_registry = require("mason-registry")
 
 for _, tool in ipairs(ensure_installed) do
-  local p = mason_registry.get_package(tool)
-  if not p:is_installed() then
+  local ok, p = pcall(mason_registry.get_package, tool)
+  if not ok then
+    vim.notify("Mason: package not found in registry: " .. tool, vim.log.levels.WARN)
+  elseif not p:is_installed() then
     p:install()
   end
 end
@@ -86,10 +88,7 @@ if not ok then
   vim.notify("ocaml-lsp-server not found - install via: opam install ocaml-lsp-server", vim.log.levels.WARN)
 end
 require("lsp.gh_actions_ls")
-local ok_mdx, _ = pcall(require, "lsp.mdx_analyzer")
-if not ok_mdx then
-  vim.notify("mdx-analyzer not found - install via Mason: :MasonInstall mdx-analyzer", vim.log.levels.WARN)
-end
+require("lsp.mdx_analyzer")
 require("lsp.marksman")
 require("lsp.bzl")
 require("lsp.bazelrc_ls")
