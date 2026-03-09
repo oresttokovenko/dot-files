@@ -41,7 +41,13 @@ vim.pack.add({
   { src = "https://github.com/sourcegraph/amp.nvim" },
   { src = "https://github.com/coder/claudecode.nvim" },
 
+  -- Database
+  { src = "https://github.com/tpope/vim-dadbod" },
+  { src = "https://github.com/kristijanhusak/vim-dadbod-ui" },
+  { src = "https://github.com/kristijanhusak/vim-dadbod-completion" },
+
   -- Language Specific
+  { src = "https://github.com/mfussenegger/nvim-jdtls" },
   { src = "https://github.com/linux-cultist/venv-selector.nvim" },
   { src = "https://github.com/OXY2DEV/markview.nvim" },
   { src = "https://github.com/chomosuke/typst-preview.nvim" },
@@ -69,3 +75,5 @@ require("plugins.telescope")
 require("plugins.amp")
 require("plugins.claudecode")
 require("plugins.nvim-cmp")
+require("plugins.dadbod")
+require("plugins.lint")

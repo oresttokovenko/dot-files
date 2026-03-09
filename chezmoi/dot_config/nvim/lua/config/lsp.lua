@@ -33,6 +33,13 @@ local ensure_installed = {
   "gh-actions-language-server",
   "mdx-analyzer",
   "marksman",
+  -- Bazel
+  "bzl",
+  "bazelrc-lsp",
+  -- Java (jdtls is started via ftplugin/java.lua, not vim.lsp.enable)
+  "jdtls",
+  "java-debug-adapter",
+  "java-test",
 }
 
 local mason_registry = require("mason-registry")
@@ -81,3 +88,5 @@ end
 require("lsp.gh_actions_ls")
 require("lsp.mdx_analyzer")
 require("lsp.marksman")
+require("lsp.bzl")
+require("lsp.bazelrc_ls")

@@ -1,5 +1,7 @@
 -- Use the markdown parser for mdx files
 vim.treesitter.language.register("markdown", "mdx")
+-- Use the json parser for jsonl files
+vim.treesitter.language.register("json", "jsonl")
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
@@ -17,6 +19,7 @@ require("nvim-treesitter.configs").setup({
     "bash",
     "regex",
     "go",
+    "java",
   },
   modules = {},
   ignore_install = {},
