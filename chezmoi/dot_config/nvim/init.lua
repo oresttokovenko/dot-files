@@ -38,9 +38,9 @@ vim.pack.add({
   { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
   { src = "https://github.com/folke/ts-comments.nvim" },
 
-  -- File Navigation (deferred)
+  -- File Navigation
   { src = "https://github.com/nvim-telescope/telescope.nvim", data = defer },
-  { src = "https://github.com/stevearc/oil.nvim", data = defer },
+  { src = "https://github.com/stevearc/oil.nvim" },
 
   -- Git Integration
   { src = "https://github.com/lewis6991/gitsigns.nvim" },
@@ -82,10 +82,11 @@ require("plugins.amp")
 require("plugins.claudecode")
 require("plugins.nvim-cmp")
 require("plugins.dadbod")
+require("plugins.oil")
 require("plugins.lint")
 
 -- Deferred plugins (loaded on demand for faster startup)
--- telescope, diffview, oil, venv-selector, typst-preview: loaded via keymaps in config/keymaps.lua
+-- telescope, diffview, venv-selector, typst-preview: loaded via keymaps in config/keymaps.lua
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   once = true,

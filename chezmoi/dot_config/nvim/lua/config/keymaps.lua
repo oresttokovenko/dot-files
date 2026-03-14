@@ -94,11 +94,7 @@ end, { desc = "Copy file path with @ prefix" })
 vim.keymap.set("n", "<leader>n", function()
   MiniNotify.show_history()
 end, { desc = "Notification history" })
-vim.keymap.set("n", "<leader>e", function()
-  vim.cmd.packadd("oil.nvim")
-  require("plugins.oil")
-  vim.cmd("Oil")
-end, { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>e", "<cmd>Oil<CR>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm<CR>", { desc = "Toggle terminal" })
 
 -- Oil.nvim buffer-local keymaps
