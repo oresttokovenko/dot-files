@@ -101,6 +101,10 @@
       "rev": "b4da76b",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
+    "tlaplus-nvim-plugin": {
+      "rev": "19d112ac7fb74dd335e2619bbcd3e9288061a14c",
+      "src": "https://github.com/tlaplus-community/tlaplus-nvim-plugin"
+    },
     "toggleterm.nvim": {
       "rev": "9a88eae",
       "src": "https://github.com/akinsho/toggleterm.nvim"

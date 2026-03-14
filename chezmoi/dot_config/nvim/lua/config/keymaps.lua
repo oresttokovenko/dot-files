@@ -31,6 +31,7 @@ vim.keymap.set("i", "<S-CR>", function()
   if not vim.lsp.inline_completion.get() then
     return "<CR>"
   end
+  return ""
 end, { expr = true, replace_keycodes = true, desc = "Accept inline completion" })
 
 vim.keymap.set("i", "<M-n>", function()
@@ -90,8 +91,14 @@ vim.keymap.set("n", "<leader>yf", function()
   vim.notify("Copied: " .. formatted)
 end, { desc = "Copy file path with @ prefix" })
 
-vim.keymap.set("n", "<leader>n", function() MiniNotify.show_history() end, { desc = "Notification history" })
-vim.keymap.set("n", "<leader>e", "<cmd>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>n", function()
+  MiniNotify.show_history()
+end, { desc = "Notification history" })
+vim.keymap.set("n", "<leader>e", function()
+  vim.cmd.packadd("oil.nvim")
+  require("plugins.oil")
+  vim.cmd("Oil")
+end, { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm<CR>", { desc = "Toggle terminal" })
 
 -- Oil.nvim buffer-local keymaps
@@ -102,37 +109,33 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Telescope
-local builtin = require("telescope.builtin")
+-- Telescope (lazy-loaded on first use)
+local function telescope(func, opts)
+  return function()
+    vim.cmd.packadd("telescope.nvim")
+    require("plugins.telescope")
+    require("telescope.builtin")[func](opts)
+  end
+end
 
--- Find files
-vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
-vim.keymap.set("n", "<leader>fa", function()
-  builtin.find_files({ hidden = true, no_ignore = true })
-end, { desc = "Find all files" })
-
--- Find words
-vim.keymap.set("n", "<leader>fw", builtin.live_grep, { desc = "Find words" })
-vim.keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Find word under cursor" })
-
--- Find buffers
-vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
-
--- Find recent
-vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "Find recent files" })
-
--- Find help/docs
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find help" })
-vim.keymap.set("n", "<leader>fm", builtin.man_pages, { desc = "Find man pages" })
-
--- Find Neovim
-vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find keymaps" })
-vim.keymap.set("n", "<leader>fC", builtin.commands, { desc = "Find commands" })
-
--- Git
-vim.keymap.set("n", "<leader>gt", builtin.git_status, { desc = "Git status" })
-vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Git branches" })
-vim.keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "Git commits" })
+vim.keymap.set("n", "<leader>ff", telescope("find_files"), { desc = "Find files" })
+vim.keymap.set(
+  "n",
+  "<leader>fa",
+  telescope("find_files", { hidden = true, no_ignore = true }),
+  { desc = "Find all files" }
+)
+vim.keymap.set("n", "<leader>fw", telescope("live_grep"), { desc = "Find words" })
+vim.keymap.set("n", "<leader>fc", telescope("grep_string"), { desc = "Find word under cursor" })
+vim.keymap.set("n", "<leader>fb", telescope("buffers"), { desc = "Find buffers" })
+vim.keymap.set("n", "<leader>fo", telescope("oldfiles"), { desc = "Find recent files" })
+vim.keymap.set("n", "<leader>fh", telescope("help_tags"), { desc = "Find help" })
+vim.keymap.set("n", "<leader>fm", telescope("man_pages"), { desc = "Find man pages" })
+vim.keymap.set("n", "<leader>fk", telescope("keymaps"), { desc = "Find keymaps" })
+vim.keymap.set("n", "<leader>fC", telescope("commands"), { desc = "Find commands" })
+vim.keymap.set("n", "<leader>gt", telescope("git_status"), { desc = "Git status" })
+vim.keymap.set("n", "<leader>gb", telescope("git_branches"), { desc = "Git branches" })
+vim.keymap.set("n", "<leader>gc", telescope("git_commits"), { desc = "Git commits" })
 
 -- Gitsigns
 local gitsigns = require("gitsigns")
@@ -147,18 +150,42 @@ vim.keymap.set("n", "<leader>gR", gitsigns.reset_buffer, { desc = "Reset buffer"
 vim.keymap.set("n", "<leader>gd", gitsigns.diffthis, { desc = "Diff this" })
 vim.keymap.set("n", "<leader>gB", gitsigns.blame_line, { desc = "Blame line" })
 
--- Diffview
-vim.keymap.set("n", "<leader>gv", "<cmd>DiffviewOpen<CR>", { desc = "Open diffview" })
-vim.keymap.set("n", "<leader>gx", "<cmd>DiffviewClose<CR>", { desc = "Close diffview" })
-vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory<CR>", { desc = "File history" })
-vim.keymap.set("n", "<leader>gH", "<cmd>DiffviewFileHistory %<CR>", { desc = "Current file history" })
+-- Diffview (lazy-loaded on first use)
+local function diffview(cmd)
+  return function()
+    vim.cmd.packadd("diffview.nvim")
+    require("plugins.diffview")
+    vim.cmd(cmd)
+  end
+end
 
--- Venv Selector
-vim.keymap.set("n", "<leader>vs", "<cmd>VenvSelect<CR>", { desc = "Select Python venv" })
-vim.keymap.set("n", "<leader>vc", "<cmd>VenvSelectCached<CR>", { desc = "Select cached venv" })
+vim.keymap.set("n", "<leader>gv", diffview("DiffviewOpen"), { desc = "Open diffview" })
+vim.keymap.set("n", "<leader>gx", diffview("DiffviewClose"), { desc = "Close diffview" })
+vim.keymap.set("n", "<leader>gh", diffview("DiffviewFileHistory"), { desc = "File history" })
+vim.keymap.set("n", "<leader>gH", diffview("DiffviewFileHistory %"), { desc = "Current file history" })
 
--- Typst Preview
-vim.keymap.set("n", "<leader>pt", "<cmd>TypstPreviewToggle<CR>", { desc = "Toggle Typst preview" })
+-- Venv Selector (lazy-loaded on first use)
+vim.keymap.set("n", "<leader>vs", function()
+  vim.cmd.packadd("telescope.nvim")
+  require("plugins.telescope")
+  vim.cmd.packadd("venv-selector.nvim")
+  require("plugins.venv-selector")
+  vim.cmd("VenvSelect")
+end, { desc = "Select Python venv" })
+vim.keymap.set("n", "<leader>vc", function()
+  vim.cmd.packadd("telescope.nvim")
+  require("plugins.telescope")
+  vim.cmd.packadd("venv-selector.nvim")
+  require("plugins.venv-selector")
+  vim.cmd("VenvSelectCached")
+end, { desc = "Select cached venv" })
+
+-- Typst Preview (lazy-loaded on first use)
+vim.keymap.set("n", "<leader>pt", function()
+  vim.cmd.packadd("typst-preview.nvim")
+  require("plugins.typst-preview")
+  vim.cmd("TypstPreviewToggle")
+end, { desc = "Toggle Typst preview" })
 
 -- Mini.jump2d (flash-like navigation)
 local jump2d = require("mini.jump2d")

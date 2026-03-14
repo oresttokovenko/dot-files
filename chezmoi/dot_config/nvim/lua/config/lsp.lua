@@ -5,7 +5,7 @@ require("mason").setup({
 })
 
 -- Ensure these Mason packages are installed
--- Ocaml LSP is intalled manually via Opam 
+-- Ocaml LSP is intalled manually via Opam
 -- so that it plays nicely with the switch system
 local ensure_installed = {
   "lua-language-server",
@@ -92,3 +92,4 @@ require("lsp.mdx_analyzer")
 require("lsp.marksman")
 require("lsp.bzl")
 require("lsp.bazelrc_ls")
+require("lsp.quint")

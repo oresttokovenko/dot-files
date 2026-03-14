@@ -20,6 +20,7 @@ require("nvim-treesitter.configs").setup({
     "regex",
     "go",
     "java",
+    "tlaplus",
   },
   modules = {},
   ignore_install = {},
