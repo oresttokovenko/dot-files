@@ -26,6 +26,7 @@ vim.pack.add({
 
   -- LSP / Completion
   { src = "https://github.com/neovim/nvim-lspconfig" },
+  { src = "https://github.com/folke/lazydev.nvim" },
   { src = "https://github.com/williamboman/mason.nvim" },
   { src = "https://github.com/hrsh7th/nvim-cmp" },
   { src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
@@ -80,11 +81,11 @@ require("plugins.toggleterm")
 require("plugins.ts-comments")
 require("plugins.amp")
 require("plugins.claudecode")
+require("plugins.lazydev")
 require("plugins.nvim-cmp")
 require("plugins.dadbod")
 require("plugins.oil")
 require("plugins.lint")
-
 -- Deferred plugins (loaded on demand for faster startup)
 -- telescope, diffview, venv-selector, typst-preview: loaded via keymaps in config/keymaps.lua
 vim.api.nvim_create_autocmd("FileType", {

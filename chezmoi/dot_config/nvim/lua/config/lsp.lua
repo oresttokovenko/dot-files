@@ -55,6 +55,8 @@ end
 
 -- Add nvim-cmp capabilities to LSP servers
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+capabilities.workspace = capabilities.workspace or {}
+capabilities.workspace.didChangeWatchedFiles = { dynamicRegistration = true }
 vim.lsp.config("*", {
   capabilities = capabilities,
 })
