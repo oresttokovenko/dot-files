@@ -3,7 +3,9 @@ vim.treesitter.language.register("markdown", "mdx")
 -- Use the json parser for jsonl files
 vim.treesitter.language.register("json", "jsonl")
 
-require("nvim-treesitter.configs").setup({
+-- On the `main` branch, nvim-treesitter only handles parser installation.
+-- Highlighting, indentation, and folding must be enabled manually.
+require("nvim-treesitter").setup({
   ensure_installed = {
     "lua",
     "vim",
@@ -22,16 +24,12 @@ require("nvim-treesitter.configs").setup({
     "java",
     "tlaplus",
   },
-  modules = {},
-  ignore_install = {},
-  sync_install = false,
-  -- If parser isn't already installed, get it
   auto_install = true,
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-  indent = {
-    enable = true,
-  },
+})
+
+-- Enable treesitter highlighting and indentation for all filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    pcall(vim.treesitter.start, args.buf)
+  end,
 })

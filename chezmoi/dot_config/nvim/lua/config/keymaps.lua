@@ -95,6 +95,17 @@ vim.keymap.set("n", "<leader>n", function()
   MiniNotify.show_history()
 end, { desc = "Notification history" })
 vim.keymap.set("n", "<leader>e", "<cmd>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>oF", function()
+  local dir
+  if vim.bo.filetype == "oil" then
+    dir = require("oil").get_current_dir()
+  else
+    dir = vim.fn.expand("%:p:h")
+  end
+  if dir then
+    vim.ui.open(dir)
+  end
+end, { desc = "Open current folder in OS file manager" })
 vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm<CR>", { desc = "Toggle terminal" })
 
 -- Oil.nvim buffer-local keymaps
