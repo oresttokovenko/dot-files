@@ -64,6 +64,7 @@ vim.pack.add({
   { src = "https://github.com/OXY2DEV/markview.nvim", data = defer },
   { src = "https://github.com/chomosuke/typst-preview.nvim", data = defer },
   { src = "https://github.com/tlaplus-community/tlaplus-nvim-plugin", data = defer },
+  { src = "https://github.com/runoshun/vim-alloy" },
 }, { load = selective_load })
 
 require("config.options")

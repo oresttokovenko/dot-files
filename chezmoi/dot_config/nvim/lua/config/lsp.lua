@@ -95,3 +95,7 @@ require("lsp.marksman")
 require("lsp.bzl")
 require("lsp.bazelrc_ls")
 require("lsp.quint")
+local ok, _ = pcall(require, "lsp.alloy_ls")
+if not ok then
+  vim.notify("alloy not found - install via: brew install alloy-analyzer", vim.log.levels.WARN)
+end

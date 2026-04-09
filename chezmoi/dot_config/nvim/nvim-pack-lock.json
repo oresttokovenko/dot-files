@@ -125,6 +125,10 @@
       "rev": "42e8faadf9b819654f29eb1a785797a3a328f301",
       "src": "https://github.com/linux-cultist/venv-selector.nvim"
     },
+    "vim-alloy": {
+      "rev": "5bd57c4890be39e221dd3e1f6735457dce454bbd",
+      "src": "https://github.com/runoshun/vim-alloy"
+    },
     "vim-dadbod": {
       "rev": "6d1d41da4873a445c5605f2005ad2c68c99d8770",
       "src": "https://github.com/tpope/vim-dadbod"
