@@ -26,7 +26,7 @@ vim.keymap.set("n", "<leader>li", "<cmd>checkhealth vim.lsp<CR>", { desc = "LSP 
 -- ToggleTerm
 vim.keymap.set("t", ";;", "<C-\\><C-n>", { desc = "Enter normal mode in terminal" })
 
--- Inline completion (Copilot ghost text)
+-- Inline completion (ghost text)
 vim.keymap.set("i", "<S-CR>", function()
   if not vim.lsp.inline_completion.get() then
     return "<CR>"

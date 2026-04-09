@@ -27,7 +27,6 @@ local ensure_installed = {
   "terraform-ls",
   "helm-ls",
   "clangd",
-  "copilot-language-server",
   "just-lsp",
   "docker-compose-language-service",
   "gh-actions-language-server",
@@ -81,7 +80,6 @@ require("lsp.dockerls")
 require("lsp.terraformls")
 require("lsp.helm_ls")
 require("lsp.clangd")
-require("lsp.copilot")
 require("lsp.just")
 require("lsp.docker_compose_language_service")
 -- OCaml LSP - only load if available (installed via opam)
