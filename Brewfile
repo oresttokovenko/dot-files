@@ -32,6 +32,7 @@ brew "poetry"                            # Legacy Python packaging
 brew "quint"                             # Quint formal specification language and LSP
 brew "rbenv"                             # Ruby version manager
 brew "ripgrep"                           # Modern alternative for grep
+brew "shellcheck"                        # Shell script linter
 brew "rsync"                             # File synchronization tool
 brew "rustup"                            # Rust toolchain manager
 brew "starship"                          # Shell prompt customization
@@ -77,7 +78,7 @@ brew "netlify-cli"                       # Netlify deployment CLI
 
 # Work
 cask "datagrip"                          # JetBrains database IDE
-cask "snowflake-snowsql"                 # Snowflake SQL CLI
+brew "snowflake-cli"                     # Snowflake CLI
 
 # Mac App Store Apps - General
 mas "Dropover - Easier Drag & Drop", id: 1355679052

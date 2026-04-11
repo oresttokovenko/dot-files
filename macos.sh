@@ -3,7 +3,7 @@ set -euo pipefail
 
 # close any open System Settings panes, to prevent them from overriding
 # settings we’re about to change
-killall "System Settings"
+killall "System Settings" 2>/dev/null || true
 
 # ask for the administrator password upfront
 sudo -v
