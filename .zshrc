@@ -1,4 +1,18 @@
 ###############################################################################
+# History
+###############################################################################
+
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
+
+setopt SHARE_HISTORY          # Share history across all sessions
+setopt HIST_IGNORE_ALL_DUPS   # Remove older duplicate entries
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks
+setopt HIST_IGNORE_SPACE      # Don't record commands starting with a space
+setopt APPEND_HISTORY         # Append rather than overwrite
+
+###############################################################################
 # Env Vars
 ###############################################################################
 
@@ -62,13 +76,18 @@ zle -N edit-command-line
 # Custom escape for zsh-vi-mode
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
-# Custom keymaps
-bindkey -M vicmd "H" beginning-of-line
-bindkey -M vicmd "L" end-of-line
-bindkey -M visual "H" beginning-of-line
-bindkey -M visual "L" end-of-line
-bindkey '^R' fzf-history-widget
-bindkey '^O' edit-command-line
+# Keybindings that must be set AFTER zsh-vi-mode loads (it overwrites all keymaps on init)
+zvm_after_init() {
+  bindkey '^R' fzf-history-widget
+  bindkey '^O' edit-command-line
+}
+
+zvm_after_lazy_keybindings() {
+  bindkey -M vicmd "H" beginning-of-line
+  bindkey -M vicmd "L" end-of-line
+  bindkey -M visual "H" beginning-of-line
+  bindkey -M visual "L" end-of-line
+}
 
 ###############################################################################
 # Zinit Plugins                                                               #
