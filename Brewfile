@@ -39,6 +39,7 @@ brew "starship"                          # Shell prompt customization
 brew "stylua"                            # Lua formatter
 brew "typst"                             # Modern alternative to LaTeX
 brew "typstyle"                          # Typst formatter
+brew "tdf"                               # TUI PDF Viewer
 brew "uv"                                # Modern Python packaging
 brew "wget"                              # File downloader
 brew "yt-dlp"                            # Video downloader

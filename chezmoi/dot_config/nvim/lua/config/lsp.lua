@@ -11,6 +11,7 @@ local ensure_installed = {
   "lua-language-server",
   "basedpyright",
   "ruff",
+  "pyright",
   "tinymist",
   "html-lsp",
   "css-lsp",
@@ -32,6 +33,8 @@ local ensure_installed = {
   "gh-actions-language-server",
   "mdx-analyzer",
   "marksman",
+  "ruby-lsp",
+  "rubocop",
   -- Bazel
   "bzl",
   "bazelrc-lsp",
@@ -62,8 +65,7 @@ vim.lsp.config("*", {
 
 -- Load all LSP server configurations
 require("lsp.lua_ls")
-require("lsp.basedpyright")
-require("lsp.ruff")
+require("lsp.python")
 require("lsp.tinymist")
 require("lsp.html")
 require("lsp.cssls")
@@ -90,6 +92,7 @@ end
 require("lsp.gh_actions_ls")
 require("lsp.mdx_analyzer")
 require("lsp.marksman")
+require("lsp.ruby_ls")
 require("lsp.bzl")
 require("lsp.bazelrc_ls")
 require("lsp.quint")
