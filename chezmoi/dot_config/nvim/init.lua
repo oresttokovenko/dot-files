@@ -51,7 +51,7 @@ vim.pack.add({
   { src = "https://github.com/echasnovski/mini.nvim" },
   { src = "https://github.com/akinsho/toggleterm.nvim" },
   { src = "https://github.com/sourcegraph/amp.nvim" },
-  { src = "https://github.com/coder/claudecode.nvim" },
+  { src = "https://github.com/coder/claudecode.nvim", data = defer },
 
   -- Database
   { src = "https://github.com/tpope/vim-dadbod" },
@@ -81,7 +81,6 @@ require("plugins.snacks")
 require("plugins.toggleterm")
 require("plugins.ts-comments")
 require("plugins.amp")
-require("plugins.claudecode")
 require("plugins.lazydev")
 require("plugins.nvim-cmp")
 require("plugins.dadbod")
@@ -89,6 +88,17 @@ require("plugins.oil")
 require("plugins.lint")
 -- Deferred plugins (loaded on demand for faster startup)
 -- telescope, diffview, venv-selector, typst-preview: loaded via keymaps in config/keymaps.lua
+-- claudecode: loaded on first ClaudeCode* command
+vim.api.nvim_create_autocmd("CmdUndefined", {
+  pattern = "ClaudeCode*",
+  once = true,
+  callback = function(ev)
+    vim.cmd.packadd("claudecode.nvim")
+    require("plugins.claudecode")
+    -- Re-run the original command now that the plugin is loaded
+    vim.cmd(ev.match)
+  end,
+})
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   once = true,
