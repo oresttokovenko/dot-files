@@ -35,6 +35,7 @@ local ensure_installed = {
   "marksman",
   "ruby-lsp",
   "rubocop",
+  "buf",
   -- Bazel
   "bzl",
   "bazelrc-lsp",
@@ -93,6 +94,7 @@ require("lsp.gh_actions_ls")
 require("lsp.mdx_analyzer")
 require("lsp.marksman")
 require("lsp.ruby_ls")
+require("lsp.buf_ls")
 require("lsp.bzl")
 require("lsp.bazelrc_ls")
 require("lsp.quint")
