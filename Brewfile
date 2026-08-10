@@ -9,6 +9,7 @@ brew "cloudflare-speed-cli"              # Internet speed test via Cloudflare
 brew "chezmoi"                           # Manage your dotfiles across multiple machines
 brew "colima"                            # Container runtime for Docker or Containerd
 brew "docker"                            # Docker CLI (container platform)
+brew "docker-compose"                     # Docker multi-container orchestration
 brew "eza"                               # Modern alternative for ls
 brew "fastfetch"                         # System information tool
 brew "fd"                                # Modern alternative to find

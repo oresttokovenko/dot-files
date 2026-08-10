@@ -2,3 +2,6 @@
 
 cask "datagrip"                          # JetBrains database IDE
 brew "snowflake-cli"                     # Snowflake CLI
+brew "databricks"                        # Databricks CLI
+cask "linear-linear"                     # Linear project management app
+cask "obsidian"                          # Knowledge base and note-taking
