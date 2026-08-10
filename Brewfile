@@ -55,7 +55,6 @@ cask "chatgpt"                           # OpenAI ChatGPT desktop app
 cask "claude"                            # Anthropic Claude desktop app
 cask "discord"                           # Chat and voice
 cask "font-jetbrains-mono-nerd-font"     # Nerd Font for terminal/editor
-cask "gcloud-cli"                        # Google Cloud Platform CLI (gcloud)
 cask "google-chrome"                     # Web browser
 cask "google-drive"                      # Google Drive sync
 cask "ghostty"                           # Terminal emulator
