@@ -1,0 +1,83 @@
+{
+  "lastChangelogVersion": "0.84.1",
+  "theme": "dark",
+  "defaultProvider": "deepseek",
+  "defaultModel": "deepseek-v4-pro",
+  "defaultThinkingLevel": "xhigh",
+  "quietStartup": true,
+  "doubleEscapeAction": "none",
+  "packages": [
+    "npm:pi-vimmode",
+    "npm:pi-subagents",
+    "npm:@xynogen/pix-gate",
+    "npm:@narumitw/pi-statusline"
+  ],
+  "piVimMode": {
+    "keymap": {
+      "motions": {
+        "firstNonBlank": ["^", "_", "H"],
+        "lineEnd": ["$", "L"]
+      }
+    }
+  },
+  "subagents": {
+    "defaultModel": "deepseek/deepseek-v4-flash",
+    "agentOverrides": {
+      "scout": {
+        "model": "deepseek/deepseek-v4-flash",
+        "fallbackModels": [
+          "zai/glm-5-turbo"
+        ],
+        "thinking": "off"
+      },
+      "context-builder": {
+        "model": "deepseek/deepseek-v4-flash",
+        "fallbackModels": [
+          "zai/glm-5-turbo"
+        ],
+        "thinking": "off"
+      },
+      "researcher": {
+        "model": "deepseek/deepseek-v4-pro",
+        "fallbackModels": [
+          "zai/glm-4.7"
+        ]
+      },
+      "delegate": {
+        "model": "deepseek/deepseek-v4-pro",
+        "fallbackModels": [
+          "zai/glm-4.7"
+        ]
+      },
+      "reviewer": {
+        "model": "deepseek/deepseek-v4-pro",
+        "fallbackModels": [
+          "zai/glm-5.2"
+        ]
+      },
+      "planner": {
+        "model": "zai/glm-5.2",
+        "fallbackModels": [
+          "deepseek/deepseek-v4-pro"
+        ],
+        "thinking": "max"
+      },
+      "oracle": {
+        "model": "zai/glm-5.2",
+        "fallbackModels": [
+          "deepseek/deepseek-v4-pro",
+          "anthropic/claude-sonnet-5"
+        ],
+        "thinking": "xhigh"
+      },
+      "worker": {
+        "model": "zai/glm-5.2",
+        "fallbackModels": [
+          "deepseek/deepseek-v4-pro",
+          "anthropic/claude-sonnet-5"
+        ],
+        "thinking": "max"
+      }
+    }
+  }
+}
