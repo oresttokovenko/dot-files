@@ -1,30 +1,43 @@
 # How This Dotfiles Setup Works
 
-This repo is the **base layer** — the stuff that goes on every machine. It doesn't know anything about your work. No work emails, no VPN configs, no employer names. That all lives in a separate **work layer** that layers on top.
+This repo is the **base layer**. It goes on every machine. It never contains work credentials, hostnames, or employer names. That lives in a separate **work layer** that applies on top.
 
 ## The Two Layers
 
-Think of it like CSS: the base layer loads first, then the work layer overrides or adds what it needs.
+Think of it like CSS: base loads first, then work overrides or adds what it needs.
 
 | | Base layer | Work layer |
 |---|---|---|
-| Repo | `oresttokovenko/dot-files` | `squareup/personal-ot-dot-files` |
-| Lives at | `~/.local/share/chezmoi` | `~/.local/share/chezmoi-work` |
+| Repo | `oresttokovenko/dot-files` | `your-work-repo` |
+| Source path | `~/.local/share/chezmoi` | `~/.local/share/chezmoi-work` |
 | Config | `~/.config/chezmoi/chezmoi.toml` | `~/.config/chezmoi/chezmoi-work.toml` |
 | On work machines | pull only | pull + push |
 
-The base never references work stuff. Instead, it leaves **hooks** — empty extension points the work layer can fill in.
+The base never references work stuff. It leaves **hooks**: empty extension points the work layer fills in.
 
 ## What Goes Where
 
-| File | Owner | Why |
-|------|-------|-----|
-| `~/.zshrc` | Base | Shared shell config. Sources `~/.zshrc.local` and `~/.zshrc.work` if they exist |
+| File | Owner | Notes |
+|------|-------|-------|
+| `~/.zshrc` | Base | Shared shell config. Sources `~/.zshrc.local` and `~/.zshrc.work` if present |
 | `~/.gitconfig` | Base | Shared Git settings. Includes `~/.gitconfig.local` if it exists |
 | `~/.zshrc.local` | Work | Work PATH tweaks, VPN aliases, etc. |
 | `~/.gitconfig.local` | Work | Work email, commit signing key, etc. |
 
-**The rule:** base provides the hooks, work fills them. Never the other way around.
+The rule: base provides the hooks, work fills them. Never the other way around.
+
+## Brewfiles
+
+The same model applies to Homebrew:
+
+| File | Owner | Notes |
+|------|-------|-------|
+| `Brewfile` | Base | Shared tools and apps for every machine |
+| `Brewfile.personal` | Personal | Personal-only apps (Plex, 1Password, etc.) |
+| `Brewfile.work` | Work | Work-only tools (database IDEs, Snowflake CLI, etc.) |
+
+On a personal machine: `brew bundle` then `brew bundle --file=Brewfile.personal`
+On a work machine: `brew bundle` then `brew bundle --file=Brewfile.work`
 
 ## Setting Up a New Machine
 
@@ -43,10 +56,10 @@ That's it.
 chezmoi init oresttokovenko/dot-files
 chezmoi apply
 
-# Work layer (your own repo)
+# Work layer (read-write)
 chezmoi init --config ~/.config/chezmoi/chezmoi-work.toml \
   --source-path ~/.local/share/chezmoi-work \
-  squareup/personal-ot-dot-files
+  your-work-repo
 chezmoi apply --config ~/.config/chezmoi/chezmoi-work.toml
 ```
 
@@ -80,9 +93,9 @@ cd ~/.local/share/chezmoi-work
 git add . && git commit -m "..." && git push
 ```
 
-## Optional Aliases
+## Aliases
 
-Add these to `~/.zshrc.local` on work machines so you don't have to type `--config` every time:
+Add these to `~/.zshrc.local` on work machines:
 
 ```bash
 alias czp='chezmoi'
@@ -91,7 +104,7 @@ alias czw='chezmoi --config ~/.config/chezmoi/chezmoi-work.toml'
 
 ## Extension Hooks Already in the Base
 
-- `~/.zshrc` → loads `~/.zshrc.local` and `~/.zshrc.work`
-- `~/.gitconfig` → loads `~/.gitconfig.local`
+- `~/.zshrc` loads `~/.zshrc.local` and `~/.zshrc.work`
+- `~/.gitconfig` loads `~/.gitconfig.local`
 
 Need more? Add an empty include to the base (e.g. `.ssh/config.d/*`), then let the work layer drop the actual file there.
