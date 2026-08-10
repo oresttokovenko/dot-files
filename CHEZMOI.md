@@ -1,56 +1,49 @@
-# Chezmoi Multi-Context Setup
+# How This Dotfiles Setup Works
 
-This repo is the **shared base layer**. It never contains work-specific credentials, hostnames, or employer references. Those live in a separate **work layer** that applies on top.
+This repo is the **base layer** — the stuff that goes on every machine. It doesn't know anything about your work. No work emails, no VPN configs, no employer names. That all lives in a separate **work layer** that layers on top.
 
-## Architecture
+## The Two Layers
 
-```
-┌─────────────────────────────────────────┐
-│  Work layer (squareup/personal-ot-...)  │  ← machine-specific, can push
-│  Source: ~/.local/share/chezmoi-work    │
-│  Config: ~/.config/chezmoi/chezmoi-work.toml
-├─────────────────────────────────────────┤
-│  Base layer (oresttokovenko/dot-files)  │  ← shared, pull-only on work machines
-│  Source: ~/.local/share/chezmoi         │
-│  Config: ~/.config/chezmoi/chezmoi.toml │
-└─────────────────────────────────────────┘
-                           │
-                    chezmoi apply
-                           │
-                         $HOME
-```
+Think of it like CSS: the base layer loads first, then the work layer overrides or adds what it needs.
 
-The base layer is applied first. The work layer is applied second, so work-specific files override or extend the base.
+| | Base layer | Work layer |
+|---|---|---|
+| Repo | `oresttokovenko/dot-files` | `squareup/personal-ot-dot-files` |
+| Lives at | `~/.local/share/chezmoi` | `~/.local/share/chezmoi-work` |
+| Config | `~/.config/chezmoi/chezmoi.toml` | `~/.config/chezmoi/chezmoi-work.toml` |
+| On work machines | pull only | pull + push |
 
-## Ownership Model
+The base never references work stuff. Instead, it leaves **hooks** — empty extension points the work layer can fill in.
 
-| File | Owned by | Notes |
-|------|----------|-------|
-| `~/.zshrc` | Base | Sources `~/.zshrc.local` and `~/.zshrc.work` if present |
-| `~/.gitconfig` | Base | Includes `~/.gitconfig.local` if present |
-| `~/.zshrc.local` | Work | Work PATH, aliases, VPN helpers, etc. |
-| `~/.gitconfig.local` | Work | Work email, signing key, etc. |
-| `~/.zshrc.work` | Work | Optional extra work zsh config |
+## What Goes Where
 
-**Rule:** The base layer provides extension hooks; the work layer fills them. The base never references work content directly.
+| File | Owner | Why |
+|------|-------|-----|
+| `~/.zshrc` | Base | Shared shell config. Sources `~/.zshrc.local` and `~/.zshrc.work` if they exist |
+| `~/.gitconfig` | Base | Shared Git settings. Includes `~/.gitconfig.local` if it exists |
+| `~/.zshrc.local` | Work | Work PATH tweaks, VPN aliases, etc. |
+| `~/.gitconfig.local` | Work | Work email, commit signing key, etc. |
 
-## Quick Start
+**The rule:** base provides the hooks, work fills them. Never the other way around.
 
-### Personal machine
+## Setting Up a New Machine
+
+### Personal laptop
 
 ```bash
-# One context only
 chezmoi init --apply oresttokovenko/dot-files
 ```
 
-### Work machine
+That's it.
+
+### Work laptop
 
 ```bash
-# 1. Base layer (read-only)
+# Base layer (read-only)
 chezmoi init oresttokovenko/dot-files
 chezmoi apply
 
-# 2. Work layer (read-write)
+# Work layer (your own repo)
 chezmoi init --config ~/.config/chezmoi/chezmoi-work.toml \
   --source-path ~/.local/share/chezmoi-work \
   squareup/personal-ot-dot-files
@@ -59,49 +52,46 @@ chezmoi apply --config ~/.config/chezmoi/chezmoi-work.toml
 
 ## Making Changes
 
-**Base changes** (tools, aliases, editor config that apply everywhere):
+### Editing shared stuff (base layer)
 
 ```bash
-# Edit live file or source directly
+# Option 1: edit the live file, then pull it back
 nvim ~/.zshrc
-# or
-chezmoi edit ~/.zshrc
-
-# Pull drift back into the repo
 chezmoi re-add ~/.zshrc
 
-# Commit and push
+# Option 2: edit the source directly
+chezmoi edit ~/.zshrc
+
+# Either way, commit from chezmoi's source tree
 chezmoi git add .
 chezmoi git commit -m "..."
 chezmoi git push
 ```
 
-**Work changes** (machine-specific overrides):
+### Editing work-only stuff (work layer)
 
 ```bash
-# Use the work context config
+# Edit through the work context
 chezmoi edit --config ~/.config/chezmoi/chezmoi-work.toml ~/.zshrc.local
-chezmoi apply  --config ~/.config/chezmoi/chezmoi-work.toml ~/.zshrc.local
+chezmoi apply --config ~/.config/chezmoi/chezmoi-work.toml ~/.zshrc.local
 
 # Commit from the work source tree
 cd ~/.local/share/chezmoi-work
 git add . && git commit -m "..." && git push
 ```
 
-## Aliases (optional)
+## Optional Aliases
 
-Add to `~/.zshrc.local` on work machines:
+Add these to `~/.zshrc.local` on work machines so you don't have to type `--config` every time:
 
 ```bash
 alias czp='chezmoi'
 alias czw='chezmoi --config ~/.config/chezmoi/chezmoi-work.toml'
 ```
 
-## Extension Points in the Base Layer
+## Extension Hooks Already in the Base
 
-The base layer already includes these hooks:
+- `~/.zshrc` → loads `~/.zshrc.local` and `~/.zshrc.work`
+- `~/.gitconfig` → loads `~/.gitconfig.local`
 
-- `~/.zshrc` → sources `~/.zshrc.local` and `~/.zshrc.work`
-- `~/.gitconfig` → includes `~/.gitconfig.local`
-
-If you need more hooks (e.g. `.ssh/config.d/work`, `.p10k.zsh.work`), add them to the base layer as empty/optional includes, then let the work layer populate the actual file.
+Need more? Add an empty include to the base (e.g. `.ssh/config.d/*`), then let the work layer drop the actual file there.
