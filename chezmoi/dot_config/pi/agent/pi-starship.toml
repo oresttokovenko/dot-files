@@ -1,0 +1,19 @@
+format = "$model$thinking$directory$git_branch$activity$context $tokens$cache$cost"
+
+[context]
+format = "[$percentage]($style)"
+
+[[context.display]]
+threshold = 0
+style = "bold green"
+hidden = false
+
+[[context.display]]
+threshold = 60
+style = "bold yellow"
+hidden = false
+
+[[context.display]]
+threshold = 80
+style = "bold red"
+hidden = false

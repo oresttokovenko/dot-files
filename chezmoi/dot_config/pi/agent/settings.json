@@ -10,7 +10,7 @@
     "npm:pi-vimmode",
     "npm:pi-subagents",
     "npm:@xynogen/pix-gate",
-    "npm:@narumitw/pi-statusline"
+    "npm:@narumitw/pi-starship"
   ],
   "piVimMode": {
     "keymap": {

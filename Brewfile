@@ -18,6 +18,8 @@ brew "fzf"                               # Fuzzy finder, used to enhance history
 brew "gdu"                               # Disk usage analyzer
 brew "gh"                                # GitHub CLI
 brew "gifsicle"                          # GIF image optimizer and editor
+brew "herdr"                             # CLI for herding/aggregating processes or data
+brew "hunk"                              # Git hunk management and diff tooling
 brew "glow"                              # Markdown renderer for the terminal
 brew "go"                                # Go programming language
 brew "googleworkspace-cli"               # Google Workspace CLI
@@ -33,6 +35,7 @@ brew "quint"                             # Quint formal specification language a
 brew "rbenv"                             # Ruby version manager
 brew "ripgrep"                           # Modern alternative for grep
 brew "shellcheck"                        # Shell script linter
+brew "skills"                            # Skill/task management CLI
 brew "rsync"                             # File synchronization tool
 brew "rustup"                            # Rust toolchain manager
 brew "starship"                          # Shell prompt customization
@@ -66,20 +69,7 @@ cask "zed"                               # Code editor
 cask "zoom"                              # Video conferencing
 cask "slack"                             # Team messaging
 
-# Personal
-cask "1password"                         # Password manager
-cask "plex-media-server"                 # Media server
-cask "telegram"                          # Messaging
-cask "transmission"                      # BitTorrent client
-cask "vlc"                               # Media player
-cask "whatsapp"                          # Messaging
-brew "gemini-cli"                        # Google Gemini CLI
-brew "claude-code"                       # Anthropic Claude CLI
-brew "netlify-cli"                       # Netlify deployment CLI
 
-# Work
-cask "datagrip"                          # JetBrains database IDE
-brew "snowflake-cli"                     # Snowflake CLI
 
 # Mac App Store Apps - General
 mas "Dropover - Easier Drag & Drop", id: 1355679052

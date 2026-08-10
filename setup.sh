@@ -9,7 +9,9 @@ InstallHomebrew() {
     eval "$(/opt/homebrew/bin/brew shellenv)"
 }
 
-# Install casks and formulae from Brewfile
+# Install casks and formulae from the base Brewfile (shared across all machines).
+# On personal machines also run: brew bundle --file=Brewfile.personal
+# On work machines also run:    brew bundle --file=Brewfile.work
 InstallBrewfile() {
     brew bundle --file="$SCRIPT_DIR/Brewfile"
 }

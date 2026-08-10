@@ -1,0 +1,11 @@
+# Personal-only packages — install with: brew bundle --file=Brewfile.personal
+
+cask "1password"                         # Password manager
+cask "plex-media-server"                 # Media server
+cask "telegram"                          # Messaging
+cask "transmission"                      # BitTorrent client
+cask "vlc"                               # Media player
+cask "whatsapp"                          # Messaging
+brew "gemini-cli"                        # Google Gemini CLI
+brew "claude-code"                       # Anthropic Claude CLI
+brew "netlify-cli"                       # Netlify deployment CLI

@@ -1,0 +1,4 @@
+# Work-only packages — install with: brew bundle --file=Brewfile.work
+
+cask "datagrip"                          # JetBrains database IDE
+brew "snowflake-cli"                     # Snowflake CLI
