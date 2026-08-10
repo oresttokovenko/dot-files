@@ -14,7 +14,7 @@ The base and work contexts manage **disjoint target paths**. The only compositio
 | Source | `~/.local/share/chezmoi` | `~/.local/share/chezmoi-work` |
 | Config | `~/.config/chezmoi/chezmoi.toml` | `~/.config/chezmoi-work/chezmoi.toml` |
 | Cache | `~/.cache/chezmoi` | `~/.cache/chezmoi-work` |
-| State | `~/.config/chezmoi/chezmoi.boltdb` | `~/.config/chezmoi-work/chezmoi.boltdb` |
+| State | `~/.config/chezmoi/chezmoistate.boltdb` | `~/.config/chezmoi-work/chezmoistate.boltdb` |
 
 **One-target-one-owner rule:** never let both contexts claim the same file or directory. In particular, do not use `exact_` directories in one context if the other context manages files inside them.
 
@@ -69,7 +69,19 @@ alias czw='chezmoi \
   --config ~/.config/chezmoi-work/chezmoi.toml'
 ```
 
-If the work config explicitly defines `sourceDir`, a config-only alias also works:
+The shorter config-only alias works only when the work config explicitly sets `sourceDir`. The work repository must contain a `.chezmoi.toml.tmpl` with these defaults:
+
+```toml
+sourceDir = "{{ .chezmoi.homeDir }}/.local/share/chezmoi-work"
+cacheDir = "{{ .chezmoi.homeDir }}/.cache/chezmoi-work"
+persistentState = "{{ .chezmoi.homeDir }}/.config/chezmoi-work/chezmoistate.boltdb"
+
+[git]
+    autoCommit = false
+    autoPush = false
+```
+
+With that config the short alias is valid:
 
 ```bash
 alias czw='chezmoi --config ~/.config/chezmoi-work/chezmoi.toml'
