@@ -21,3 +21,7 @@
 
 	# Show diff from upstream to HEAD
 	diffs = diff --name-only @{u}..HEAD
+
+# Machine-specific local overrides (managed by a separate chezmoi layer, e.g. work)
+[include]
+	path = ~/.gitconfig.local

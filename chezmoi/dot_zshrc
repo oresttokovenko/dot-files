@@ -155,3 +155,6 @@ eval "$(rbenv init - zsh)"
 
 # bun completions
 [ -s "/Users/oresttokovenko/.bun/_bun" ] && source "/Users/oresttokovenko/.bun/_bun"
+
+# Machine-specific local overrides (managed by a separate chezmoi layer, e.g. work)
+[[ -f ~/.zshrc.work ]] && source ~/.zshrc.work
