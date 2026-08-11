@@ -2,7 +2,7 @@
   "lastChangelogVersion": "0.84.1",
   "theme": "dark-custom",
   "defaultProvider": "opencode-go",
-  "defaultModel": "kimi-k3",
+  "defaultModel": "deepseek-v4-flash",
   "defaultThinkingLevel": "max",
   "quietStartup": true,
   "doubleEscapeAction": "none",
@@ -10,9 +10,16 @@
     "npm:pi-vimmode",
     "npm:pi-subagents",
     "npm:@xynogen/pix-gate",
-    "npm:@narumitw/pi-starship"
+    "npm:@narumitw/pi-starship",
+    "npm:pi-session-summary",
+    "npm:pi-copy-message",
+    "npm:pi-web-access",
+    "npm:pi-effort",
+    "npm:pi-autoresearch"
   ],
   "piVimMode": {
+    "preset": "prompt-safe",
+    "startMode": "insert",
     "keymap": {
       "motions": {
         "firstNonBlank": [
@@ -24,65 +31,48 @@
           "$",
           "L"
         ]
+      },
+      "commands": {
+        "visualBlock": [
+          "<A-b>"
+        ],
+        "showKeybindings": [
+          "k"
+        ]
       }
     }
   },
   "subagents": {
-    "defaultModel": "deepseek/deepseek-v4-flash",
+    "defaultModel": "opencode-go/deepseek-v4-flash",
     "agentOverrides": {
       "scout": {
-        "model": "deepseek/deepseek-v4-flash",
-        "fallbackModels": [
-          "zai/glm-5-turbo"
-        ],
+        "model": "opencode-go/deepseek-v4-flash",
         "thinking": "off"
       },
       "context-builder": {
-        "model": "deepseek/deepseek-v4-flash",
-        "fallbackModels": [
-          "zai/glm-5-turbo"
-        ],
+        "model": "opencode-go/deepseek-v4-flash",
         "thinking": "off"
       },
       "researcher": {
-        "model": "deepseek/deepseek-v4-pro",
-        "fallbackModels": [
-          "zai/glm-4.7"
-        ]
+        "model": "opencode-go/kimi-k3"
       },
       "delegate": {
-        "model": "deepseek/deepseek-v4-pro",
-        "fallbackModels": [
-          "zai/glm-4.7"
-        ]
+        "model": "opencode-go/kimi-k3"
       },
       "reviewer": {
-        "model": "deepseek/deepseek-v4-pro",
-        "fallbackModels": [
-          "zai/glm-5.2"
-        ]
+        "model": "opencode-go/kimi-k3",
+        "thinking": "medium"
       },
       "planner": {
-        "model": "zai/glm-5.2",
-        "fallbackModels": [
-          "deepseek/deepseek-v4-pro"
-        ],
+        "model": "opencode-go/kimi-k3",
         "thinking": "max"
       },
       "oracle": {
-        "model": "zai/glm-5.2",
-        "fallbackModels": [
-          "deepseek/deepseek-v4-pro",
-          "anthropic/claude-sonnet-5"
-        ],
+        "model": "anthropic/claude-opus-5",
         "thinking": "xhigh"
       },
       "worker": {
-        "model": "zai/glm-5.2",
-        "fallbackModels": [
-          "deepseek/deepseek-v4-pro",
-          "anthropic/claude-sonnet-5"
-        ],
+        "model": "opencode-go/deepseek-v4-flash",
         "thinking": "max"
       }
     }
