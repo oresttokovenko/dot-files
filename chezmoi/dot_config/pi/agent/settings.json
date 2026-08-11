@@ -1,9 +1,9 @@
 {
   "lastChangelogVersion": "0.84.1",
-  "theme": "dark",
-  "defaultProvider": "deepseek",
-  "defaultModel": "deepseek-v4-pro",
-  "defaultThinkingLevel": "xhigh",
+  "theme": "dark-custom",
+  "defaultProvider": "opencode-go",
+  "defaultModel": "kimi-k3",
+  "defaultThinkingLevel": "max",
   "quietStartup": true,
   "doubleEscapeAction": "none",
   "packages": [
@@ -15,8 +15,15 @@
   "piVimMode": {
     "keymap": {
       "motions": {
-        "firstNonBlank": ["^", "_", "H"],
-        "lineEnd": ["$", "L"]
+        "firstNonBlank": [
+          "^",
+          "_",
+          "H"
+        ],
+        "lineEnd": [
+          "$",
+          "L"
+        ]
       }
     }
   },

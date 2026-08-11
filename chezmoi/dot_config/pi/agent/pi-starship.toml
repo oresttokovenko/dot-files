@@ -1,7 +1,26 @@
-format = "$model$thinking$directory$git_branch$activity$context $tokens$cache$cost"
+format = "$model$thinking$directory$git_branch$activity$context$tokens$cache$cost"
+
+[model]
+symbol = "󰚩"
+
+[thinking]
+symbol = "󰔟"
+
+[directory]
+symbol = "󰉋"
+format = "[$symbol $path ]($style)"
+
+[git_branch]
+symbol = ""
+format = "[$symbol $branch ]($style)"
+
+[activity]
+symbol = "󰉁"
+format = "[$text ]($style)"
 
 [context]
-format = "[$percentage]($style)"
+format = "[$symbol $percentage ]($style)"
+symbol = "󰊚"
 
 [[context.display]]
 threshold = 0
@@ -17,3 +36,13 @@ hidden = false
 threshold = 80
 style = "bold red"
 hidden = false
+
+[tokens]
+symbol = "󰆙"
+
+[cache]
+symbol = "󰆼"
+
+[cost]
+symbol = "󰄔"
+format = "[$symbol \\$$cost( $subscription) ]($style)"
