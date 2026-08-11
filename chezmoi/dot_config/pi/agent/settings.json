@@ -15,8 +15,7 @@
     "npm:pi-copy-message",
     "npm:pi-effort",
     "npm:pi-autoresearch",
-    "npm:@dietrichgebert/ponytail",
-    "https://github.com/algal/pi-openai-server-compaction"
+    "npm:@dietrichgebert/ponytail"
   ],
   "piVimMode": {
     "preset": "prompt-safe",
