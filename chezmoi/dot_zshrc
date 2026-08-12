@@ -52,6 +52,9 @@ source "${zinit_home}/zinit.zsh"
 # Load zsh-autocomplete
 zinit light marlonrichert/zsh-autocomplete
 
+# Case-insensitive + fuzzy completion matching (zsh-autocomplete default is case-sensitive)
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
 ###############################################################################
 # fzf Configuration                                                           #
 ###############################################################################
