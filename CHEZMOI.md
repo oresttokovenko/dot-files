@@ -73,7 +73,9 @@ chezmoi \
 
 ## Aliases
 
-Add these to `~/.zshrc.local` on work machines:
+These aliases exist to make the **second-layer (work) config** reachable from the shell. The work layer is a separate chezmoi context with its own source, config, cache, and state — every `czw` command is `chezmoi` pointed at that second config. Without the alias you would have to type the `--source`/`--config` flags on every call.
+
+Add them to `~/.zshrc.local` on work machines:
 
 ```bash
 alias czp='chezmoi'
@@ -81,6 +83,11 @@ alias czw='chezmoi \
   --source ~/.local/share/chezmoi-work \
   --config ~/.config/chezmoi-work/chezmoi.toml'
 ```
+
+- `czp` — plain `chezmoi`, the base context (shorthand only)
+- `czw` — the **second layer**: chezmoi bound to the work source and config
+
+Until the work layer exists, `czw` has nothing to target and can be omitted entirely — a single-context machine only needs plain `chezmoi` (or `czp`).
 
 The shorter config-only alias works only when the work config explicitly sets `sourceDir`. The work repository must contain a `.chezmoi.toml.tmpl` with these defaults:
 
