@@ -6,5 +6,8 @@ cask "gcloud-cli"                        # Google Cloud Platform CLI (gcloud)
 brew "databricks"                        # Databricks CLI
 brew "kotlin"                            # Kotlin compiler (kotlinc)
 brew "terraform"                         # Terraform infrastructure as code
+brew "kubernetes-cli"                     # kubectl — Kubernetes CLI
+brew "helm"                               # Kubernetes package manager
+brew "k9s"                                # Kubernetes TUI dashboard
 cask "linear-linear"                     # Linear project management app
 cask "obsidian"                          # Knowledge base and note-taking
