@@ -23,9 +23,9 @@ brew "googleworkspace-cli"                   # Google Workspace CLI
 brew "httpie"                                # User-friendly HTTP client
 brew "jq"                                    # JSON processor
 brew "jump"                                  # Quick directory navigation
+brew "just"                                  # Command runner
 brew "mas"                                   # Mac App Store command line interface
 brew "meson"                                 # Build system
-brew "opencode"                              # AI coding CLI
 brew "ripgrep"                               # Modern alternative for grep
 brew "skills"                                # Skill/task management CLI
 brew "rsync"                                 # File synchronization tool
@@ -44,6 +44,7 @@ brew "fnm"                                   # Node.js version manager
 
 # Go
 brew "go"                                    # Go programming language
+brew "golangci-lint"                         # Go linter
 
 # OCaml
 brew "opam"                                  # OCaml package manager
@@ -54,15 +55,19 @@ brew "uv"                                    # Modern Python packaging
 
 # Ruby
 brew "rbenv"                                 # Ruby version manager
+brew "ruby-build"                            # Ruby version builder (required by rbenv)
 
 # Rust
 brew "rustup"                                # Rust toolchain manager
+brew "cargo-nextest"                         # Rust test runner
 
 # Lua
 brew "stylua"                                # Lua formatter
+brew "luacheck"                              # Lua linter
 
 # Shell
 brew "shellcheck"                            # Shell script linter
+brew "shfmt"                                 # Shell formatter (pairs with shellcheck)
 
 # Typst
 brew "typst"                                 # Modern alternative to LaTeX
@@ -89,7 +94,6 @@ cask "zed"                               # Code editor
 cask "zoom"                              # Video conferencing
 cask "slack"                             # Team messaging
 cask "temurin@21"                         # OpenJDK 21 LTS (Adoptium) — Polaris/Iceberg dev
-
 
 
 # Mac App Store Apps - General
