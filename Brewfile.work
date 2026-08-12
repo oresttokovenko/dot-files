@@ -4,5 +4,6 @@ cask "datagrip"                          # JetBrains database IDE
 brew "snowflake-cli"                     # Snowflake CLI
 cask "gcloud-cli"                        # Google Cloud Platform CLI (gcloud)
 brew "databricks"                        # Databricks CLI
+brew "kotlin"                            # Kotlin compiler (kotlinc)
 cask "linear-linear"                     # Linear project management app
 cask "obsidian"                          # Knowledge base and note-taking
