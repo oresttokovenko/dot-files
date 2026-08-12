@@ -21,6 +21,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export EDITOR="nvim"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export PI_CODING_AGENT_DIR="$XDG_CONFIG_HOME/pi/agent"
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/.ripgreprc"
 
 ###############################################################################
 # PATH
