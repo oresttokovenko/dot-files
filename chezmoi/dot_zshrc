@@ -55,6 +55,11 @@ zinit light marlonrichert/zsh-autocomplete
 # Case-insensitive + fuzzy completion matching (zsh-autocomplete default is case-sensitive)
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
+# Tab accepts the top candidate immediately; further Tabs cycle (must run after the plugin loads)
+bindkey '^I' menu-complete
+# First insert the common substring before accepting
+zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
+
 ###############################################################################
 # fzf Configuration                                                           #
 ###############################################################################
