@@ -11,6 +11,9 @@ setopt HIST_IGNORE_ALL_DUPS   # Remove older duplicate entries
 setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks
 setopt HIST_IGNORE_SPACE      # Don't record commands starting with a space
 setopt APPEND_HISTORY         # Append rather than overwrite
+setopt HIST_EXPIRE_DUPS_FIRST # Trim duplicates before unique entries when history fills
+setopt HIST_NO_STORE          # Don't store the `history` command itself
+unsetopt FLOW_CONTROL         # Ctrl-S freezes terminal (XOFF); conflicts with ^S menu-search
 
 ###############################################################################
 # Env Vars
@@ -31,6 +34,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export PATH="$HOME/.local/share/bob/nvim-bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+# Deduplicate PATH while preserving first-occurrence order (re-sourcing accumulates)
+typeset -gU path
 
 ###############################################################################
 # Ghostty Shell Integration                                                   #
@@ -59,6 +65,10 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 bindkey '^I' menu-complete
 # First insert the common substring before accepting
 zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
+
+# Completion cache (terraform/kubectl/gcloud completions are slow to recompute)
+zstyle ':completion:*' use-cache true
+zstyle ':completion:*' cache-path "$HOME/.cache/zsh/zcompcache"
 
 ###############################################################################
 # fzf Configuration                                                           #
@@ -110,6 +120,9 @@ zinit wait lucid for \
   OMZP::colored-man-pages \
   OMZP::command-not-found
 
+# Load zsh-syntax-highlighting (must load after zsh-autocomplete and zsh-vi-mode)
+zinit wait lucid light-mode for zsh-users/zsh-syntax-highlighting
+
 # Alias to update all Zinit plugins easily
 alias zinit-update='zinit self-update && zinit update --parallel'
 
@@ -146,22 +159,22 @@ alias ls="eza --header --icons --no-permissions --no-user --modified --color-sca
 # Remap Neovim to vim
 alias vim="nvim"
 
-# Easily open .zshrc file in Neovim
-alias ezsh="nvim ~/.zshrc"
+# Edit the chezmoi source of .zshrc, not the live file (apply would clobber live edits)
+alias ezsh="chezmoi edit ~/.zshrc"
 
 ###############################################################################
 # Evals                                                                       #
 ###############################################################################
 
 # fnm (Node version manager) — reads .nvmrc / .node-version, switches on cd
-eval "$(fnm env --use-on-cd)"
-eval "$(starship init zsh)"
-eval "$(jump shell)"
-eval "$(fzf --zsh)"
-eval "$(rbenv init - zsh)"
+command -v fnm >/dev/null && eval "$(fnm env --use-on-cd)"
+command -v starship >/dev/null && eval "$(starship init zsh)"
+command -v jump >/dev/null && eval "$(jump shell)"
+command -v fzf >/dev/null && eval "$(fzf --zsh)"
+command -v rbenv >/dev/null && eval "$(rbenv init - zsh)"
 
 # bun completions
-[ -s "/Users/oresttokovenko/.bun/_bun" ] && source "/Users/oresttokovenko/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # Optional machine-local overrides
 [[ -r ~/.zshrc.local ]] && source ~/.zshrc.local
