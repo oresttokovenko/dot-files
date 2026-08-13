@@ -6,14 +6,22 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000
 SAVEHIST=100000
 
-setopt SHARE_HISTORY          # Share history across all sessions
-setopt HIST_IGNORE_ALL_DUPS   # Remove older duplicate entries
-setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks
-setopt HIST_IGNORE_SPACE      # Don't record commands starting with a space
-setopt APPEND_HISTORY         # Append rather than overwrite
-setopt HIST_EXPIRE_DUPS_FIRST # Trim duplicates before unique entries when history fills
-setopt HIST_NO_STORE          # Don't store the `history` command itself
-unsetopt FLOW_CONTROL         # Ctrl-S freezes terminal (XOFF); conflicts with ^S menu-search
+# Share history across all sessions
+setopt SHARE_HISTORY
+# Remove older duplicate entries
+setopt HIST_IGNORE_ALL_DUPS
+# Remove superfluous blanks
+setopt HIST_REDUCE_BLANKS
+# Don't record commands starting with a space
+setopt HIST_IGNORE_SPACE
+# Append rather than overwrite
+setopt APPEND_HISTORY
+# Trim duplicates before unique entries when history fills
+setopt HIST_EXPIRE_DUPS_FIRST
+# Don't store the `history` command itself
+setopt HIST_NO_STORE
+# Ctrl-S freezes terminal (XOFF); conflicts with ^S menu-search
+unsetopt FLOW_CONTROL
 
 ###############################################################################
 # Env Vars
@@ -39,7 +47,8 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 typeset -gU path
 
 ###############################################################################
-# Ghostty Shell Integration                                                   #
+# 
+# Ghostty Shell Integration
 ###############################################################################
 
 if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
@@ -47,7 +56,8 @@ if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
 fi
 
 ###############################################################################
-# Zinit Bootstrap                                                             #
+# 
+# Zinit Bootstrap
 ###############################################################################
 
 zinit_home="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -71,7 +81,8 @@ zstyle ':completion:*' use-cache true
 zstyle ':completion:*' cache-path "$HOME/.cache/zsh/zcompcache"
 
 ###############################################################################
-# fzf Configuration                                                           #
+# 
+# fzf Configuration
 ###############################################################################
 
 # Customize fzf Ctrl-R (reverse search) behavior
@@ -85,7 +96,8 @@ export FZF_CTRL_R_OPTS="
 "
 
 ###############################################################################
-# Vi Mode & Keybindings                                                       #
+# 
+# Vi Mode & Keybindings
 ###############################################################################
 
 autoload -Uz edit-command-line
@@ -108,7 +120,8 @@ zvm_after_lazy_keybindings() {
 }
 
 ###############################################################################
-# Zinit Plugins                                                               #
+# 
+# Zinit Plugins
 ###############################################################################
 
 # Load zsh-vi-mode (lazy-loaded for faster startup)
@@ -127,7 +140,8 @@ zinit wait lucid light-mode for zsh-users/zsh-syntax-highlighting
 alias zinit-update='zinit self-update && zinit update --parallel'
 
 ###############################################################################
-# Miscellaneous                                                               #
+# 
+# Miscellaneous
 ###############################################################################
 
 # Convert ticket names into branch names
@@ -145,7 +159,8 @@ tree() {
 }
 
 ###############################################################################
-# Aliases                                                                     #
+# 
+# Aliases
 ###############################################################################
 
 # Modern equivalent of cat
@@ -163,7 +178,8 @@ alias vim="nvim"
 alias ezsh="chezmoi edit ~/.zshrc"
 
 ###############################################################################
-# Evals                                                                       #
+# 
+# Evals
 ###############################################################################
 
 # fnm (Node version manager) — reads .nvmrc / .node-version, switches on cd
