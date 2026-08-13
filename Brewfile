@@ -93,7 +93,7 @@ cask "the-unarchiver"                  # Archive extraction
 cask "zed"                             # Code editor
 cask "zoom"                            # Video conferencing
 cask "slack"                           # Team messaging
-cask "temurin@21"                      # OpenJDK 21 LTS (Adoptium) — Polaris/Iceberg dev
+cask "temurin@21"                      # OpenJDK 21 LTS
 
 
 # Mac App Store Apps - General
