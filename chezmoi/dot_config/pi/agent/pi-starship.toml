@@ -42,6 +42,7 @@ symbol = "󰆙"
 
 [cache]
 symbol = "󰆼"
+disabled = false
 
 [cost]
 symbol = "󰄔"
