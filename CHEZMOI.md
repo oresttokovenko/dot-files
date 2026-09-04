@@ -26,7 +26,8 @@ The base and work contexts manage **disjoint target paths**. The only compositio
 | `~/.gitconfig` | Base | Shared Git settings. Includes `~/.gitconfig.local` if present |
 | `~/.zshrc.local` | Work | Work PATH, aliases, VPN helpers, etc. |
 | `~/.gitconfig.local` | Work | Work email, commit signing key, etc. |
-| `~/.config/nvim/**` | Base | Editor configuration |
+| `~/.config/nvim/**` | Base | Editor configuration, incl. `nvim-version` (the bob-tracked Neovim version) |
+| `~/Library/Application Support/bob/config.json` | None | Machine-local bob config — recreate per machine, see [Neovim version (bob)](#neovim-version-bob) |
 | `~/.config/amp/**` | None | Untracked for now — `setup.sh` installs amp on every machine (curl), the base tracks only its nvim plugin; config is left machine-local |
 | `~/.config/claude/**` | Work | Work-specific tool configs |
 
@@ -70,6 +71,23 @@ chezmoi \
   --config ~/.config/chezmoi-work/chezmoi.toml \
   apply
 ```
+
+### Neovim version (bob)
+
+Bob (installed via `Brewfile`) records the used Neovim version in `~/.config/nvim/nvim-version`, which the base layer versions. On a new machine, recreate bob's machine-local config, then install the tracked version:
+
+```bash
+mkdir -p "$HOME/Library/Application Support/bob"
+cat > "$HOME/Library/Application Support/bob/config.json" <<EOF
+{
+  "version_sync_file_location": "$HOME/.config/nvim/nvim-version"
+}
+EOF
+bob sync
+```
+
+- The path must use `$HOME`, not `~` — bob does not expand `~`.
+- `bob use <version>` rewrites the version file (no-op switches skip it); commit the changed file to update the synced version on other machines.
 
 ## Aliases
 
