@@ -882,6 +882,429 @@
       "skillFolderHash": "623cca7f41f2fb859bdd01dd7328b7b15da110ed",
       "installedAt": "2026-08-10T03:18:17.189Z",
       "updatedAt": "2026-08-10T03:18:17.189Z"
+    },
+    "last30days": {
+      "source": "mvanhorn/last30days-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mvanhorn/last30days-skill.git",
+      "skillPath": "skills/last30days/SKILL.md",
+      "skillFolderHash": "a35e534d1faa1b34aa317aee72dc322698428133",
+      "installedAt": "2026-09-12T23:28:20.115Z",
+      "updatedAt": "2026-09-12T23:28:20.115Z"
+    },
+    "defuddle": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/kepano/obsidian-skills.git",
+      "skillPath": "skills/defuddle/SKILL.md",
+      "skillFolderHash": "db0b775af7e7d603f59fa2b67bdef615baf1a48f",
+      "installedAt": "2026-09-12T23:28:59.625Z",
+      "updatedAt": "2026-09-12T23:28:59.625Z"
+    },
+    "json-canvas": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/kepano/obsidian-skills.git",
+      "skillPath": "skills/json-canvas/SKILL.md",
+      "skillFolderHash": "9df7971db7ffebf96f2a207840b9f4765aa11b04",
+      "installedAt": "2026-09-12T23:28:59.626Z",
+      "updatedAt": "2026-09-12T23:28:59.626Z"
+    },
+    "knap": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/kepano/obsidian-skills.git",
+      "skillPath": "skills/knap/SKILL.md",
+      "skillFolderHash": "f49e09ee53feece10378a1fb1194632581fb066a",
+      "installedAt": "2026-09-12T23:28:59.627Z",
+      "updatedAt": "2026-09-12T23:28:59.627Z"
+    },
+    "obsidian-bases": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/kepano/obsidian-skills.git",
+      "skillPath": "skills/obsidian-bases/SKILL.md",
+      "skillFolderHash": "f3330f27de4d7907ead57d0f48672f4d3280bb77",
+      "installedAt": "2026-09-12T23:28:59.627Z",
+      "updatedAt": "2026-09-12T23:28:59.627Z"
+    },
+    "obsidian-cli": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/kepano/obsidian-skills.git",
+      "skillPath": "skills/obsidian-cli/SKILL.md",
+      "skillFolderHash": "96254a554e480359de7b685571876f2e7f9ba57d",
+      "installedAt": "2026-09-12T23:28:59.627Z",
+      "updatedAt": "2026-09-12T23:28:59.627Z"
+    },
+    "obsidian-markdown": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/kepano/obsidian-skills.git",
+      "skillPath": "skills/obsidian-markdown/SKILL.md",
+      "skillFolderHash": "4723197c6dc59abc29819da87863b1ac20b96095",
+      "installedAt": "2026-09-12T23:28:59.628Z",
+      "updatedAt": "2026-09-12T23:28:59.628Z"
+    },
+    "claude-history-ingest": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/claude-history-ingest/SKILL.md",
+      "skillFolderHash": "905f407e7e3164076f130c0d06d738bc66a82902",
+      "installedAt": "2026-09-12T23:29:05.472Z",
+      "updatedAt": "2026-09-12T23:29:05.472Z"
+    },
+    "code-understand": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/code-understand/SKILL.md",
+      "skillFolderHash": "18cca758b25c6a34e7898b9be8c04c7fba260a52",
+      "installedAt": "2026-09-12T23:29:05.475Z",
+      "updatedAt": "2026-09-12T23:29:05.475Z"
+    },
+    "codex-history-ingest": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/codex-history-ingest/SKILL.md",
+      "skillFolderHash": "41ea44adb32917782e88becbed34bd5874ea3463",
+      "installedAt": "2026-09-12T23:29:05.476Z",
+      "updatedAt": "2026-09-12T23:29:05.476Z"
+    },
+    "copilot-history-ingest": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/copilot-history-ingest/SKILL.md",
+      "skillFolderHash": "c6240e39b5bcc426314a6878fb63ec714a479f81",
+      "installedAt": "2026-09-12T23:29:05.477Z",
+      "updatedAt": "2026-09-12T23:29:05.477Z"
+    },
+    "cross-linker": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/cross-linker/SKILL.md",
+      "skillFolderHash": "844195d48fc9a219147628011c27d03173861897",
+      "installedAt": "2026-09-12T23:29:05.483Z",
+      "updatedAt": "2026-09-12T23:29:05.483Z"
+    },
+    "daily-update": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/daily-update/SKILL.md",
+      "skillFolderHash": "b48ebd96cc6360779f6d3e17348e7c59719f5727",
+      "installedAt": "2026-09-12T23:29:05.483Z",
+      "updatedAt": "2026-09-12T23:29:05.483Z"
+    },
+    "graph-colorize": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/graph-colorize/SKILL.md",
+      "skillFolderHash": "3eccadfab241c5eb795eb0c5c755e2d7ab3c2a6a",
+      "installedAt": "2026-09-12T23:29:05.484Z",
+      "updatedAt": "2026-09-12T23:29:05.484Z"
+    },
+    "hermes-history-ingest": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/hermes-history-ingest/SKILL.md",
+      "skillFolderHash": "b4619045d96ba2280abc3eef4b13f9309a53fb3a",
+      "installedAt": "2026-09-12T23:29:05.485Z",
+      "updatedAt": "2026-09-12T23:29:05.485Z"
+    },
+    "impl-validator": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/impl-validator/SKILL.md",
+      "skillFolderHash": "b56d93f683c865effb23b8fd381cfd05c6f65958",
+      "installedAt": "2026-09-12T23:29:05.485Z",
+      "updatedAt": "2026-09-12T23:29:05.485Z"
+    },
+    "llm-wiki": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/llm-wiki/SKILL.md",
+      "skillFolderHash": "854dfac71e4ecf0f27654708c3ed73e6f46e1767",
+      "installedAt": "2026-09-12T23:29:05.486Z",
+      "updatedAt": "2026-09-12T23:29:05.486Z"
+    },
+    "memory-bridge": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/memory-bridge/SKILL.md",
+      "skillFolderHash": "1c41f3a56c1f0a16ecab96cf10255092a6a3c749",
+      "installedAt": "2026-09-12T23:29:05.487Z",
+      "updatedAt": "2026-09-12T23:29:05.487Z"
+    },
+    "obsidian-layout-adjustment": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/obsidian-layout-adjustment/SKILL.md",
+      "skillFolderHash": "7e93712960648260a752cfd8aa0cf60acf680775",
+      "installedAt": "2026-09-12T23:29:05.487Z",
+      "updatedAt": "2026-09-12T23:29:05.487Z"
+    },
+    "openclaw-history-ingest": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/openclaw-history-ingest/SKILL.md",
+      "skillFolderHash": "1ad2bae204a58fb702720fa97b2acd52acaa7195",
+      "installedAt": "2026-09-12T23:29:05.488Z",
+      "updatedAt": "2026-09-12T23:29:05.488Z"
+    },
+    "pi-history-ingest": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/pi-history-ingest/SKILL.md",
+      "skillFolderHash": "8d59e6f77be925b6bf98980f27de1a55eef759c7",
+      "installedAt": "2026-09-12T23:29:05.488Z",
+      "updatedAt": "2026-09-12T23:29:05.488Z"
+    },
+    "session-brain": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/session-brain/SKILL.md",
+      "skillFolderHash": "6553ecf5c2d7b95dae94a098e71b78a7e97392dc",
+      "installedAt": "2026-09-12T23:29:05.489Z",
+      "updatedAt": "2026-09-12T23:29:05.489Z"
+    },
+    "session-search": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/session-search/SKILL.md",
+      "skillFolderHash": "c868a8866b0e11ae356ee8e4d6e3c2c42f48dae2",
+      "installedAt": "2026-09-12T23:29:05.489Z",
+      "updatedAt": "2026-09-12T23:29:05.489Z"
+    },
+    "skill-creator": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/skill-creator/SKILL.md",
+      "skillFolderHash": "98a510d1cfef9f82c3b1eec200229ca68725e613",
+      "installedAt": "2026-09-12T23:29:05.490Z",
+      "updatedAt": "2026-09-12T23:29:05.490Z"
+    },
+    "tag-taxonomy": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/tag-taxonomy/SKILL.md",
+      "skillFolderHash": "86d08042b6d19d423dd38c6c0028c44bd56e8be4",
+      "installedAt": "2026-09-12T23:29:05.490Z",
+      "updatedAt": "2026-09-12T23:29:05.490Z"
+    },
+    "vault-skill-factory": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/vault-skill-factory/SKILL.md",
+      "skillFolderHash": "5fbaf810071cd89aff420bccac03af1c77366bfc",
+      "installedAt": "2026-09-12T23:29:05.491Z",
+      "updatedAt": "2026-09-12T23:29:05.491Z"
+    },
+    "wiki-agent": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-agent/SKILL.md",
+      "skillFolderHash": "bb013b126d5118002b19cbf1fa56c2ac49b37226",
+      "installedAt": "2026-09-12T23:29:05.491Z",
+      "updatedAt": "2026-09-12T23:29:05.491Z"
+    },
+    "wiki-capture": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-capture/SKILL.md",
+      "skillFolderHash": "7ad15cfe91305221c3099fb8a79f778d9db4d8ba",
+      "installedAt": "2026-09-12T23:29:05.492Z",
+      "updatedAt": "2026-09-12T23:29:05.492Z"
+    },
+    "wiki-context-pack": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-context-pack/SKILL.md",
+      "skillFolderHash": "2b4d8714f531c0a4269763190c8be09817b32aeb",
+      "installedAt": "2026-09-12T23:29:05.493Z",
+      "updatedAt": "2026-09-12T23:29:05.493Z"
+    },
+    "wiki-dashboard": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-dashboard/SKILL.md",
+      "skillFolderHash": "dd6aa28b2510326384dd58e2203d66d3cce565fe",
+      "installedAt": "2026-09-12T23:29:05.493Z",
+      "updatedAt": "2026-09-12T23:29:05.493Z"
+    },
+    "wiki-dedup": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-dedup/SKILL.md",
+      "skillFolderHash": "d66b94ab5c259b8bc1b0d4979fa3c79097e35085",
+      "installedAt": "2026-09-12T23:29:05.494Z",
+      "updatedAt": "2026-09-12T23:29:05.494Z"
+    },
+    "wiki-digest": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-digest/SKILL.md",
+      "skillFolderHash": "ba08601ead1853ea36aa74ce95d7d841fcf5f327",
+      "installedAt": "2026-09-12T23:29:05.494Z",
+      "updatedAt": "2026-09-12T23:29:05.494Z"
+    },
+    "wiki-export": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-export/SKILL.md",
+      "skillFolderHash": "218a2f61c59e661178c9d7744868d3256de07793",
+      "installedAt": "2026-09-12T23:29:05.495Z",
+      "updatedAt": "2026-09-12T23:29:05.495Z"
+    },
+    "wiki-history-ingest": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-history-ingest/SKILL.md",
+      "skillFolderHash": "db291f6803d21b834140a1ca50b7f769e736caa1",
+      "installedAt": "2026-09-12T23:29:05.495Z",
+      "updatedAt": "2026-09-12T23:29:05.495Z"
+    },
+    "wiki-import": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-import/SKILL.md",
+      "skillFolderHash": "720a116dac4922c78b765bca6eacec8e280fcb55",
+      "installedAt": "2026-09-12T23:29:05.496Z",
+      "updatedAt": "2026-09-12T23:29:05.496Z"
+    },
+    "wiki-ingest": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-ingest/SKILL.md",
+      "skillFolderHash": "3f455d75dade8df981b913b2ad083e6b2ce40f4b",
+      "installedAt": "2026-09-12T23:29:05.496Z",
+      "updatedAt": "2026-09-12T23:29:05.496Z"
+    },
+    "wiki-lint": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-lint/SKILL.md",
+      "skillFolderHash": "9656042dc7fe8daa7ef42c3e355324867e0dd5b6",
+      "installedAt": "2026-09-12T23:29:05.497Z",
+      "updatedAt": "2026-09-12T23:29:05.497Z"
+    },
+    "wiki-narrate": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-narrate/SKILL.md",
+      "skillFolderHash": "9e92540522bc7e68036bd5a2129926dc716d059d",
+      "installedAt": "2026-09-12T23:29:05.497Z",
+      "updatedAt": "2026-09-12T23:29:05.497Z"
+    },
+    "wiki-query": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-query/SKILL.md",
+      "skillFolderHash": "49d415a6d018dfa4a0429b0a860f2949f4440a5b",
+      "installedAt": "2026-09-12T23:29:05.498Z",
+      "updatedAt": "2026-09-12T23:29:05.498Z"
+    },
+    "wiki-rebuild": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-rebuild/SKILL.md",
+      "skillFolderHash": "84bb0464337ed83f08ed5d467e04e123d3fb1fae",
+      "installedAt": "2026-09-12T23:29:05.498Z",
+      "updatedAt": "2026-09-12T23:29:05.498Z"
+    },
+    "wiki-research": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-research/SKILL.md",
+      "skillFolderHash": "d85e39f534c01a0e0a06566f1242efb1da8b0b8a",
+      "installedAt": "2026-09-12T23:29:05.498Z",
+      "updatedAt": "2026-09-12T23:29:05.498Z"
+    },
+    "wiki-setup": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-setup/SKILL.md",
+      "skillFolderHash": "65d049d331737533667f2c43cccdeec0cc32e981",
+      "installedAt": "2026-09-12T23:29:05.499Z",
+      "updatedAt": "2026-09-12T23:29:05.499Z"
+    },
+    "wiki-stage-commit": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-stage-commit/SKILL.md",
+      "skillFolderHash": "8b1c5dd87731a0c9cac9d5258b95f8ef1542da16",
+      "installedAt": "2026-09-12T23:29:05.499Z",
+      "updatedAt": "2026-09-12T23:29:05.499Z"
+    },
+    "wiki-status": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-status/SKILL.md",
+      "skillFolderHash": "22cd653ccb2a918b95db90636e351c50682c6e1d",
+      "installedAt": "2026-09-12T23:29:05.500Z",
+      "updatedAt": "2026-09-12T23:29:05.500Z"
+    },
+    "wiki-switch": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-switch/SKILL.md",
+      "skillFolderHash": "fc7276041297ae2ef95ce850d4cdbeea30240e61",
+      "installedAt": "2026-09-12T23:29:05.500Z",
+      "updatedAt": "2026-09-12T23:29:05.500Z"
+    },
+    "wiki-synthesize": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-synthesize/SKILL.md",
+      "skillFolderHash": "a868e2890b20508818515e1bcf94cdfd53bf2732",
+      "installedAt": "2026-09-12T23:29:05.501Z",
+      "updatedAt": "2026-09-12T23:29:05.501Z"
+    },
+    "wiki-update": {
+      "source": "Ar9av/obsidian-wiki",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Ar9av/obsidian-wiki.git",
+      "skillPath": ".skills/wiki-update/SKILL.md",
+      "skillFolderHash": "03bffe7f3649c4e236f728457729dbd1bb1c92c6",
+      "installedAt": "2026-09-12T23:29:05.501Z",
+      "updatedAt": "2026-09-12T23:29:05.501Z"
     }
   },
   "dismissed": {}
