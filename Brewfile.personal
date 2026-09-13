@@ -7,5 +7,4 @@ cask "telegram"                          # Messaging
 cask "transmission"                      # BitTorrent client
 cask "vlc"                               # Media player
 cask "whatsapp"                          # Messaging
-brew "gemini-cli"                        # Google Gemini CLI
 brew "netlify-cli"                       # Netlify deployment CLI
