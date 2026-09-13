@@ -1,7 +1,6 @@
 # Personal-only packages — install with: brew bundle --file=Brewfile.personal
 
 cask "1password"                         # Password manager
-cask "claude-code"                       # Anthropic Claude CLI
 cask "plex-media-server"                 # Media server
 cask "telegram"                          # Messaging
 cask "transmission"                      # BitTorrent client

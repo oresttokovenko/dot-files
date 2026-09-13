@@ -93,6 +93,7 @@ cask "ghostty"                         # Terminal emulator
 cask "keycastr"                        # Keystroke visualizer
 cask "keymapp"                         # ZSA keyboard configurator
 cask "microsoft-teams"                 # Team messaging
+cask "obsidian"                        # Knowledge base and note-taking
 cask "openinterminal"                  # Open terminal from Finder
 cask "openlogi"                        # Logitech device manager (open source)
 cask "plex"                            # Media server client
