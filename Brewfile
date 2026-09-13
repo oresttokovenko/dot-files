@@ -92,7 +92,6 @@ cask "google-drive"                    # Google Drive sync
 cask "ghostty"                         # Terminal emulator
 cask "keycastr"                        # Keystroke visualizer
 cask "keymapp"                         # ZSA keyboard configurator
-cask "logi-options-plus"               # Logitech device manager
 cask "microsoft-teams"                 # Team messaging
 cask "openinterminal"                  # Open terminal from Finder
 cask "openlogi"                        # Logitech device manager (open source)
