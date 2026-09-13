@@ -26,6 +26,7 @@ brew "jump"                            # Quick directory navigation
 brew "just"                            # Command runner
 brew "mas"                             # Mac App Store command line interface
 brew "meson"                           # Build system
+brew "pkl"                             # Apple's configuration language
 brew "ripgrep"                         # Modern alternative for grep
 brew "skills"                          # Skill/task management CLI
 brew "rsync"                           # File synchronization tool
@@ -37,6 +38,10 @@ brew "yt-dlp"                          # Video downloader
 # Formal Specification
 brew "alloy-analyzer"                  # Alloy formal specification language and LSP
 brew "quint"                           # Quint formal specification language and LSP
+
+# C / C++
+brew "gcc"                             # GNU Compiler Collection
+brew "llvm"                            # LLVM toolchain (clang, lldb - keg-only)
 
 # JavaScript / TypeScript
 brew "oven-sh/bun/bun"                 # JavaScript/TypeScript runtime (official tap)
@@ -78,16 +83,22 @@ cask "appcleaner"                      # App uninstaller
 cask "caffeine"                        # Prevent sleep
 cask "chatgpt"                         # OpenAI ChatGPT desktop app
 cask "claude"                          # Anthropic Claude desktop app
+cask "cloudflare-warp"                 # Cloudflare WARP VPN client
 cask "discord"                         # Chat and voice
 cask "font-jetbrains-mono-nerd-font"   # Nerd Font for terminal/editor
+cask "font-sf-mono-nerd-font-ligaturized" # Nerd Font for terminal/editor
 cask "google-chrome"                   # Web browser
 cask "google-drive"                    # Google Drive sync
 cask "ghostty"                         # Terminal emulator
 cask "keycastr"                        # Keystroke visualizer
 cask "keymapp"                         # ZSA keyboard configurator
 cask "logi-options-plus"               # Logitech device manager
+cask "microsoft-teams"                 # Team messaging
 cask "openinterminal"                  # Open terminal from Finder
+cask "openlogi"                        # Logitech device manager (open source)
+cask "plex"                            # Media server client
 cask "rectangle"                       # Window management
+cask "snowflake-snowsql"               # Snowflake SQL CLI (used by vim-dadbod)
 cask "spotify"                         # Music streaming
 cask "the-unarchiver"                  # Archive extraction
 cask "zed"                             # Code editor
