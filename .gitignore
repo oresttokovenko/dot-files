@@ -1,3 +1,6 @@
 .DS_Store
 .ruby-lsp/
 chezmoi/**/private_*
+# Tracked despite the private_ attribute: carries no secrets. Pi keeps provider
+# keys in auth.json, which is not managed.
+!chezmoi/dot_config/pi/private_agent/

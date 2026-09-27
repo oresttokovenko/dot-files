@@ -18,6 +18,11 @@ The base and work contexts manage **disjoint target paths**. The only compositio
 
 **One-target-one-owner rule:** never let both contexts claim the same file or directory. In particular, do not use `exact_` directories in one context if the other context manages files inside them.
 
+`~/.config/pi` is a known shared parent. Each layer owns a subdirectory of it
+(`agent/` and `work-agent/`), so both contexts manage the directory itself. Leave
+it at the default mode in both — no attribute prefix, no `exact_` — or `apply` in
+one context will report drift produced by the other.
+
 ## What Goes Where
 
 | Target | Owner | Notes |
@@ -30,6 +35,8 @@ The base and work contexts manage **disjoint target paths**. The only compositio
 | `~/Library/Application Support/bob/config.json` | None | Machine-local bob config — recreate per machine, see [Neovim version (bob)](#neovim-version-bob) |
 | `~/.config/amp/**` | None | Untracked for now — `setup.sh` installs amp on every machine (curl), the base tracks only its nvim plugin; config is left machine-local |
 | `~/.config/claude/**` | Work | Work-specific tool configs |
+| `~/.config/pi/agent/**` | Base | Pi config: `settings.json`, `SYSTEM.md`, themes. Source dir carries `private_` so the directory stays 700 |
+| `~/.config/pi/work-agent/**` | Work | Work Pi config. Only consulted when `~/.zshrc.local` overrides `PI_CODING_AGENT_DIR` — the base `.zshrc` sets it to `.../pi/agent` |
 
 The base provides extension hooks; the work layer fills them. The base never references work content directly.
 
