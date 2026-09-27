@@ -43,37 +43,26 @@
     }
   },
   "subagents": {
-    "defaultModel": "opencode-go/deepseek-v4-flash",
+    "defaultModel": "opencode-go/glm-5.3-flash",
     "defaultThinking": "max",
     "agentOverrides": {
       "scout": {
-        "model": "opencode-go/deepseek-v4-flash",
-        "thinking": "off"
-      },
-      "context-builder": {
-        "model": "opencode-go/deepseek-v4-flash",
+        "model": "opencode-go/deepseek-v4.1-flash",
         "thinking": "off"
       },
       "researcher": {
-        "model": "opencode-go/kimi-k3"
-      },
-      "delegate": {
-        "model": "opencode-go/kimi-k3"
+        "model": "opencode-go/glm-5.3"
       },
       "reviewer": {
-        "model": "opencode-go/kimi-k3",
+        "model": "opencode-go/qwen3.8-max",
         "thinking": "medium"
       },
-      "planner": {
-        "model": "opencode-go/kimi-k3",
-        "thinking": "max"
-      },
       "oracle": {
-        "model": "opencode-go/kimi-k3",
+        "model": "opencode-go/qwen3.8-max",
         "thinking": "max"
       },
       "worker": {
-        "model": "opencode-go/deepseek-v4-pro",
+        "model": "opencode-go/glm-5.3-flash",
         "thinking": "max"
       }
     }
