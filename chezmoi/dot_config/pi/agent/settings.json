@@ -2,7 +2,7 @@
   "lastChangelogVersion": "0.84.1",
   "theme": "dark-custom",
   "defaultProvider": "opencode-go",
-  "defaultModel": "deepseek-v4-flash",
+  "defaultModel": "opencode-go/glm-5.3-flash",
   "defaultThinkingLevel": "max",
   "quietStartup": true,
   "doubleEscapeAction": "none",
