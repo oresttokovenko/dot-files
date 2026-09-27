@@ -36,9 +36,15 @@ one context will report drift produced by the other.
 | `~/.config/amp/**` | None | Untracked for now — `setup.sh` installs amp on every machine (curl), the base tracks only its nvim plugin; config is left machine-local |
 | `~/.config/claude/**` | Work | Work-specific tool configs |
 | `~/.config/pi/agent/**` | Base | Pi config: `settings.json`, `SYSTEM.md`, themes. Source dir carries `private_` so the directory stays 700 |
-| `~/.config/pi/work-agent/**` | Work | Work Pi config. Only consulted when `~/.zshrc.local` overrides `PI_CODING_AGENT_DIR` — the base `.zshrc` sets it to `.../pi/agent` |
+| `~/.config/pi/work-agent/**` | Work | Work Pi config, and the active one on work machines: `~/.zshrc.local` overrides `PI_CODING_AGENT_DIR`, which the base `.zshrc` sets to `.../pi/agent` |
 
 The base provides extension hooks; the work layer fills them. The base never references work content directly.
+
+The two Pi agent directories are independent. `PI_CODING_AGENT_DIR` selects which
+one a machine reads, and a work machine points it at `work-agent/`, so the base's
+`agent/settings.json` — including its `subagents` fleet — does not apply there.
+Model and routing changes have to be made in both layers or the two will diverge,
+matching in shape while running different models.
 
 ## Repository Layout
 
