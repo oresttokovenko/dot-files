@@ -43,8 +43,11 @@ The base provides extension hooks; the work layer fills them. The base never ref
 The two Pi agent directories are independent. `PI_CODING_AGENT_DIR` selects which
 one a machine reads, and a work machine points it at `work-agent/`, so the base's
 `agent/settings.json` — including its `subagents` fleet — does not apply there.
-Model and routing changes have to be made in both layers or the two will diverge,
-matching in shape while running different models.
+
+That divergence is deliberate, not drift. The work layer's fleet is restricted to
+the models approved there, so the base's choices may not even be reachable on that
+machine and are not the appropriate ones for it. Do not "fix" the difference by
+copying the base fleet across, and do not record the approved vendors here.
 
 ## Repository Layout
 
