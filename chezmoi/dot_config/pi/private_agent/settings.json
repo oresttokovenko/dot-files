@@ -1,8 +1,8 @@
 {
-  "lastChangelogVersion": "0.84.1",
+  "lastChangelogVersion": "0.87.1",
   "theme": "dark-custom",
   "defaultProvider": "opencode-go",
-  "defaultModel": "opencode-go/glm-5.3-flash",
+  "defaultModel": "glm-5.3-flash",
   "defaultThinkingLevel": "max",
   "quietStartup": true,
   "doubleEscapeAction": "none",
