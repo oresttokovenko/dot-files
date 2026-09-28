@@ -60,7 +60,7 @@ The repo root is a plain git repository, not the chezmoi source root:
 - `macos.sh` — macOS defaults / configuration script
 - `CHEZMOI.md` — this file
 
-`chezmoi init --apply` deploys the `chezmoi/` tree; the repo-root scripts come along with the clone and are run manually.
+`chezmoi init --apply` deploys the `chezmoi/` tree; the repo-root scripts come along with the clone and are run manually. After pulling changes that touch `chezmoi/.chezmoi.toml.tmpl`, run `chezmoi init` — its hash is recorded in the state db on init only, and skipping that step makes every command warn "config file template has changed".
 
 ## Setting Up a New Machine
 
