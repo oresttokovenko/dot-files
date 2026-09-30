@@ -20,7 +20,7 @@ brew "herdr"                           # CLI for herding/aggregating processes o
 brew "hunk"                            # Git hunk management and diff tooling
 brew "glow"                            # Markdown renderer for the terminal
 brew "googleworkspace-cli"             # Google Workspace CLI
-brew "httpie"                          # User-friendly HTTP client
+brew "xh"                              # HTTP client (httpie replacement)
 brew "jq"                              # JSON processor
 brew "jump"                            # Quick directory navigation
 brew "just"                            # Command runner
