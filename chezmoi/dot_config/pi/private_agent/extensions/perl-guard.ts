@@ -19,12 +19,8 @@ function executedPrograms(command: string): string[] {
 }
 
 const REASON =
-	"Blocked: sed/awk are not allowed here. Use perl one-liners instead: " +
-	"`perl -pe 's/old/new/g'` substitutes, " +
-	"`perl -ne 'print if 100..200'` selects a line range, " +
-	"`perl -lane 'print $F[1]'` extracts fields (awk-style; whitespace split by " +
-	"default, add -F: for another separator), " +
-	"`perl -i -pe 's/old/new/' file` edits in place.";
+	"Blocked: sed/awk are not allowed here. Use perl one-liners. " +
+	"Run `perl -h` to check syntax.";
 
 export default function (pi: ExtensionAPI) {
 	pi.on("tool_call", async (event) => {
