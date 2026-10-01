@@ -1,5 +1,8 @@
 // Blocks curl/wget in agent bash calls, points the model at xh.
 //
+// shell-quote is already inside pi's own dependency tree (@anthropic-ai/
+// sandbox-runtime uses it), so this adds no new supply-chain surface.
+//
 // Parsing uses shell-quote's quote-aware tokenizer (self-contained copy
 // shared with perl-guard.ts, so each guard stays independent): quoted
 // operators stay inside string tokens (curl 's/a|b/' stays a single token),

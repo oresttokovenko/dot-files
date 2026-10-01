@@ -2,6 +2,9 @@
 // Perl is a complete superset of both (substitution, line addressing, field
 // splits, in-place editing, full PCRE).
 //
+// shell-quote is already inside pi's own dependency tree (@anthropic-ai/
+// sandbox-runtime uses it), so this adds no new supply-chain surface.
+//
 // Parsing uses shell-quote's quote-aware tokenizer: quoted operators stay
 // inside string tokens (sed 's/a|b/c/' stays a single token), operators
 // arrive as {op} objects, and $(...) exposes inner programs as tokens.
