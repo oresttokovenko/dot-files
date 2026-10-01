@@ -5,6 +5,9 @@
 // Parsing uses shell-quote's quote-aware tokenizer: quoted operators stay
 // inside string tokens (sed 's/a|b/c/' stays a single token), operators
 // arrive as {op} objects, and $(...) exposes inner programs as tokens.
+// Cost: ~2-5 µs per call (measured 1.7-5.3 µs across command shapes, 10k
+// iterations each) — 0.01% of the child-process spawn each bash call pays;
+// ~15 ms total across a 3,000-call session.
 // Residual gaps by design: xargs, bash -lc "sed ...", find -exec, eval —
 // deeper shell parsing only if that ever matters.
 import * as shellQuoteParseModule from "shell-quote/parse";
