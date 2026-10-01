@@ -10,13 +10,8 @@ const BLOCKED =
 	/^\s*(?:(?:env|sudo|nohup|time|nice)\s+)*(?:\S*\/)?(?:curl|wget)\b/;
 
 const REASON =
-	"Blocked: curl/wget are not allowed here. Use xh (HTTPie-style syntax), " +
-	"which is installed. Examples:\n" +
-	"- xh GET https://example.com/api\n" +
-	"- xh POST https://example.com/api key:value-header field=value\n" +
-	"- xh DELETE https://example.com/api/1 Authorization:Bearer+xyz\n" +
-	"- echo '{\"json\":\"body\"}' | xh POST https://example.com/api --raw @-\n" +
-	"Query params use key==value, headers use key:value. Run `xh --help` for details.";
+	"Blocked: curl/wget are not allowed here. Use xh (HTTPie-style syntax). " +
+	"Run `xh help` to check syntax.";
 
 export default function (pi: ExtensionAPI) {
 	pi.on("tool_call", async (event) => {
