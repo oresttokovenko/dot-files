@@ -20,13 +20,14 @@ brew "herdr"                           # CLI for herding/aggregating processes o
 brew "hunk"                            # Git hunk management and diff tooling
 brew "glow"                            # Markdown renderer for the terminal
 brew "googleworkspace-cli"             # Google Workspace CLI
-brew "xh"                              # HTTP client (httpie replacement)
+brew "xh"                              # HTTP client, httpie replacement
 brew "jq"                              # JSON processor
 brew "jump"                            # Quick directory navigation
 brew "just"                            # Command runner
 brew "mas"                             # Mac App Store command line interface
 brew "meson"                           # Build system
 brew "pkl"                             # Apple's configuration language
+brew "prek"                            # Git hook manager (pre-commit compatible)
 brew "ripgrep"                         # Modern alternative for grep
 brew "skills"                          # Skill/task management CLI
 brew "rsync"                           # File synchronization tool
@@ -44,7 +45,7 @@ brew "gcc"                             # GNU Compiler Collection
 brew "llvm"                            # LLVM toolchain (clang, lldb - keg-only)
 
 # JavaScript / TypeScript
-brew "oven-sh/bun/bun"                 # JavaScript/TypeScript runtime (official tap)
+brew "bun"                             # JavaScript/TypeScript runtime
 brew "fnm"                             # Node.js version manager
 
 # Go
