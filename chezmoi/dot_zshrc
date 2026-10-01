@@ -184,5 +184,9 @@ command -v rbenv >/dev/null && eval "$(rbenv init - zsh)"
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
+# perlbrew (perl version manager) — set up by setup.sh; guarded because the
+# etc/bashrc file only exists after the installer + `perlbrew init` have run
+[[ -s "$HOME/perl5/perlbrew/etc/bashrc" ]] && source "$HOME/perl5/perlbrew/etc/bashrc"
+
 # Optional machine-local overrides
 [[ -r ~/.zshrc.local ]] && source ~/.zshrc.local

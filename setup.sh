@@ -31,6 +31,13 @@ InstallAmp() {
     curl -fsSL https://ampcode.com/install.sh | bash
 }
 
+# perlbrew: perl version manager. Installs to ~/perl5/perlbrew (not on PATH —
+# dot_zshrc sources its etc/bashrc). The installer needs a system perl to run.
+InstallPerlbrew() {
+    \curl -fsSL https://install.perlbrew.pl | bash
+    "$HOME/perl5/perlbrew/bin/perlbrew" init
+}
+
 InstallSdkman() {
     # The installer needs Bash 4+, which macOS's system Bash (3.2) predates;
     # Homebrew's Bash is installed above, so prefer it when present.
@@ -65,6 +72,11 @@ fi
 if [ ! -d "$HOME/.sdkman/bin" ]; then
     echo "Installing SDKMAN!..."
     InstallSdkman
+fi
+
+if [ ! -x "$HOME/perl5/perlbrew/bin/perlbrew" ]; then
+    echo "Installing perlbrew..."
+    InstallPerlbrew
 fi
 
 if [ ! -d "$HOME/pi-mono" ]; then
