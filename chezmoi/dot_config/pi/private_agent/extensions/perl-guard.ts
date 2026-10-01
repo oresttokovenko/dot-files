@@ -6,8 +6,8 @@ import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 // sed/awk almost always appear mid-pipeline (cat x | awk '{print $2}'), so a
 // first-token match like the xh guard would miss most usage. Instead, split on
 // pipeline/shell boundaries and check the executed program of each segment.
-// ponytail: segment split only — `bash -lc "sed ..."` or `xargs sed` slip
-// through; add deeper shell parsing if that matters.
+// Known ceiling: `bash -lc "sed ..."` or `xargs sed` slip through; add deeper
+// shell parsing if that matters.
 function executedPrograms(command: string): string[] {
 	return command
 		.split(/\|\||&&|\||;|\$\(|`|\(/)
