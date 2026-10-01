@@ -190,3 +190,14 @@ command -v rbenv >/dev/null && eval "$(rbenv init - zsh)"
 
 # Optional machine-local overrides
 [[ -r ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# Colima hosts its Docker socket outside the standard path; Testcontainers & co.
+# only check $DOCKER_HOST and /var/run/docker.sock, never docker contexts.
+export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
+# Ryuk/Testcontainers mounts the socket by its host path, but inside the Colima VM
+# the socket lives at /var/run/docker.sock.
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
