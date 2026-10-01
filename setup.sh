@@ -79,6 +79,13 @@ if [ ! -x "$HOME/perl5/perlbrew/bin/perlbrew" ]; then
     InstallPerlbrew
 fi
 
+# Pi extensions (tool guards) use npm deps via a package.json next to the
+# extension files; node_modules is not synced by chezmoi, so install here.
+if [ -d "$HOME/.config/pi/agent/extensions" ]; then
+    echo "Installing pi extension dependencies..."
+    (cd "$HOME/.config/pi/agent/extensions" && npm install --no-fund --no-audit --silent)
+fi
+
 if [ ! -d "$HOME/pi-mono" ]; then
     echo "Installing Pi..."
     InstallPi
