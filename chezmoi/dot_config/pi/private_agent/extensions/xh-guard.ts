@@ -1,8 +1,8 @@
 // Blocks curl/wget in agent bash calls, points the model at xh.
 //
-// Parsing uses shell-quote's quote-aware tokenizer (self-contained copy shared
-// with perl-guard.ts — each guard is intentionally independent): quoted
-// operators stay inside string tokens (curl 's/a|b/' does not mis-split),
+// Parsing uses shell-quote's quote-aware tokenizer (self-contained copy
+// shared with perl-guard.ts, so each guard stays independent): quoted
+// operators stay inside string tokens (curl 's/a|b/' stays a single token),
 // operators arrive as {op} objects, and $(...) exposes inner programs as
 // tokens. Residual gaps by design: xargs, bash -lc "curl ...", find -exec,
 // eval — deeper shell parsing only if that ever matters.

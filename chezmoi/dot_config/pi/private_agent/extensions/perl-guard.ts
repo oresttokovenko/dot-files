@@ -2,11 +2,11 @@
 // Perl is a complete superset of both (substitution, line addressing, field
 // splits, in-place editing, full PCRE).
 //
-// Parsing uses shell-quote's quote-aware tokenizer instead of hand-rolled
-// splitting: quoted operators stay inside string tokens (sed 's/a|b/c/' does
-// not mis-split), operators arrive as {op} objects, and $(...) exposes inner
-// programs as tokens. Residual gaps by design: xargs, bash -lc "sed ...",
-// find -exec, eval — deeper shell parsing only if that ever matters.
+// Parsing uses shell-quote's quote-aware tokenizer: quoted operators stay
+// inside string tokens (sed 's/a|b/c/' stays a single token), operators
+// arrive as {op} objects, and $(...) exposes inner programs as tokens.
+// Residual gaps by design: xargs, bash -lc "sed ...", find -exec, eval —
+// deeper shell parsing only if that ever matters.
 import * as shellQuoteParseModule from "shell-quote/parse";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
