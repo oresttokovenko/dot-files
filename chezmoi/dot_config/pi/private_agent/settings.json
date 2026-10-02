@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.87.1",
+  "lastChangelogVersion": "1.0.0",
   "theme": "dark-custom",
   "defaultProvider": "opencode-go",
   "defaultModel": "glm-5.3-flash",
@@ -14,14 +14,14 @@
   ],
   "packages": [
     "npm:pi-vimmode",
-    "npm:pi-subagents",
     "npm:@xynogen/pix-gate",
     "npm:@narumitw/pi-starship",
     "npm:pi-session-summary",
     "npm:pi-copy-message",
     "npm:pi-effort",
     "npm:pi-autoresearch",
-    "npm:@dietrichgebert/ponytail"
+    "npm:@dietrichgebert/ponytail",
+    "git:github.com/nicobailon/pi-subagents"
   ],
   "piVimMode": {
     "preset": "prompt-safe",
