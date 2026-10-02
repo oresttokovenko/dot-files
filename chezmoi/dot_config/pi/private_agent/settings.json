@@ -6,6 +6,12 @@
   "defaultThinkingLevel": "max",
   "quietStartup": true,
   "doubleEscapeAction": "none",
+  "extensions": [
+    "-builtin:mcp",
+    "-builtin:codemode",
+    "-builtin:tool-search",
+    "-builtin:llama.cpp"
+  ],
   "packages": [
     "npm:pi-vimmode",
     "npm:pi-subagents",
