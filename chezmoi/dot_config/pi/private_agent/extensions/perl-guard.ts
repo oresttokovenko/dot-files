@@ -1,6 +1,7 @@
-// Blocks sed/awk in agent bash calls, points the model at perl one-liners.
-// Perl is a complete superset of both (substitution, line addressing, field
-// splits, in-place editing, full PCRE).
+// Blocks sed/awk/python in agent bash calls, points the model at perl.
+// Perl is a complete superset of sed and awk (substitution, line addressing,
+// field splits, in-place editing, full PCRE) and replaces python for the
+// inline data-extraction tasks agents generate in bash.
 //
 // shell-quote is already inside pi's own dependency tree (@anthropic-ai/
 // sandbox-runtime uses it), so this adds no new supply-chain surface.
@@ -32,6 +33,8 @@ const shellParse: (cmd: string) => unknown[] =
 			: (shellQuoteParseModule as unknown as (cmd: string) => unknown[]);
 
 const BLOCKED = new Set(["sed", "awk", "gawk", "mawk"]);
+
+const isPython = (p: string) => p === "python" || p === "python3" || /^python3\.\d+$/.test(p);
 
 // Programs under these wrappers are still the wrapper's argument being executed.
 const WRAPPERS = new Set(["sudo", "env", "nohup", "time", "nice", "command", "exec", "stdbuf"]);
@@ -81,14 +84,14 @@ export function executedPrograms(command: string): string[] {
 }
 
 const REASON =
-	"Blocked: sed/awk are not allowed here. Use perl one-liners. " +
-	"Run `perl -h` to check syntax.";
+	"Blocked: sed/awk/python are not allowed here. Use perl for text " +
+	"manipulation. Run `perl -h` to check syntax.";
 
 export default function (pi: ExtensionAPI) {
 	pi.on("tool_call", async (event) => {
 		if (event.toolName !== "bash") return undefined;
 		const command = String(event.input?.command ?? "").trim();
-		const blocked = executedPrograms(command).some((p) => BLOCKED.has(p));
+		const blocked = executedPrograms(command).some((p) => BLOCKED.has(p) || isPython(p));
 		if (!blocked) return undefined;
 		return { block: true, reason: REASON };
 	});
