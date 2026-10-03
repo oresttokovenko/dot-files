@@ -21,7 +21,7 @@
     "npm:pi-effort",
     "npm:pi-autoresearch",
     "npm:@dietrichgebert/ponytail",
-    "git:github.com/nicobailon/pi-subagents"
+    "npm:pi-subagents"
   ],
   "piVimMode": {
     "preset": "prompt-safe",
