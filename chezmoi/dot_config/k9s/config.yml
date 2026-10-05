@@ -1,0 +1,4 @@
+# k9s — watch-only usage. Editing, deletion, scaling and all other
+# cluster mutations are disabled; restart or override with care.
+k9s:
+  readOnly: true
