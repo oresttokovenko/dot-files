@@ -11,6 +11,7 @@ vim.g.db_adapter_duckdb = "db#adapter#duckdb_custom#"
 -- (exported from ~/.zshrc.local, the machine-local env layer).
 -- Template for other connections (see the commented block below).
 vim.g.db_ui_env_variable_url = "DATABASE_URL"
+vim.g.db_ui_env_variable_name = "polaris_poc" " display name for the env-var connection
 
 -- Completion for sql/mysql/plsql buffers
 local cmp = require("cmp")
