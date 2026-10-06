@@ -8,6 +8,7 @@ brew "chezmoi"                         # Manage your dotfiles across multiple ma
 brew "colima"                          # Container runtime for Docker or Containerd
 brew "docker"                          # Docker CLI (container platform)
 brew "docker-compose"                  # Docker multi-container orchestration
+brew "duckdb"                           # Analytical in-process SQL database (think SQLite for analytics)
 brew "lazydocker"                      # TUI for Docker / docker-compose (watch-only usage)
 brew "k9s"                              # Kubernetes TUI — read-only via dot_config/k9s/config.yml
 brew "eza"                             # Modern alternative for ls
