@@ -88,6 +88,7 @@ cask "caffeine"                        # Prevent sleep
 cask "chatgpt"                         # OpenAI ChatGPT desktop app
 cask "claude"                          # Anthropic Claude desktop app
 cask "cloudflare-warp"                 # Cloudflare WARP VPN client
+cask "datagrip"                         # JetBrains DataGrip — SQL IDE
 cask "discord"                         # Chat and voice
 cask "font-jetbrains-mono-nerd-font"   # Nerd Font for terminal/editor
 cask "font-sf-mono-nerd-font-ligaturized" # Nerd Font for terminal/editor
