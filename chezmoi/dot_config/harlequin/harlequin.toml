@@ -1,0 +1,40 @@
+# Harlequin global config (auto-loaded from this XDG path).
+#
+# Vim-style pane navigation layered over the default vscode keymap
+# (F2 editor / F5 results / F6 catalog / Tab cycle still work).
+#
+# Terminal reality check (verified against this textual version's parser):
+#   ctrl+j -> "ctrl+j"   (distinct from enter, which is CR)
+#   ctrl+k -> "ctrl+k"
+#   ctrl+l -> "ctrl+l"
+#   ctrl+h -> "backspace" in stock macOS terminals (0x08); "ctrl+h" only when
+#   the extended-keys protocol is on (iTerm2/kitty). Hence both spellings:
+#   jumps left in results/catalog panes, stays backspace inside the editor.
+# Ctrl+j fires on LF only, so Enter (CR) running queries is unaffected.
+#
+# Schema note: keymaps.<name> IS the bindings array, hence [[keymaps.vimish]].
+default_profile = "default"
+
+[profiles.default]
+theme = "atom-one-dark" # closest built-in to GitHub Dark Dimmed
+keymap_name = ["vscode", "vimish"]
+
+[[keymaps.vimish]]
+action = "focus_data_catalog"
+keys = "ctrl+h,backspace"
+key_display = "ctrl+h"
+
+[[keymaps.vimish]]
+action = "focus_results_viewer"
+keys = "ctrl+j"
+key_display = "ctrl+j"
+
+[[keymaps.vimish]]
+action = "focus_query_editor"
+keys = "ctrl+k"
+key_display = "ctrl+k"
+
+[[keymaps.vimish]]
+action = "focus_next"
+keys = "ctrl+l"
+key_display = "ctrl+l"
