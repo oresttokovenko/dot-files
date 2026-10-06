@@ -9,8 +9,8 @@ brew "colima"                          # Container runtime for Docker or Contain
 brew "docker"                          # Docker CLI (container platform)
 brew "docker-compose"                  # Docker multi-container orchestration
 brew "duckdb"                           # Analytical in-process SQL database (think SQLite for analytics)
-brew "lazydocker"                      # TUI for Docker / docker-compose (watch-only usage)
-brew "k9s"                              # Kubernetes TUI — read-only via dot_config/k9s/config.yml
+brew "lazydocker"                      # TUI for docker
+brew "k9s"                              # TUI for kubernetes
 brew "eza"                             # Modern alternative for ls
 brew "fastfetch"                       # System information tool
 brew "fd"                              # Modern alternative to find
