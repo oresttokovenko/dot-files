@@ -54,10 +54,6 @@ vim.pack.add({
   { src = "https://github.com/coder/claudecode.nvim", data = defer },
 
   -- Database
-  { src = "https://github.com/tpope/vim-dadbod" },
-  { src = "https://github.com/kristijanhusak/vim-dadbod-ui" },
-  { src = "https://github.com/kristijanhusak/vim-dadbod-completion" },
-
   -- Language Specific (deferred)
   { src = "https://github.com/mfussenegger/nvim-jdtls" },
   { src = "https://github.com/linux-cultist/venv-selector.nvim", data = defer },
@@ -83,7 +79,6 @@ require("plugins.ts-comments")
 require("plugins.amp")
 require("plugins.lazydev")
 require("plugins.nvim-cmp")
-require("plugins.dadbod")
 require("plugins.oil")
 require("plugins.lint")
 -- Deferred plugins (loaded on demand for faster startup)
