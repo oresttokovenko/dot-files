@@ -64,6 +64,12 @@ InstallObsidianWiki() {
     obsidian-wiki setup --vault "$HOME/Development/wiki"
 }
 
+InstallHarlequin() {
+    # Merges the Snowflake and Databricks adapters into the harlequin tool env.
+    # --with into an existing install adds the adapter deps in place.
+    uv tool install --upgrade --with harlequin-snowflake --with harlequin-databricks harlequin
+}
+
 if ! command -v amp >/dev/null 2>&1; then
     echo "Installing Amp..."
     InstallAmp
@@ -94,4 +100,11 @@ fi
 if ! command -v obsidian-wiki >/dev/null 2>&1; then
     echo "Installing obsidian-wiki..."
     InstallObsidianWiki
+fi
+
+# Guard on the adapter (not the binary): harlequin alone can exist without
+# adapters; re-running with --with/--upgrade merges them in.
+if ! uv tool list 2>/dev/null | grep -q harlequin-snowflake; then
+    echo "Installing harlequin (with snowflake + databricks adapters)..."
+    InstallHarlequin
 fi
