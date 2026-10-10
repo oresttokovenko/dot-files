@@ -40,7 +40,7 @@ export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/.ripgreprc"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-export PATH="$HOME/.local/share/bob/nvim-bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/Library/Application Support/bob/nvim-bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
 # Deduplicate PATH while preserving first-occurrence order (re-sourcing accumulates)
