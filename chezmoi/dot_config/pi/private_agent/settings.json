@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.0.0",
+  "lastChangelogVersion": "1.0.4",
   "theme": "dark-custom",
   "defaultProvider": "opencode-go",
   "defaultModel": "glm-5.3-flash",
@@ -70,6 +70,29 @@
       "worker": {
         "model": "opencode-go/glm-5.3-flash",
         "thinking": "max"
+      }
+    },
+    "agentOverridesByProvider": {
+      "zai": {
+        "scout": {
+          "model": "zai/glm-5.3-flash",
+          "thinking": "off"
+        },
+        "researcher": {
+          "model": "zai/glm-5.3"
+        },
+        "reviewer": {
+          "model": "zai/glm-5.3",
+          "thinking": "medium"
+        },
+        "oracle": {
+          "model": "zai/glm-5.3",
+          "thinking": "max"
+        },
+        "worker": {
+          "model": "zai/glm-5.3-flash",
+          "thinking": "max"
+        }
       }
     }
   }
