@@ -43,6 +43,15 @@ local config = {
   capabilities = capabilities,
   settings = {
     java = {
+      -- jdtls's bundled annotation-processor model builder resolves
+      -- annotationProcessor configurations in a way Gradle 9.7's tooling API
+      -- forbids ("without an exclusive lock"), which aborts the whole import.
+      -- Disabled; reading code (definition/hover/completion) doesn't need APT.
+      import = {
+        gradle = {
+          annotationProcessing = { enabled = false },
+        },
+      },
       signatureHelp = { enabled = true },
       contentProvider = { preferred = "fernflower" },
       completion = {
