@@ -50,6 +50,11 @@ local config = {
       import = {
         gradle = {
           annotationProcessing = { enabled = false },
+          -- Polaris (and other multi-scala-version builds) register several
+          -- subprojects that share one directory; buildship refuses to sync
+          -- that build unless `idea.active` is set, the same flag IntelliJ
+          -- uses and the repo's settings.gradle.kts already responds to.
+          jvmArguments = { "-Didea.active=true" },
         },
       },
       signatureHelp = { enabled = true },
