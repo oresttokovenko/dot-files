@@ -8,6 +8,11 @@ vim.keymap.set("n", "<leader>x", "<cmd>x<CR>", { desc = "Save and quit" })
 vim.keymap.set("n", "<leader>Q", "<cmd>qa!<CR>", { desc = "Quit all (force)" })
 vim.keymap.set("n", "<leader>bd", "<cmd>bd!<CR>", { desc = "Delete buffer (force)" })
 
+-- Notifications (snacks.nvim notifier history; LazyVim-style <leader>un)
+vim.keymap.set("n", "<leader>un", function()
+  require("snacks").notifier.show_history()
+end, { desc = "Notification history" })
+
 -- LSP keymaps
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
