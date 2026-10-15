@@ -1,6 +1,9 @@
 local snacks = require("snacks")
 
+-- opts keys are opt-in: only modules passed here get enabled = true
+-- (notifier = {} hooks vim.notify + records history for <leader>un).
 snacks.setup({
+  notifier = {},
   indent = {
     indent = { char = "▏" },
     scope = { char = "▏" },
