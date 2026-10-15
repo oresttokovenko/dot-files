@@ -3,8 +3,7 @@ require("oil").setup({
   view_options = {
     show_hidden = true,
   },
-  -- Oil's stock s3 adapter shells out to `aws s3` — point it at the rustfs
-  -- PoC via the machine-local "rustfs" profile (~/.aws/config: creds +
-  -- endpoint_url). oil-s3://bucket123/ then browses object storage in-editor.
-  extra_s3_args = { "--profile", "rustfs" },
+  -- Oil's s3 adapter shells out to `aws s3` and inherits nvim's env —
+  -- launch nvim with AWS_PROFILE=<profile> (machine-local ~/.aws/config
+  -- carries region/endpoint_url/creds per profile). Profile-agnostic.
 })
