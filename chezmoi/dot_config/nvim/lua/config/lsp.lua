@@ -29,6 +29,7 @@ local ensure_installed = {
   "helm-ls",
   "clangd",
   "just-lsp",
+  "gradle-language-server",
   "docker-compose-language-service",
   "gh-actions-language-server",
   "mdx-analyzer",
@@ -84,6 +85,7 @@ require("lsp.terraformls")
 require("lsp.helm_ls")
 require("lsp.clangd")
 require("lsp.just")
+require("lsp.gradle_ls")
 require("lsp.docker_compose_language_service")
 -- OCaml LSP - only load if available (installed via opam)
 local ok, _ = pcall(require, "lsp.ocamllsp")
