@@ -54,6 +54,10 @@ local config = {
           -- subprojects that share one directory; buildship refuses to sync
           -- that build unless `idea.active` is set, the same flag IntelliJ
           -- uses and the repo's settings.gradle.kts already responds to.
+          -- Passed as an invocation argument (-D reaches the settings phase
+          -- on a reused daemon); jvmArguments alone did not, because
+          -- GradleConnector.connect never carries them.
+          arguments = { "-Didea.active=true" },
           jvmArguments = { "-Didea.active=true" },
         },
       },
