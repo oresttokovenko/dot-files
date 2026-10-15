@@ -1,26 +1,8 @@
-vim.lsp.enable("gradle_ls")
-
--- lspconfig ships gradle_ls with filetypes = { "groovy" }, so only plain
--- `*.gradle` files auto-attach. Kotlin-DSL builds use `*.gradle.kts`, which
--- nvim filetype-maps to `kotlin`; adding `kotlin` to the server config's
--- filetypes would pull gradle_ls onto ordinary .kt sources
--- beside kotlin_language_server, so attach manually for those buffers only.
--- Works for any checkout whose root holds settings.gradle or build.gradle.
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "kotlin",
-  desc = "gradle_ls on Gradle build scripts",
-  callback = function(args)
-    if not args.file:match("%.gradle%.kts$") then
-      return
-    end
-    local buf = args.buf
-    if #vim.lsp.get_clients({ bufnr = buf, name = "gradle_ls" }) > 0 then
-      return
-    end
-    local config = vim.lsp.config["gradle_ls"]
-    if not config then
-      return
-    end
-    vim.lsp.start(config, { bufnr = buf, _root_markers = config.root_markers })
-  end,
-})
+-- gradle_ls is parked: the mason-provided vscode-gradle VSIX (3.17.3) hosts an
+-- LSP-over-named-pipe architecture that the VS Code extension drives itself;
+-- its GradleLanguageServer throws IllegalStateException on any transport but a
+-- pipe ("Error initializing the named pipe"), so vim.lsp has no stdio server
+-- to attach to and lspconfig's gradle_ls recipe no longer matches the package.
+-- Revisit once mason ships a stdio-capable build (or build the server from
+-- microsoft/vscode-gradle per lspconfig's docstring and re-enable below).
+-- vim.lsp.enable("gradle_ls")
