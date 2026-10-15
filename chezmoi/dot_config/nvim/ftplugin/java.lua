@@ -43,22 +43,12 @@ local config = {
   capabilities = capabilities,
   settings = {
     java = {
-      -- jdtls's bundled annotation-processor model builder resolves
-      -- annotationProcessor configurations in a way Gradle 9.7's tooling API
-      -- forbids ("without an exclusive lock"), which aborts the whole import.
-      -- Disabled; reading code (definition/hover/completion) doesn't need APT.
+      -- Flag mirror for runtime updates only (didChangeConfiguration after
+      -- attach); jdt.ls reads import-time settings solely from
+      -- init_options.settings below.
       import = {
         gradle = {
           annotationProcessing = { enabled = false },
-          -- Polaris (and other multi-scala-version builds) register several
-          -- subprojects that share one directory; buildship refuses to sync
-          -- that build unless `idea.active` is set, the same flag IntelliJ
-          -- uses and the repo's settings.gradle.kts already responds to.
-          -- Passed as an invocation argument (-D reaches the settings phase
-          -- on a reused daemon); jvmArguments alone did not, because
-          -- GradleConnector.connect never carries them.
-          arguments = { "-Didea.active=true" },
-          jvmArguments = { "-Didea.active=true" },
         },
       },
       signatureHelp = { enabled = true },
@@ -94,6 +84,15 @@ local config = {
         import = {
           gradle = {
             annotationProcessing = { enabled = false },
+            -- Polaris and other multi-scala-version builds register several
+            -- subprojects that share one directory; buildship refuses to sync
+            -- that build unless `idea.active` is set, the flag IntelliJ sets
+            -- itself and the repo's settings.gradle.kts already responds to.
+            -- Delivered via `arguments` (TAPI withArguments): verified to
+            -- reach providers.systemProperty in the settings phase even on a
+            -- reused daemon. Do NOT pass it as jvmArguments: TAPI would spawn
+            -- a daemon with only those opts, dropping the project's 4g heap.
+            arguments = { "-Didea.active=true" },
           },
         },
       },
