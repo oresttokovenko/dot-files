@@ -76,6 +76,19 @@ local config = {
   },
   init_options = {
     bundles = bundles,
+    -- jdt.ls reads client settings ONLY from initializationOptions.settings at
+    -- initialize (BaseInitHandler SETTINGS_KEY); the import job starts before
+    -- the follow-up didChangeConfiguration lands, so the annotation-processing
+    -- flag must ride here to reliably disable the failing APT model build.
+    settings = {
+      java = {
+        import = {
+          gradle = {
+            annotationProcessing = { enabled = false },
+          },
+        },
+      },
+    },
   },
 }
 
