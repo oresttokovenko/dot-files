@@ -8,7 +8,7 @@ vim.lsp.enable("gradle_ls")
 -- Works for any checkout whose root holds settings.gradle or build.gradle.
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "kotlin",
-  description = "gradle_ls on Gradle build scripts",
+  desc = "gradle_ls on Gradle build scripts",
   callback = function(args)
     if not args.file:match("%.gradle%.kts$") then
       return
