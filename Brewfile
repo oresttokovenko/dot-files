@@ -1,5 +1,7 @@
 # CLI Tools
 brew "awscli"                          # AWS command line interface
+brew "avro-tools"                       # Apache Avro CLI — dumps Iceberg metadata files (manifests) to JSON
+brew "parquet-cli"                        # Apache Parquet CLI — rows/schema/metadata for parquet files
 brew "bat"                             # cat with syntax highlighting
 brew "bob"                             # Neovim version manager
 brew "btop"                            # Resource monitor (CPU, memory, etc.)
