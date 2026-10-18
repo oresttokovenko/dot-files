@@ -54,7 +54,7 @@ copying the base fleet across, and do not record the approved vendors here.
 The repo root is a plain git repository, not the chezmoi source root:
 
 - `chezmoi/` — the actual chezmoi source tree (see `.chezmoiroot`); target paths are relative to it
-- `Brewfile`, `personal.Brewfile`, `work.Brewfile` — Homebrew bundles (see below)
+- `Brewfile`, `Brewfile.personal`, `Brewfile.work` — Homebrew bundles (see below)
 - `setup.sh` — new-machine bootstrap: installs Homebrew, runs `brew bundle --file=Brewfile`, installs amp (curl) and pi
 - `sync.sh` — pulls drift from `$HOME` back into the source (`chezmoi re-add`)
 - `macos.sh` — macOS defaults / configuration script
@@ -185,7 +185,7 @@ Need more? Add an empty include hook to the base (for example, `.ssh/config.d/*`
 | File | Owner | Notes |
 |------|-------|-------|
 | `Brewfile` | Base | Shared tools and apps for every machine; installed by `setup.sh` |
-| `personal.Brewfile` | Personal | Personal-only apps |
-| `work.Brewfile` | Base repo | Work-only tools; NOT installed by `setup.sh` — run `brew bundle --file=work.Brewfile` manually on work machines |
+| `Brewfile.personal` | Personal | Personal-only apps |
+| `Brewfile.work` | Base repo | Work-only tools; NOT installed by `setup.sh` — run `brew bundle --file=Brewfile.work` manually on work machines |
 
 `setup.sh` runs `brew bundle --file=Brewfile` only. Work packages live in this repo so work machines pull them with the same dotfiles clone; there is no separate work repository (yet).
