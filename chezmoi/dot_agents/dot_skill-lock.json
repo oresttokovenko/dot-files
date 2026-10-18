@@ -1,5 +1,7 @@
 {
-  "dismissed": {},
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
   "skills": {
     "baseline-ui": {
       "installedAt": "2026-08-10T03:18:13.990Z",
@@ -420,10 +422,10 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/blader/humanizer.git",
       "skillPath": "SKILL.md",
-      "skillFolderHash": "225a6f39ac85f76ee48dbad772ea4abe4ed6c9d8",
+      "skillFolderHash": "8c307f367c91bd974002f10f2be2965d642c13df",
       "pluginName": "humanizer",
       "installedAt": "2026-08-10T03:18:15.711Z",
-      "updatedAt": "2026-10-09T16:25:03.094Z"
+      "updatedAt": "2026-10-18T01:17:52.831Z"
     },
     "json-canvas": {
       "installedAt": "2026-09-12T23:28:59.626Z",
@@ -448,9 +450,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/mvanhorn/last30days-skill.git",
       "skillPath": "skills/last30days/SKILL.md",
-      "skillFolderHash": "d750bf6df905e3fff6457a15fa953944a2b6f11e",
+      "skillFolderHash": "7cd6523b6c39cd5f349f4b57b5c69b16c54e943e",
       "installedAt": "2026-09-12T23:28:20.115Z",
-      "updatedAt": "2026-10-09T16:25:07.646Z"
+      "updatedAt": "2026-10-18T01:17:57.546Z"
     },
     "obsidian-bases": {
       "installedAt": "2026-09-12T23:28:59.627Z",
@@ -964,7 +966,40 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/rohunvora/x-research-skill.git",
       "updatedAt": "2026-08-10T03:18:17.189Z"
+    },
+    "anatomy": {
+      "source": "wheresryan22/anatomy",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wheresryan22/anatomy.git",
+      "skillPath": "SKILL.md",
+      "skillFolderHash": "e9488296a44211c42701ff71705b7901470ec78f",
+      "installedAt": "2026-10-11T19:43:24.733Z",
+      "updatedAt": "2026-10-18T01:18:01.160Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "76a98a285cb0434f3d39e1a873823556330e398b",
+      "installedAt": "2026-10-11T19:43:31.244Z",
+      "updatedAt": "2026-10-11T19:43:31.244Z"
     }
   },
-  "version": 3
+  "version": 3,
+  "lastSelectedAgents": [
+    "amp",
+    "cline",
+    "codex",
+    "cursor",
+    "droid",
+    "gemini-cli",
+    "github-copilot",
+    "kilo",
+    "kimi-code-cli",
+    "opencode",
+    "pi",
+    "warp",
+    "zed"
+  ]
 }
