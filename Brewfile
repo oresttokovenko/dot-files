@@ -8,9 +8,9 @@ brew "chezmoi"                         # Manage your dotfiles across multiple ma
 brew "colima"                          # Container runtime for Docker or Containerd
 brew "docker"                          # Docker CLI (container platform)
 brew "docker-compose"                  # Docker multi-container orchestration
-brew "duckdb"                           # Analytical in-process SQL database (think SQLite for analytics)
+brew "duckdb"                          # Analytical in-process SQL database (think SQLite for analytics)
 brew "lazydocker"                      # TUI for docker
-brew "k9s"                              # TUI for kubernetes
+brew "k9s"                             # TUI for kubernetes
 brew "eza"                             # Modern alternative for ls
 brew "fastfetch"                       # System information tool
 brew "fd"                              # Modern alternative to find
@@ -88,7 +88,7 @@ cask "caffeine"                        # Prevent sleep
 cask "chatgpt"                         # OpenAI ChatGPT desktop app
 cask "claude"                          # Anthropic Claude desktop app
 cask "cloudflare-warp"                 # Cloudflare WARP VPN client
-cask "datagrip"                         # JetBrains DataGrip — SQL IDE
+cask "datagrip"                        # JetBrains DataGrip — SQL IDE
 cask "discord"                         # Chat and voice
 cask "font-jetbrains-mono-nerd-font"   # Nerd Font for terminal/editor
 cask "font-sf-mono-nerd-font-ligaturized" # Nerd Font for terminal/editor

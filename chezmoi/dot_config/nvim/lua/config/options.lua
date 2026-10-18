@@ -24,6 +24,12 @@ vim.opt.wrap = false
 -- Register .mdx files as the "mdx" filetype
 vim.filetype.add({ extension = { mdx = "mdx" } })
 
+-- Brewfiles are Ruby DSL: base file by name, variants by .Brewfile extension
+vim.filetype.add({
+  filename = { ["Brewfile"] = "ruby" },
+  extension = { Brewfile = "ruby" },
+})
+
 -- Splits
 vim.opt.splitright = true
 vim.opt.splitbelow = true
