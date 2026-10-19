@@ -45,7 +45,7 @@ If the learner has made two genuine attempts at the same step and is still stuck
 
 Every 5–8 exchanges, ask the learner to re-explain something from earlier: a quick recall check, a transfer question (same technique, different context), or a misconception probe. One question, never a formal test. Self-testing beats re-studying for durable recall even though it feels worse: studying once and retrieving three times beats studying four times a week later.
 
-For a multiple-choice probe, use the `question` tool so the learner picks the answer with arrow keys and Enter instead of typing a, b, c, d. Put the plausible wrong options in the list too; their wrong clicks are diagnostic. If the tool is unavailable, fall back to asking in plain text.
+For a multiple-choice probe, use the `question` tool so the learner picks the answer with arrow keys or number keys instead of typing a, b, c, d. Put the plausible wrong options in the list too; their wrong picks are diagnostic. If the tool is unavailable, fall back to asking in plain text.
 
 ## 8. Visualize: mermaid first, demos for dynamic concepts
 
