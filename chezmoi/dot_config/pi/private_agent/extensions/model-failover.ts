@@ -12,24 +12,17 @@ import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 const VM_PROVIDER = "failover";
 const THINKING_LEVELS = ["off", "minimal", "low", "medium", "high", "xhigh", "max"] as const;
 
-// Quota/billing errors that core deliberately will not retry. pi-ai composes
-// provider errors into the string `${status}: ${body}` before they reach these
-// hooks, so match the parsed error envelope first. OpenCode's Zen API marks
-// subscription limits with structured `error.type` values (GoUsageLimitError,
-// FreeUsageLimitError, 429); other providers surface codes like
-// insufficient_quota. Plain-text errors (Anthropic/Google SDKs fold the body
-// into the message) fall back to the legacy text pattern.
-// pi-ai surfaces provider errors only as text, composed differently per adapter:
+// Quota detection for tripping the failover. pi-ai surfaces provider errors to
+// these hooks only as text, composed differently per adapter:
 // openai-completions → `${status}: ${json-body}`; the anthropic SDK folds the
-// body into error.message (e.g. `429 - {"type":"error","error":{...}}`). So find
-// the embedded JSON object wherever it sits, then match the structured error
-// type — OpenCode's Zen API marks the Go subscription limit with
-// {"type":"GoUsageLimitError"} (flat, openai-completions route) or the same
-// type inside the {"type":"error","error":{...}} envelope (anthropic route).
-// Limitation: a body followed by appended text (pi-ai appends
-// `\n${rawMetadata}` for OpenRouter-style bodies) makes JSON.parse fail —
-// acceptable because opencode-go bodies carry no metadata.raw (verified from
-// the user's own session logs).
+// body into error.message (e.g. `429 - {"type":"error","error":{...}}`). Find
+// the embedded JSON object wherever it sits, then match the one error that
+// means the opencode-go Go subscription limit is exhausted:
+// {"type":"GoUsageLimitError"} flat (openai route) or inside the
+// {"type":"error","error":{...}} envelope (anthropic route). Limitation: a
+// body followed by appended text (pi-ai appends `\n${rawMetadata}` for
+// OpenRouter-style bodies) makes JSON.parse fail — acceptable because
+// opencode-go bodies carry no metadata.raw (verified from session logs).
 function isQuotaError(text: string): boolean {
   const json = /\{.*\}/.exec(text)?.[0];
   if (!json) return false;
@@ -55,12 +48,8 @@ type Spec = {
   maxTokens: number;
 };
 
-// Artificial Analysis intelligence index / coding index as of 2026-10-19. Contributor
-// and free tiers (gemini-4-argon-contributor, muse-spark-1.3-contributor) are left out:
-// they need the train-on-request-data opt-in, which is off.
 const SPECS: Spec[] = [
   {
-    // 45.1 / coding n/a, 213 tok/s, 10s to first answer: fast workhorse tier.
     id: "deepseek-flash",
     name: "DeepSeek V4.1 Flash → GLM-5.3-Flash",
     primary: { provider: "opencode-go", id: "deepseek-v4.1-flash" },
@@ -69,8 +58,6 @@ const SPECS: Spec[] = [
     maxTokens: 384_000,
   },
   {
-    // 44.8 / 74.8, best Terminal-Bench v4.0 (41.9%) and tau-banking of the pool:
-    // long agentic tool loops.
     id: "glm",
     name: "GLM-5.3 → GLM-5.3",
     primary: { provider: "opencode-go", id: "glm-5.3" },
@@ -79,7 +66,6 @@ const SPECS: Spec[] = [
     maxTokens: 131_072,
   },
   {
-    // 45.4 / 76.2, GPQA 92.8%: code review and second opinions.
     id: "qwen-max",
     name: "Qwen3.8 Max → GLM-5.3",
     primary: { provider: "opencode-go", id: "qwen3.8-max" },
@@ -88,7 +74,6 @@ const SPECS: Spec[] = [
     maxTokens: 131_072,
   },
   {
-    // 41.8 / 71.5: parent-session default.
     id: "glm-flash",
     name: "GLM-5.3-Flash → GLM-5.3-Flash",
     primary: { provider: "opencode-go", id: "glm-5.3-flash" },
