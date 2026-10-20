@@ -1,0 +1,23 @@
+#!/bin/sh
+# Re-runs when the brew rustup version changes (version comment below), so the
+# proxies stay pointed at the current rustup binary. The Brewfile installs
+# rustup, but brew's rustup neither provisions a toolchain nor lays the
+# cargo/rustc/rustdoc proxies on its own — without them rust-analyzer reports
+# "cargo not found" (observed 2026-10-20).
+# version: {{ output "sh" "-c" "command -v brew >/dev/null 2>&1 && brew list --versions rustup 2>/dev/null || echo none" | trim }}
+set -eu
+
+REAL="$(brew --prefix rustup 2>/dev/null)/libexec/bin/rustup"
+[ -x "$REAL" ] || { echo "rustup: brew rustup not installed; skipping proxies" >&2; exit 0; }
+
+BIN="$HOME/.cargo/bin"
+mkdir -p "$BIN"
+
+# Provision a default toolchain non-interactively if none exists yet (no-op
+# when one is already set).
+"$REAL" default stable --no-modify-path >/dev/null 2>&1 || true
+
+for name in cargo rustc rustdoc; do
+  cp -f "$REAL" "$BIN/$name"
+  chmod +x "$BIN/$name"
+done
