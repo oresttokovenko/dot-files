@@ -1,83 +1,146 @@
 /**
- * model-failover: virtual model "failover/glm-flash" that routes to
- * opencode-go/glm-5.3-flash and, when that provider's usage limit kills a
- * request, switches this conversation to zai/glm-5.3-flash.
+ * model-failover: virtual models under the `failover` provider. Each routes to an
+ * opencode-go model and, when that subscription's usage limit kills a request,
+ * switches this conversation to its zai counterpart.
  *
- * Load: user extensions dir (this file). Also eligible as a pi-subagents
- * requiredExtensions entry so child sessions get the same model.
+ * Load: user extensions dir (this file). pi-subagents children load ambient
+ * extensions, so agent overrides can pin `model: "failover/<id>"` and inherit the
+ * same routing.
  */
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
-const VM = { provider: "failover", id: "glm-flash" };
-const PRIMARY = { provider: "opencode-go", id: "glm-5.3-flash" };
-const FALLBACK = { provider: "zai", id: "glm-5.3-flash" };
+const VM_PROVIDER = "failover";
+const THINKING_LEVELS = ["off", "minimal", "low", "medium", "high", "xhigh", "max"] as const;
 
 // Mirrors pi core's NON_RETRYABLE_PROVIDER_LIMIT_ERROR_PATTERN: terminal
 // quota/billing errors that core deliberately will not retry.
 const QUOTA_ERROR =
   /GoUsageLimitError|FreeUsageLimitError|Monthly usage limit reached|available balance|insufficient_quota|out of budget|quota exceeded|billing|subscription_sharing_usage_limit_exceeded/i;
 
+type Target = { provider: string; id: string };
 type RouteState = { failover?: boolean };
 
+type Spec = {
+  /** Virtual model id: `failover/<id>`. */
+  id: string;
+  name: string;
+  primary: Target;
+  /** Keep inside one capability tier of the primary. */
+  fallback: Target;
+  contextWindow: number;
+  maxTokens: number;
+};
+
+// Artificial Analysis intelligence index / coding index as of 2026-10-19. Contributor
+// and free tiers (gemini-4-argon-contributor, muse-spark-1.3-contributor) are left out:
+// they need the train-on-request-data opt-in, which is off.
+const SPECS: Spec[] = [
+  {
+    // 45.1 / coding n/a, 213 tok/s, 10s to first answer: fast workhorse tier.
+    id: "deepseek-flash",
+    name: "DeepSeek V4.1 Flash → GLM-5.3-Flash",
+    primary: { provider: "opencode-go", id: "deepseek-v4.1-flash" },
+    fallback: { provider: "zai", id: "glm-5.3-flash" },
+    contextWindow: 1_000_000,
+    maxTokens: 384_000,
+  },
+  {
+    // 44.8 / 74.8, best Terminal-Bench v4.0 (41.9%) and tau-banking of the pool:
+    // long agentic tool loops.
+    id: "glm",
+    name: "GLM-5.3 → GLM-5.3",
+    primary: { provider: "opencode-go", id: "glm-5.3" },
+    fallback: { provider: "zai", id: "glm-5.3" },
+    contextWindow: 1_000_000,
+    maxTokens: 131_072,
+  },
+  {
+    // 45.4 / 76.2, GPQA 92.8%: code review and second opinions.
+    id: "qwen-max",
+    name: "Qwen3.8 Max → GLM-5.3",
+    primary: { provider: "opencode-go", id: "qwen3.8-max" },
+    fallback: { provider: "zai", id: "glm-5.3" },
+    contextWindow: 1_000_000,
+    maxTokens: 131_072,
+  },
+  {
+    // 41.8 / 71.5: parent-session default.
+    id: "glm-flash",
+    name: "GLM-5.3-Flash → GLM-5.3-Flash",
+    primary: { provider: "opencode-go", id: "glm-5.3-flash" },
+    fallback: { provider: "zai", id: "glm-5.3-flash" },
+    contextWindow: 1_000_000,
+    maxTokens: 131_072,
+  },
+];
+
 export default function (pi: ExtensionAPI) {
-  let tripped = false;
-  // Event-handler ctx lacks getModel in some modes; track selection instead.
-  let usingVM = false;
+  // Per virtual model: tripped = spending the fallback now, inUse = routed this
+  // process, so the settle hook only acts on conversations that use a virtual model.
+  const tripped = new Set<string>();
+  const inUse = new Set<string>();
+
   pi.on("model_select", (event) => {
-    // Reset when the user moves off the virtual model; route() re-arms it.
-    if (event.model.provider !== VM.provider || event.model.id !== VM.id) usingVM = false;
+    if (event.model.provider !== VM_PROVIDER) inUse.clear();
   });
 
-  pi.registerVirtualModel<RouteState>({
-    provider: VM.provider,
-    id: VM.id,
-    name: "GLM Flash failover (opencode-go → zai)",
-    thinkingLevels: ["off", "low", "medium", "high", "max"],
-    route(request, ctx) {
-      usingVM = true;
-      const find = (p: string, id: string) => ctx.modelRegistry.find(p, id);
+  for (const spec of SPECS) {
+    pi.registerVirtualModel<RouteState>({
+      provider: VM_PROVIDER,
+      id: spec.id,
+      name: spec.name,
+      thinkingLevels: [...THINKING_LEVELS],
+      contextWindow: spec.contextWindow,
+      maxTokens: spec.maxTokens,
+      route(request, ctx) {
+        inUse.add(spec.id);
+        const find = (target: Target) => ctx.modelRegistry.find(target.provider, target.id);
 
-      // A retried request whose failure looks like a quota error: switch now.
-      const failedError = request.failed?.message?.errorMessage ?? "";
-      const failOnRetry = request.reason === "retry" && QUOTA_ERROR.test(failedError);
-      if (process.env.MF_DEBUG) console.error("[MF] route reason=" + request.reason + " failOnRetry=" + failOnRetry + " tripped=" + tripped);
-      if (failOnRetry) tripped = true;
+        // A retried request whose failure looks like a quota error: switch now.
+        const failedError = request.failed?.message?.errorMessage ?? "";
+        const failOnRetry = request.reason === "retry" && QUOTA_ERROR.test(failedError);
+        if (process.env.MF_DEBUG)
+          console.error(
+            `[MF] ${spec.id} reason=${request.reason} failOnRetry=${failOnRetry} tripped=${tripped.has(spec.id)}`,
+          );
+        if (failOnRetry) tripped.add(spec.id);
 
-      const useFallback = tripped || request.state?.failover === true;
+        const useFallback = tripped.has(spec.id) || request.state?.failover === true;
 
-      // Keep continuations/retries sticky on the model that served the turn
-      // (prompt cache + thinking signatures), unless we must break away.
-      if (!failOnRetry && request.reason !== "user" && request.reason !== "direct") {
-        const sticky = request.failed?.model ?? request.previous?.model;
-        if (sticky && (!useFallback || sticky.provider !== PRIMARY.provider)) {
-          return {
-            model: sticky,
-            thinkingLevel: request.failed?.thinkingLevel ?? request.previous?.thinkingLevel ?? request.thinkingLevel,
-          };
+        // Keep continuations/retries sticky on the model that served the turn
+        // (prompt cache + thinking signatures), unless we must break away.
+        if (!failOnRetry && request.reason !== "user" && request.reason !== "direct") {
+          const sticky = request.failed?.model ?? request.previous?.model;
+          if (sticky && (!useFallback || sticky.provider !== spec.primary.provider)) {
+            return {
+              model: sticky,
+              thinkingLevel: request.failed?.thinkingLevel ?? request.previous?.thinkingLevel ?? request.thinkingLevel,
+            };
+          }
         }
-      }
 
-      const target = useFallback ? FALLBACK : PRIMARY;
-      const model = find(target.provider, target.id);
-      if (!model) {
-        // Registry gap: degrade to the other side rather than failing the request.
-        const alt = find(useFallback ? PRIMARY.provider : FALLBACK.provider, useFallback ? PRIMARY.id : FALLBACK.id);
-        if (alt) return { model: alt, thinkingLevel: request.thinkingLevel };
-        throw new Error(`model-failover: no physical model found for ${target.provider}/${target.id}`);
-      }
+        const target = useFallback ? spec.fallback : spec.primary;
+        const model = find(target);
+        if (!model) {
+          // Registry gap: degrade to the other side rather than failing the request.
+          const alt = find(useFallback ? spec.primary : spec.fallback);
+          if (alt) return { model: alt, thinkingLevel: request.thinkingLevel };
+          throw new Error(`model-failover: no physical model found for ${target.provider}/${target.id}`);
+        }
 
-      // Return state only when it changes (pi stores any returned object).
-      const nextState: RouteState | undefined =
-        (request.state?.failover ?? false) !== useFallback ? { failover: useFallback } : undefined;
-      return { model, thinkingLevel: request.thinkingLevel, state: nextState };
-    },
-  });
+        // Return state only when it changes (pi stores any returned object).
+        const nextState: RouteState | undefined =
+          (request.state?.failover ?? false) !== useFallback ? { failover: useFallback } : undefined;
+        return { model, thinkingLevel: request.thinkingLevel, state: nextState };
+      },
+    });
+  }
 
   // Core does not auto-retry quota errors, so route() never sees them as
   // "retry" requests. Detect the terminal error at settle time, trip the
   // router, and continue the run once — the next request routes to zai.
   pi.on("agent_before_settle", async (event) => {
-    if (event.outcome !== "error" || tripped || !usingVM) return;
+    if (event.outcome !== "error" || inUse.size === 0) return;
 
     const pool = [...(event.context?.pendingMessages ?? []), ...(event.context?.contextMessages ?? [])];
     const failed = [...pool]
@@ -86,12 +149,17 @@ export default function (pi: ExtensionAPI) {
       | { errorMessage?: string; provider?: string; model?: string }
       | undefined;
     if (!failed || !QUOTA_ERROR.test(failed.errorMessage ?? "")) return;
-    if (failed.provider !== PRIMARY.provider) return;
 
-    tripped = true;
+    // Assistant messages name the physical model, so the failure identifies its route.
+    const spec = SPECS.find(
+      (s) => s.primary.provider === failed.provider && s.primary.id === failed.model && !tripped.has(s.id),
+    );
+    if (!spec) return;
+
+    tripped.add(spec.id);
     pi.appendEntry("model-failover", {
       from: `${failed.provider}/${failed.model}`,
-      to: `${FALLBACK.provider}/${FALLBACK.id}`,
+      to: `${spec.fallback.provider}/${spec.fallback.id}`,
       at: new Date().toISOString(),
       error: failed.errorMessage,
     });
@@ -104,7 +172,7 @@ export default function (pi: ExtensionAPI) {
         content:
           "The previous provider hit a usage limit (quota error). Answer the user's pending request now.",
         display: true,
-        details: { failover: `${failed.provider} -> ${FALLBACK.provider}` },
+        details: { failover: `${failed.provider}/${failed.model} -> ${spec.fallback.provider}/${spec.fallback.id}` },
       },
       { triggerTurn: true },
     );
@@ -114,15 +182,17 @@ export default function (pi: ExtensionAPI) {
     description: "Show or reset model-failover state (/failover reset)",
     handler: async (args) => {
       if (args.trim() === "reset") {
-        tripped = false;
-        console.log("model-failover: tripped flag cleared (branch state resets on next user turn via route()).");
+        tripped.clear();
+        console.log("model-failover: tripped flags cleared (branch state resets on next user turn via route()).");
         return;
       }
       console.log(
-        `model-failover: virtual model ${VM.provider}/${VM.id}\n` +
-          `  primary : ${PRIMARY.provider}/${PRIMARY.id}\n` +
-          `  fallback: ${FALLBACK.provider}/${FALLBACK.id}\n` +
-          `  status  : ${tripped ? "TRIPPED — routing to fallback for new turns" : "healthy — routing to primary"}`,
+        `model-failover: virtual models under ${VM_PROVIDER}/\n` +
+          SPECS.map(
+            (s) =>
+              `  ${s.id.padEnd(16)} ${s.primary.provider}/${s.primary.id} -> ${s.fallback.provider}/${s.fallback.id}` +
+              (tripped.has(s.id) ? "  [TRIPPED: using fallback]" : ""),
+          ).join("\n"),
       );
     },
   });
