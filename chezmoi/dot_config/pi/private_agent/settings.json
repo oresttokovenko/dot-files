@@ -1,8 +1,8 @@
 {
   "lastChangelogVersion": "1.3.0",
   "theme": "dark-custom",
-  "defaultProvider": "opencode-go",
-  "defaultModel": "failover/glm-flash",
+  "defaultProvider": "failover",
+  "defaultModel": "deepseek-flash",
   "defaultThinkingLevel": "max",
   "quietStartup": true,
   "doubleEscapeAction": "none",
@@ -77,36 +77,8 @@
       },
       "oracle": {
         "model": "failover/qwen-max",
-        "thinking": "max"
-      }
-    },
-    "agentOverridesByProvider": {
-      "zai": {
-        "scout": {
-          "model": "zai/glm-5.3-flash",
-          "thinking": "off"
-        },
-        "worker": {
-          "model": "zai/glm-5.3-flash",
-          "thinking": "max"
-        },
-        "delegate": {
-          "model": "zai/glm-5.3-flash"
-        },
-        "researcher": {
-          "model": "zai/glm-5.3"
-        },
-        "evidence-auditor": {
-          "model": "zai/glm-5.3"
-        },
-        "reviewer": {
-          "model": "zai/glm-5.3",
-          "thinking": "medium"
-        },
-        "oracle": {
-          "model": "zai/glm-5.3",
-          "thinking": "max"
-        }
+        "thinking": "max",
+        "defaultContext": "fresh"
       }
     }
   }

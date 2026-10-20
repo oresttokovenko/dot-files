@@ -12,10 +12,34 @@ import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 const VM_PROVIDER = "failover";
 const THINKING_LEVELS = ["off", "minimal", "low", "medium", "high", "xhigh", "max"] as const;
 
-// Mirrors pi core's NON_RETRYABLE_PROVIDER_LIMIT_ERROR_PATTERN: terminal
-// quota/billing errors that core deliberately will not retry.
-const QUOTA_ERROR =
-  /GoUsageLimitError|FreeUsageLimitError|Monthly usage limit reached|available balance|insufficient_quota|out of budget|quota exceeded|billing|subscription_sharing_usage_limit_exceeded/i;
+// Quota/billing errors that core deliberately will not retry. pi-ai composes
+// provider errors into the string `${status}: ${body}` before they reach these
+// hooks, so match the parsed error envelope first. OpenCode's Zen API marks
+// subscription limits with structured `error.type` values (GoUsageLimitError,
+// FreeUsageLimitError, 429); other providers surface codes like
+// insufficient_quota. Plain-text errors (Anthropic/Google SDKs fold the body
+// into the message) fall back to the legacy text pattern.
+// pi-ai surfaces provider errors only as text, composed differently per adapter:
+// openai-completions → `${status}: ${json-body}`; the anthropic SDK folds the
+// body into error.message (e.g. `429 - {"type":"error","error":{...}}`). So find
+// the embedded JSON object wherever it sits, then match the structured error
+// type — OpenCode's Zen API marks the Go subscription limit with
+// {"type":"GoUsageLimitError"} (flat, openai-completions route) or the same
+// type inside the {"type":"error","error":{...}} envelope (anthropic route).
+// Limitation: a body followed by appended text (pi-ai appends
+// `\n${rawMetadata}` for OpenRouter-style bodies) makes JSON.parse fail —
+// acceptable because opencode-go bodies carry no metadata.raw (verified from
+// the user's own session logs).
+function isQuotaError(text: string): boolean {
+  const json = /\{.*\}/.exec(text)?.[0];
+  if (!json) return false;
+  try {
+    const parsed = JSON.parse(json);
+    return parsed?.type === "GoUsageLimitError" || parsed?.error?.type === "GoUsageLimitError";
+  } catch {
+    return false;
+  }
+}
 
 type Target = { provider: string; id: string };
 type RouteState = { failover?: boolean };
@@ -98,7 +122,7 @@ export default function (pi: ExtensionAPI) {
 
         // A retried request whose failure looks like a quota error: switch now.
         const failedError = request.failed?.message?.errorMessage ?? "";
-        const failOnRetry = request.reason === "retry" && QUOTA_ERROR.test(failedError);
+        const failOnRetry = request.reason === "retry" && isQuotaError(failedError);
         if (process.env.MF_DEBUG)
           console.error(
             `[MF] ${spec.id} reason=${request.reason} failOnRetry=${failOnRetry} tripped=${tripped.has(spec.id)}`,
@@ -148,7 +172,7 @@ export default function (pi: ExtensionAPI) {
       .find((m) => m.role === "assistant" && (m as { stopReason?: string }).stopReason === "error") as
       | { errorMessage?: string; provider?: string; model?: string }
       | undefined;
-    if (!failed || !QUOTA_ERROR.test(failed.errorMessage ?? "")) return;
+    if (!failed || !isQuotaError(failed.errorMessage ?? "")) return;
 
     // Assistant messages name the physical model, so the failure identifies its route.
     const spec = SPECS.find(
