@@ -18,7 +18,7 @@ local ensure_installed = {
   "typescript-language-server",
   "kotlin-language-server",
   "gopls",
-  "sqlls",
+  "sqruff",
   "rust-analyzer",
   "bash-language-server",
   "yaml-language-server",
@@ -74,7 +74,7 @@ require("lsp.cssls")
 require("lsp.ts_ls")
 require("lsp.kotlin_language_server")
 require("lsp.gopls")
-require("lsp.sqlls")
+require("lsp.sqruff")
 require("lsp.rust_analyzer")
 require("lsp.bashls")
 require("lsp.yamlls")
