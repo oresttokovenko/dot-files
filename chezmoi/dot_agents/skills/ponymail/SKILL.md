@@ -1,108 +1,54 @@
 ---
 name: ponymail
-description: Manual skill — fetch and summarize mailing-list discussions for any Apache project from Apache Pony Mail (lists.apache.org). Use when the user explicitly asks to pull dev@ discussions, latest threads, mailing list digest, or export an mbox for an Apache project (e.g. "what's being discussed on iceberg dev", "ponymail digest for nuttx", "export lucene dev mbox").
+description: Search, read, and summarize Apache mailing-list archives at lists.apache.org (Pony Mail) for any ASF project and any list. Use whenever someone asks what a project's community said or is discussing ("what's the latest on <project> dev", "dev@ digest", "was this discussed on the list"), needs the [DISCUSS]/[VOTE]/[RESULT] record behind an ASF decision, wants mailing-list evidence for a design question in a repo, or needs an archive export. Covers every apache.org domain, so never assume the project — and always pass a date window, because the default one silently hides everything older than a month.
 ---
 
-# Pony Mail (Apache mailing lists)
+# Apache mailing-list archives (Pony Mail)
 
-Read Apache project mailing list archives at `https://lists.apache.org` (Pony Mail "Foal").
-Works for any Apache project. Never hardcode a project: the two required parameters
-are `list` (e.g. `dev`) and `domain` (e.g. `iceberg.apache.org`); ask the user when
-either is unclear.
+lists.apache.org publishes every Apache project's public lists as JSON over plain unauthenticated GET requests:
 
-Fetch with `xh` (`curl`/`wget` are blocked). Parse JSON with `perl -MJSON::PP`.
-API spec: `https://lists.apache.org/openapi.yaml`.
-
-A CLI helper lives next to this file — use it first, raw `xh` calls for anything
-it doesn't cover:
-
-```bash
-S=~/.agents/skills/ponymail/ponymail.sh
-$S lists  <domain> [days]           # which lists have recent activity
-$S threads <list> <domain> [days]   # one line per thread: age/replies/participants/permalink
-$S thread <mid>                     # one thread: starter body + reply outline
-$S email <mid>                      # one email body
-$S mbox <list> <domain> [date]      # raw mbox of a result set
+```
+https://lists.apache.org/api/<endpoint>.json?<parameters>
 ```
 
-`threads` fetches one page: the top 100 threads by activity. For more, page the raw
-endpoint (`page=1,2,...`).
+Each thread has a stable human link: `https://lists.apache.org/thread/<starter-message-id>`.
 
-## Endpoints
+Two behaviors make this archive easy to misread, and both fail silently — no error status, just a plausible answer:
 
-All accept GET query params.
+**The default window is the last ~30 days.** If no date parameter is given, only threads with activity in the last month come back. Nearly every wrong "it was never discussed" conclusion is this. Always pass a window, and state which window you used.
 
-| Endpoint | Params | Returns |
-|---|---|---|
-| `GET /api/stream.json` | `list`, `domain`, `mode=threads\|emails`, `sort=activity\|upvotes\|replies`, `page` (0-based), `quant` (1-100, default 25), `d` (date: `2025-9`, `gte=1M`, `lte=10d`, `dfr=2025-9-1|dto=2025-10-1`), `q` (free text, `+required -excluded`), `header_from/subject/to/body/messageid` | One page of rows + stats. `mode=threads` rows: `tid`, `subject`, `epoch` (started), `last_epoch` (last activity), `replies`, `participants`, `starter` (with body snippet), `children`. `mode=emails` rows: flat `subject`, `from`, `id`, `epoch`, `body` |
-| `GET /api/email.json` | `id=<mid or doc id>` | One email: `subject`, `from_raw` (full address), `message-id`, `body`, `epoch`, `list` |
-| `GET /api/thread.json` | `id=<mid>` | Thread as nested JSON; replies under `thread.children` (recursively). `listid` is only needed to resolve a raw `Message-ID` header (see `openapi.yaml`) |
-| `GET /api/mbox.json` | same SearchRequest params as `stream.json` | Raw mbox of the result set (for full offline processing) |
-| `GET /api/source.json` | `id=<mid>` | Raw RFC-822 source of one email |
-| `GET /api/stats.json` | same SearchRequest params | Aggregates: `hits`, `active_months`, `participants`, `list_stats` |
-| `GET /api/atom` | `list`, `domain`, `quant` | Atom feed of latest threads (RSS readers) |
-| `GET /api/pminfo.json` | — | Site-wide activity stats |
+**A malformed date parameter is dropped, not rejected.** The request still succeeds and quietly falls back to that one-month default. Quote characters inside the value are the usual cause, because shell quoting puts them there. When results look too recent or too few, fix the date parameter before doubting the archive.
 
-Base URL: `https://lists.apache.org`. Permalinks: `https://lists.apache.org/thread/<tid>`.
+The archive itself is complete; months and years of history are there for the asking.
+
+## What each endpoint gives you
+
+| Endpoint | What you get |
+|---|---|
+| `stream.json` | Search or browse. `mode=threads` returns one row per thread: subject, starter, start and last-activity times, reply count, participant count. `mode=emails` returns individual messages with bodies. This is the workhorse. |
+| `stats.json` | Counts only: emails hit, months spanned, participants. Cheap way to size a search before paging it. |
+| `thread.json` | One thread as a nested tree: subject, starter, and every reply's author and message id, nested under `children`. Reply *bodies* are not included. |
+| `email.json` | One message in full: body, headers, participants, permalinks. |
+| `mbox.json` | The result set as a raw mbox for offline or bulk processing. |
+| `source.json` | One message's raw RFC-822 source. |
+| `pminfo.json` | Site-wide totals across all Apache lists. |
+
+Before building anything non-trivial, know the identifier convention: the `tid` that `stream.json` returns *is* the starter message's `mid`. `thread.json` and `email.json` both take a `mid`, so one value addresses the thread or the message. Full parameters and response fields: [references/endpoints.md](references/endpoints.md).
+
+## Fetch with what the machine has
+
+This is a URL and a JSON response, so nothing here depends on a particular client or parser. Use whatever HTTP and JSON tooling the environment already provides — a configured fetch tool, or e.g. curl, xh, wget, python, jq, node — and adapt rather than install anything. Two things matter more than the choice of tool: send parameter values unquoted (`&d=2026-7`, never `d='2026-7'`), and URL-encode `+`, `|` and spaces when they show up inside `q` or a `dfr=…|dto=…` range.
 
 ## Workflow
 
-### 1. List discovery (which lists exist on a domain?)
+1. Pin `list` and `domain`. List ids are short (`dev`, `users`, `commits`, `issues`); domains are `<project>.apache.org`. A mismatched pair returns zero hits instead of an error, so confirm both before concluding anything is absent.
+2. Choose the window deliberately: `date=2026-7` for a month, `d=2026-7` for the same thing through the generic date parameter, `d=dfr=2026-7-1|dto=2026-9-30` for a day range. Relative `lte=` spans work; `gte=` spans do not filter at all, so don't rely on them.
+3. Enumerate either by searching inside the window with `q=` (stemmed free text over subjects and bodies; multiple words are ANDed, `+` forces a term, `-` excludes one, and `"quoted phrases"` match in order) or by listing a month and scanning subjects. Search terms should include the project's old and new names, abbreviations, and the noun the question implies, not only its exact wording.
+4. Read what actually answers the question: `thread.json` for shape and who said what, then `email.json` for the individual bodies you need. Pulling a whole thread when a reply outline answers it wastes the reader's attention.
+5. Answer with permalinks, the list and domain, the window you searched, and the archive's own timestamps. When the question is "is anyone working on X", report both the threads you found and the windows that came back empty — one empty window is not evidence of absence.
 
-Wildcards work on both parts. Threads mode rows carry the list under `starter.list`:
+## Reference files
 
-```bash
-xh -b 'https://lists.apache.org/api/stream.json' \
-  list=='*' domain=='iceberg.apache.org' mode==threads d=='gte=1M' quant==100 \
-  -o /tmp/ponymail.json
-perl -0777 -ne 'use JSON::PP; my $d=JSON::PP->new->decode($_);
-  my %l; for my $r (@{$d->{rows}//[]}) { my $id=$r->{starter}{list}//""; $l{$id}++ }
-  print "$_ ($l{$_})\n" for sort keys %l' /tmp/ponymail.json
-```
-
-Typical Apache projects have `dev@`, `users@`, `commits@`, `issues@` lists.
-
-### 2. Latest discussions digest (the default ask)
-
-```bash
-xh -b 'https://lists.apache.org/api/stream.json' \
-  list=='dev' domain=='iceberg.apache.org' mode==threads sort==activity \
-  quant==100 page==0 -o /tmp/ponymail.json
-```
-
-- `total` counts result rows on all pages; page through with `page=1,2,...` if needed.
-- One row per thread even when `starter.subject` says `Re:` (reply-starter threads).
-- Filter fresh activity client-side: `last_epoch` is the last-activity unix time.
-- Read the thread starter's `body` for what each discussion is about; fetch individual
-  emails with `email.json?id=<mid>` when a thread deserves depth.
-
-Digest format: group into "active design discussions" (newest `last_epoch` first, one
-line each: subject, who started, what it decides, reply count) and "releases/ops"
-([VOTE]/[RESULT]/[ANNOUNCE]/CVE). Link permalinks. Dates: state the archive date you
-summarized up to.
-
-### 3. Read one thread fully
-
-```bash
-~/.agents/skills/ponymail/ponymail.sh thread <mid>   # starter body + reply outline
-xh -b "https://lists.apache.org/api/email.json?id=<mid>" -o /tmp/email.json
-```
-
-`thread.json` nests all replies under `thread.children` when you need the full tree.
-Quoted replies are inside `body`; use `source.json` to inspect raw headers.
-
-### 4. Export mbox for bulk/offline analysis
-
-```bash
-xh -b 'https://lists.apache.org/api/mbox.json' \
-  list=='dev' domain=='iceberg.apache.org' d=='2025-9' -o /tmp/dev.mbox
-```
-
-## Quirks
-
-- Addresses are ellipsized (`di...@apache.org`) in stream/email `from`; only
-  `email.json` `from_raw` has the full address. Body text can contain quoted replies.
-- Shell-quote `d` values containing `|` (e.g. `d=='dfr=2025-9-1|dto=2025-10-1'`).
-- Wildcards (`list=dev&domain=*`) scan all domains — slow; scope to one domain.
-- Empty result: `total: 0` with `firstYear: 1970` placeholders is normal, not an error.
-- Unknown list/domain does NOT error; it returns zero hits.
+- [references/endpoints.md](references/endpoints.md) — every parameter, every response field, and which date forms actually filter.
+- [references/recipes.md](references/recipes.md) — task recipes: all threads about a topic across months, a recent digest, reading one thread end to end, Message-ID lookup, mbox export, list discovery, and "was this ever discussed".
+- [references/field-notes.md](references/field-notes.md) — measured quirks with numbers, dates and evidence, plus how to re-check them if behavior looks different.
