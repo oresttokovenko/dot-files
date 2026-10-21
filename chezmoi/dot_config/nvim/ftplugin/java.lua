@@ -32,13 +32,21 @@ local workspace_dir = vim.fn.stdpath("data") .. "/jdtls-workspace/" .. project_n
 -- nvim-cmp capabilities (jdtls bypasses vim.lsp.config("*"))
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+-- jdtls runs on the newest installed JDK (see config/jdk.lua), which is not
+-- necessarily the 21 this project targets and Gradle compiles for.
+local jdtls_java = require("config.jdk").for_jdtls()
+local cmd = { jdtls_path .. "/bin/jdtls" }
+if jdtls_java then
+  vim.list_extend(cmd, { "--java-executable", jdtls_java })
+end
+vim.list_extend(cmd, {
+  "-configuration", jdtls_path .. "/config_mac",
+  "-data", workspace_dir,
+  "--jvm-arg=-Xmx4g",
+})
+
 local config = {
-  cmd = {
-    jdtls_path .. "/bin/jdtls",
-    "-configuration", jdtls_path .. "/config_mac",
-    "-data", workspace_dir,
-    "--jvm-arg=-Xmx4g",
-  },
+  cmd = cmd,
   root_dir = root_dir,
   capabilities = capabilities,
   settings = {
