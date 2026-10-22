@@ -42,6 +42,10 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export PATH="$HOME/Library/Application Support/bob/nvim-bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+# rustup is keg-only (conflicts with rust), so brew won't relink it on upgrade.
+# Appended, not prepended: ~/.cargo/bin keeps owning cargo/rustc; this only
+# restores `rustup` itself (plus rustfmt/rust-analyzer, absent from ~/.cargo/bin).
+export PATH="$PATH:/opt/homebrew/opt/rustup/bin"
 
 # Deduplicate PATH while preserving first-occurrence order (re-sourcing accumulates)
 typeset -gU path
