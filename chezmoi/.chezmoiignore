@@ -1,0 +1,6 @@
+.config/pi/agent/web-search.json
+.config/pi/agent/auth.json
+.config/pi/agent/sessions
+.config/pi/agent/web-search-cache
+.config/pi/agent/run-history.jsonl
+.config/pi/agent/models-store.json
