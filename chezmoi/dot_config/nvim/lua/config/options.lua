@@ -55,3 +55,9 @@ vim.opt.updatetime = 250
 vim.opt.clipboard = "unnamedplus"
 ---- Auto-reload files changed outside Neovim (prevents W11 warning)
 vim.opt.autoread = true
+
+-- Project-local config: load .nvim.lua / .exrc from the repo root when present.
+-- secure = untrusted until trusted (:trust prompt on first open), so cloned
+-- repos can't run arbitrary Lua at startup.
+vim.o.exrc = true
+vim.o.secure = true
