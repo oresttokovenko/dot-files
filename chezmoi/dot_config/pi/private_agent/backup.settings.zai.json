@@ -1,0 +1,115 @@
+{
+  "lastChangelogVersion": "1.3.0",
+  "theme": "dark-custom",
+  "defaultProvider": "zai",
+  "defaultModel": "glm-5.3-flash",
+  "defaultThinkingLevel": "max",
+  "quietStartup": true,
+  "doubleEscapeAction": "none",
+  "extensions": [
+    "-builtin:mcp",
+    "-builtin:codemode",
+    "-builtin:tool-search",
+    "-builtin:llama.cpp"
+  ],
+  "packages": [
+    "npm:pi-vimmode",
+    "npm:@xynogen/pix-gate",
+    "npm:@narumitw/pi-starship",
+    "npm:pi-session-summary",
+    "npm:pi-copy-message",
+    "npm:pi-effort",
+    "npm:pi-autoresearch",
+    "npm:@dietrichgebert/ponytail",
+    "npm:pi-subagents",
+    "npm:pi-context-view",
+    "npm:pi-web-access"
+  ],
+  "piVimMode": {
+    "preset": "prompt-safe",
+    "startMode": "insert",
+    "keymap": {
+      "motions": {
+        "firstNonBlank": [
+          "^",
+          "_",
+          "H"
+        ],
+        "lineEnd": [
+          "$",
+          "L"
+        ]
+      },
+      "commands": {
+        "visualBlock": [
+          "<A-b>"
+        ],
+        "showKeybindings": [
+          "k"
+        ]
+      }
+    }
+  },
+  "subagents": {
+    "defaultModel": "zai/glm-5.3-flash",
+    "defaultThinking": "max",
+    "agentOverrides": {
+      "scout": {
+        "model": "opencode-go/deepseek-v4.1-flash",
+        "thinking": "off"
+      },
+      "worker": {
+        "model": "opencode-go/glm-5.3-flash",
+        "thinking": "max"
+      },
+      "delegate": {
+        "model": "opencode-go/glm-5.3-flash"
+      },
+      "researcher": {
+        "model": "opencode-go/glm-5.3"
+      },
+      "evidence-auditor": {
+        "model": "opencode-go/glm-5.3"
+      },
+      "reviewer": {
+        "model": "opencode-go/qwen3.8-max",
+        "thinking": "medium"
+      },
+      "oracle": {
+        "model": "opencode-go/qwen3.8-max",
+        "thinking": "max",
+        "defaultContext": "fresh"
+      }
+    },
+    "agentOverridesByProvider": {
+      "zai": {
+        "scout": {
+          "model": "zai/glm-5.3-flash",
+          "thinking": "off"
+        },
+        "worker": {
+          "model": "zai/glm-5.3-flash",
+          "thinking": "max"
+        },
+        "delegate": {
+          "model": "zai/glm-5.3-flash"
+        },
+        "researcher": {
+          "model": "zai/glm-5.3"
+        },
+        "evidence-auditor": {
+          "model": "zai/glm-5.3"
+        },
+        "reviewer": {
+          "model": "zai/glm-5.3",
+          "thinking": "medium"
+        },
+        "oracle": {
+          "model": "zai/glm-5.3",
+          "thinking": "max",
+          "defaultContext": "fresh"
+        }
+      }
+    }
+  }
+}

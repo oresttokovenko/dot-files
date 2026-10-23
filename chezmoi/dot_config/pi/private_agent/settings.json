@@ -1,8 +1,8 @@
 {
   "lastChangelogVersion": "1.3.0",
   "theme": "dark-custom",
-  "defaultProvider": "failover",
-  "defaultModel": "deepseek-flash",
+  "defaultProvider": "opencode-go",
+  "defaultModel": "glm-5.3-flash",
   "defaultThinkingLevel": "max",
   "quietStartup": true,
   "doubleEscapeAction": "none",
@@ -51,34 +51,64 @@
     }
   },
   "subagents": {
-    "defaultModel": "failover/deepseek-flash",
+    "defaultModel": "opencode-go/glm-5.3-flash",
     "defaultThinking": "max",
     "agentOverrides": {
       "scout": {
-        "model": "failover/deepseek-flash",
+        "model": "opencode-go/deepseek-v4.1-flash",
         "thinking": "off"
       },
       "worker": {
-        "model": "failover/deepseek-flash",
+        "model": "opencode-go/glm-5.3-flash",
         "thinking": "max"
       },
       "delegate": {
-        "model": "failover/deepseek-flash"
+        "model": "opencode-go/glm-5.3-flash"
       },
       "researcher": {
-        "model": "failover/glm"
+        "model": "opencode-go/glm-5.3"
       },
       "evidence-auditor": {
-        "model": "failover/glm"
+        "model": "opencode-go/glm-5.3"
       },
       "reviewer": {
-        "model": "failover/qwen-max",
+        "model": "opencode-go/qwen3.8-max",
         "thinking": "medium"
       },
       "oracle": {
-        "model": "failover/qwen-max",
+        "model": "opencode-go/qwen3.8-max",
         "thinking": "max",
         "defaultContext": "fresh"
+      }
+    },
+    "agentOverridesByProvider": {
+      "zai": {
+        "scout": {
+          "model": "zai/glm-5.3-flash",
+          "thinking": "off"
+        },
+        "worker": {
+          "model": "zai/glm-5.3-flash",
+          "thinking": "max"
+        },
+        "delegate": {
+          "model": "zai/glm-5.3-flash"
+        },
+        "researcher": {
+          "model": "zai/glm-5.3"
+        },
+        "evidence-auditor": {
+          "model": "zai/glm-5.3"
+        },
+        "reviewer": {
+          "model": "zai/glm-5.3",
+          "thinking": "medium"
+        },
+        "oracle": {
+          "model": "zai/glm-5.3",
+          "thinking": "max",
+          "defaultContext": "fresh"
+        }
       }
     }
   }
