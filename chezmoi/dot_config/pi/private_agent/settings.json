@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.3.0",
+  "lastChangelogVersion": "1.4.0",
   "theme": "dark-custom",
   "defaultProvider": "opencode-go",
   "defaultModel": "deepseek-v4.1-flash",
@@ -73,42 +73,12 @@
       },
       "reviewer": {
         "model": "opencode-go/qwen3.8-max",
-        "thinking": "medium"
+        "thinking": "xhigh"
       },
       "oracle": {
-        "model": "opencode-go/qwen3.8-max",
+        "model": "moonshotai/kimi-k3.1-pro",
         "thinking": "max",
         "defaultContext": "fresh"
-      }
-    },
-    "agentOverridesByProvider": {
-      "zai": {
-        "scout": {
-          "model": "zai/glm-5.3-flash",
-          "thinking": "off"
-        },
-        "worker": {
-          "model": "zai/glm-5.3-flash",
-          "thinking": "max"
-        },
-        "delegate": {
-          "model": "zai/glm-5.3-flash"
-        },
-        "researcher": {
-          "model": "zai/glm-5.3"
-        },
-        "evidence-auditor": {
-          "model": "zai/glm-5.3"
-        },
-        "reviewer": {
-          "model": "zai/glm-5.3",
-          "thinking": "medium"
-        },
-        "oracle": {
-          "model": "zai/glm-5.3",
-          "thinking": "max",
-          "defaultContext": "fresh"
-        }
       }
     }
   }
