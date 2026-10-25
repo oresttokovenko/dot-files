@@ -34,8 +34,9 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export PI_CODING_AGENT_DIR="$XDG_CONFIG_HOME/pi/agent"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/.ripgreprc"
 export OBSIDIAN_VAULT_PATH="$HOME/Development/wiki"
-# hexyl's default null-byte colour (bright black) is nearly invisible; render 0x00 white
+# hexyl's default null-byte and offset colours (bright black) are nearly invisible; render both bright white
 export HEXYL_COLOR_NULL="bright white"
+export HEXYL_COLOR_OFFSET="bright white"
 
 ###############################################################################
 # PATH
