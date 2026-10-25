@@ -20,6 +20,7 @@ brew "gdu"                             # Disk usage analyzer
 brew "gh"                              # GitHub CLI
 brew "gifsicle"                        # GIF image optimizer and editor
 brew "herdr"                           # CLI for herding/aggregating processes or data
+brew "hexyl"                           # Command-line hex viewer
 brew "hunk"                            # Git hunk management and diff tooling
 brew "glow"                            # Markdown renderer for the terminal
 brew "googleworkspace-cli"             # Google Workspace CLI
