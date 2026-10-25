@@ -58,7 +58,6 @@ vim.list_extend(cmd, {
   "-data", workspace_dir,
   "--jvm-arg=-Xmx4g",
 })
-
 local config = {
   cmd = cmd,
   root_dir = root_dir,
