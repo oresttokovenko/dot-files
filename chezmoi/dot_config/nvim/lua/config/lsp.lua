@@ -12,6 +12,7 @@ local ensure_installed = {
   "basedpyright",
   "ruff",
   "pyright",
+  "ty",
   "tinymist",
   "html-lsp",
   "css-lsp",
