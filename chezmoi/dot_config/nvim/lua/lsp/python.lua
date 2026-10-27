@@ -12,8 +12,8 @@ local function has_section(root, section)
   end
   local content = f:read("*a")
   f:close()
-  -- Escape dots so "tool.basedpyright" matches literally
-  return content:find("%[" .. section:gsub("%.", "%%.") .. "%]") ~= nil
+  -- Match "[tool.ty]" and its subtables like "[tool.ty.src]"; dots are escaped so they match literally
+  return content:find("%[" .. section:gsub("%.", "%%.") .. "[%]%.]") ~= nil
 end
 
 local function pyright_keep(root)
