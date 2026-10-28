@@ -76,7 +76,7 @@
         "thinking": "xhigh"
       },
       "oracle": {
-        "model": "moonshotai/kimi-k3.1-pro",
+        "model": "opencode-go/kimi-k3.1-pro",
         "thinking": "max",
         "defaultContext": "fresh"
       }
