@@ -14,6 +14,17 @@ local selective_load = function(plug_data)
   vim.cmd.packadd(plug_data.spec.name)
 end
 
+-- The fzf sorter ships as C source, so it needs a compile step on install/update.
+-- Must be registered before vim.pack.add() so it also runs on first install.
+vim.api.nvim_create_autocmd("PackChanged", {
+  callback = function(ev)
+    local kind = ev.data.kind
+    if ev.data.spec.name == "telescope-fzf-native.nvim" and (kind == "install" or kind == "update") then
+      vim.system({ "make" }, { cwd = ev.data.path })
+    end
+  end,
+})
+
 vim.pack.add({
   -- Dependencies
   { src = "https://github.com/nvim-lua/plenary.nvim" },
@@ -41,6 +52,7 @@ vim.pack.add({
 
   -- File Navigation
   { src = "https://github.com/nvim-telescope/telescope.nvim", data = defer },
+  { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim", data = defer },
   { src = "https://github.com/stevearc/oil.nvim" },
 
   -- Git Integration

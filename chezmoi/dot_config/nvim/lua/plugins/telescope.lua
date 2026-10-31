@@ -16,3 +16,12 @@ require("telescope").setup({
     },
   },
 })
+
+-- fzf's query syntax: 'exact, ^prefix, suffix$, !inverse, | OR, and ^x$ for equality.
+-- Wrapped because a missing compiled library must not break every picker.
+local ok, err = pcall(function()
+  require("telescope").load_extension("fzf")
+end)
+if not ok then
+  vim.notify("telescope fzf extension unavailable: " .. tostring(err), vim.log.levels.WARN)
+end

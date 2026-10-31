@@ -126,6 +126,7 @@ vim.api.nvim_create_autocmd("FileType", {
 local function telescope(func, opts)
   return function()
     vim.cmd.packadd("telescope.nvim")
+    vim.cmd.packadd("telescope-fzf-native.nvim")
     require("plugins.telescope")
     require("telescope.builtin")[func](opts)
   end
