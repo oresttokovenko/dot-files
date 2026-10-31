@@ -7,6 +7,7 @@ vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit" })
 vim.keymap.set("n", "<leader>x", "<cmd>x<CR>", { desc = "Save and quit" })
 vim.keymap.set("n", "<leader>Q", "<cmd>qa!<CR>", { desc = "Quit all (force)" })
 vim.keymap.set("n", "<leader>bd", "<cmd>bd!<CR>", { desc = "Delete buffer (force)" })
+vim.keymap.set("n", "<leader>R", "<cmd>e!<CR>", { desc = "Reload buffer from disk (discard changes)" })
 
 -- Notifications (snacks.nvim notifier history; LazyVim-style <leader>un)
 vim.keymap.set("n", "<leader>un", function()
