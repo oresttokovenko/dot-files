@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.4.0",
+  "lastChangelogVersion": "1.5.0",
   "theme": "dark-custom",
   "defaultProvider": "opencode-go",
   "defaultModel": "deepseek-v4.1-flash",
@@ -23,7 +23,8 @@
     "npm:@dietrichgebert/ponytail",
     "npm:pi-subagents",
     "npm:pi-context-view",
-    "npm:pi-web-access"
+    "npm:pi-web-access",
+    "npm:pi-claude-bridge"
   ],
   "piVimMode": {
     "preset": "prompt-safe",
@@ -76,10 +77,19 @@
         "thinking": "xhigh"
       },
       "oracle": {
-        "model": "opencode-go/kimi-k3.1-pro",
+        "model": "claude-bridge/claude-opus-5-5",
         "thinking": "max",
         "defaultContext": "fresh"
       }
     }
+  },
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:@narumitw/pi-starship\",\"scope\":\"user\"}": "0.66.0",
+    "{\"source\":\"npm:pi-copy-message\",\"scope\":\"user\"}": "4.0.12",
+    "{\"source\":\"npm:pi-effort\",\"scope\":\"user\"}": "0.1.1",
+    "{\"source\":\"npm:pi-autoresearch\",\"scope\":\"user\"}": "1.9.0",
+    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.86.0",
+    "{\"source\":\"npm:pi-context-view\",\"scope\":\"user\"}": "0.8.3",
+    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.47.0"
   }
 }
