@@ -73,8 +73,8 @@
         "model": "opencode-go/glm-5.3"
       },
       "reviewer": {
-        "model": "opencode-go/qwen3.8-max",
-        "thinking": "xhigh"
+        "model": "opencode-go/kimi-k3.1-pro",
+        "thinking": "max"
       },
       "oracle": {
         "model": "claude-bridge/claude-opus-5-5",
