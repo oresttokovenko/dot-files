@@ -60,17 +60,17 @@
         "thinking": "off"
       },
       "worker": {
-        "model": "opencode-go/glm-5.3-flash",
+        "model": "opencode-go/gemini-4-argon",
         "thinking": "max"
       },
       "delegate": {
-        "model": "opencode-go/glm-5.3-flash"
+        "model": "opencode-go/gemini-4-argon"
       },
       "researcher": {
-        "model": "opencode-go/glm-5.3"
+        "model": "opencode-go/gemini-4-argon"
       },
       "evidence-auditor": {
-        "model": "opencode-go/glm-5.3"
+        "model": "opencode-go/kimi-k3.1-pro"
       },
       "reviewer": {
         "model": "opencode-go/kimi-k3.1-pro",
