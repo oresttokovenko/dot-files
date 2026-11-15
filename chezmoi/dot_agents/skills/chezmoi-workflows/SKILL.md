@@ -52,6 +52,25 @@ chezmoi git -- log -1 --oneline        # 4. Verify commit created
 chezmoi git -- push                    # 5. Push to remote
 ```
 
+### Repo-root assets are not managed files
+
+If the source has a `.chezmoiroot` file, the managed tree is that subdirectory
+(e.g. `chezmoi/`), while repo-root assets (`Brewfile`, `setup.sh`, `sync.sh`,
+`macos.sh`) are plain tracked files. For these, `chezmoi diff`/`chezmoi add`
+fail with "not managed" — edit the source file directly and commit with
+`chezmoi git --`:
+
+```bash
+chezmoi git -- status --short              # confirm only your file is dirty
+chezmoi git -- --no-pager diff Brewfile     # review before staging
+chezmoi git -- add Brewfile
+chezmoi git -- commit -m "brewfile: <what changed>"
+```
+
+Watch for pre-existing unstaged hunks in the same file: staging the file sweeps
+them into your commit. Split them first, or commit with only your hunk and
+restore the rest to the worktree afterwards.
+
 ---
 
 ## 3. Track New File
