@@ -40,6 +40,27 @@ chezmoi managed | wc -l                # Count tracked files
 
 ---
 
+## 1b. Deciding Direction: apply vs re-add
+
+When source and target disagree, settle which side is newer **before** running
+anything. `chezmoi diff` shows the target as `a/` and the desired source content
+as `b/`, so `+` lines are what `apply` would write — not what is on disk.
+
+```bash
+chezmoi git -- show HEAD:<source-path>/Brewfile | head -3   # what source holds
+head -3 ~/.config/app/config.toml                          # what target holds
+```
+
+- Target newer (real edits, bumping tool versions, hand-tuned settings) → `chezmoi re-add <file>`.
+- Source newer (stale target left by an old tool version) → `chezmoi apply --force <file>`.
+
+`chezmoi apply` refuses and asks "has changed since chezmoi last wrote it?" when
+the target was edited outside chezmoi, so a batch apply silently stops without
+`--force`. Back up targets first (`cp` to `/tmp`) — an inverted direction
+quietly downgrades live config, and the old content is not in git.
+
+---
+
 ## 2. Track File Changes
 
 After editing a config file, add it to chezmoi:
