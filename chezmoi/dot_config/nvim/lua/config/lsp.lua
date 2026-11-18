@@ -28,7 +28,7 @@ local ensure_installed = {
   "dockerfile-language-server",
   "terraform-ls",
   "helm-ls",
-  "clangd",
+  "clice",
   "just-lsp",
   "gradle-language-server",
   "docker-compose-language-service",
@@ -84,7 +84,7 @@ require("lsp.jsonls")
 require("lsp.dockerls")
 require("lsp.terraformls")
 require("lsp.helm_ls")
-require("lsp.clangd")
+require("lsp.clice")
 require("lsp.just")
 -- require("lsp.gradle_ls")  -- parked: mason VSIX is pipe-only, no stdio server (see the note in lsp/gradle_ls.lua)
 require("lsp.docker_compose_language_service")
