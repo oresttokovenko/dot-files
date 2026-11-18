@@ -12,28 +12,48 @@ parse with `perl -MJSON::PP`.
 ## Endpoint
 
 ```
-GET https://artificialanalysis.ai/api/v2/data/llms/models
+GET https://artificialanalysis.ai/api/v2/language/models/free   # Free tier
+GET https://artificialanalysis.ai/api/v2/language/models        # Pro tier, 403 on Free
 ```
 
-Returns `{data: [...]}` (~700 models). There is NO single-model endpoint — filter
-client-side by `slug`. Send a browser `User-Agent` header if you get 405s.
+The legacy `/api/v2/data/llms/models` route returns `410 Gone` (retired
+2026-11-04). Envelope: `{tier, intelligence_index_version, pagination, data:[...]}`.
+Paginated at 200/page — walk `?page=N&page_size=200` until `pagination.has_more`
+is false (4 pages, ~750 models). No single-model endpoint; filter by `slug`.
 
 ```bash
-xh -b GET 'https://artificialanalysis.ai/api/v2/data/llms/models' \
-  X-API-Key:"$ARTIFICIAL_ANALYSIS_API_KEY" -o /tmp/aa.json
+for p in 1 2 3 4; do
+  xh -b GET "https://artificialanalysis.ai/api/v2/language/models/free?page=$p&page_size=200" \
+    X-API-Key:"$ARTIFICIAL_ANALYSIS_API_KEY" -o /tmp/aa_p$p.json
+done
 perl -MJSON::PP -0777 -ne 'my $d=JSON::PP->new->decode($_);
-  for my $m (@{$d->{data}}) { my $s=$m->{slug}//""; print "$s  $m->{name}\n" if $s =~ /glm|qwen/ }' /tmp/aa.json
+  for my $m (@{$d->{data}}) { next unless ($m->{slug}//"") =~ /glm|qwen/;
+    printf "%-28s int=%-5s %stok/s ttfa=%s %s\n", $m->{slug},
+      ($m->{evaluations}{artificial_analysis_intelligence_index}//"null"),
+      ($m->{performance_v3}{mean_output_tokens_per_second}//"null"),
+      ($m->{performance_v3}{mean_time_to_first_answer_token_seconds}//"null"), $m->{name} }' \
+  /tmp/aa_p*.json
 ```
 
 ## Per-model record
 
 `slug`, `name`, `model_creator.name`, `release_date`, `pricing`
-(`price_1m_input_tokens`, `price_1m_output_tokens`, `price_1m_blended_3_to_1` — all
-$/1M tokens, blended is 3:1 in:out), `median_output_tokens_per_second`,
-`median_time_to_first_token_seconds`, `median_time_to_first_answer_token`, and
-`evaluations`: `artificial_analysis_intelligence_index`, `artificial_analysis_coding_index`,
-`gpqa`, `hle`, `lcr`, `scicode`, `tau_banking`, `terminalbench_v2_1`, `terminalbench_v4_0`,
-... (fraction 0-1 or index; `null` = not benchmarked, not zero).
+(`price_1m_input_tokens`, `price_1m_output_tokens`, `price_1m_cache_hit_tokens` —
+$/1M; the old blended field is gone), `performance` (`median_*`), `performance_v3`
+(`mean_*` of the same, the current methodology), and `evaluations`.
+
+Three caveats from the 2026 schema:
+
+- `artificial_analysis_coding_index` and `artificial_analysis_agentic_index` are
+  **always null** — AA no longer publishes them. On the Free tier the six
+  Capability Indexes and per-eval scores (gpqa, hle, scicode, terminalbench, …)
+  are absent too; only `artificial_analysis_intelligence_index` (v5.x) survives.
+- `performance` returns null from 2026-12-10; prefer `performance_v3`. The two
+  disagree sharply on TTFA for reasoning models (median vs mean over a long
+  tail) — quote output tok/s, which agrees, and say which field any TTFA came from.
+- Cost fields named `artificial_analysis_*_index_cost` are null on Free.
+
+`null` = not benchmarked, not zero.
 
 ## Slug conventions
 
@@ -47,14 +67,19 @@ $/1M tokens, blended is 3:1 in:out), `median_output_tokens_per_second`,
 
 ## Output
 
-For comparisons, print a markdown table (metric | model A | model B) covering
-Intelligence Index, Coding Index, the headline evals with non-null values, output
-tok/s, time to first answer, and blended price. State the release dates and
-checkpoint names, then a one-line takeaway.
+For comparisons, print a markdown table covering Intelligence Index, output tok/s,
+time to first answer, and $/1M in-out. State the release dates, checkpoint names,
+and the index version, then a one-line takeaway. When models differ only by
+thinking level, note that the bare slug is the flagship reasoning tier and that
+dropping a level rarely buys latency — the reasoning is often short anyway.
 
 ## Watch for deprecation
 
-The v2 data route was deprecated (sunset 2026-11-04). On failure, read the `link`
-rel=deprecation response header and `https://artificialanalysis.ai/data-api/migrate-v2-data`
-for the successor, then update this file. Do NOT use `api.artificialanalysis.ai` —
-that host is dead (Vercel DEPLOYMENT_NOT_FOUND).
+On failure, read the `link` rel=deprecation response header and
+`https://artificialanalysis.ai/data-api/migrate-v2-data` for the successor, then
+update this file. Do NOT use `api.artificialanalysis.ai` — that host is dead
+(Vercel DEPLOYMENT_NOT_FOUND). `/api/data/v1/*` is next: `410 Gone` from
+2026-12-16 (see `/data-api/migrate-v1`).
+
+Rate limits: Free 100 requests/24h window, Pro 500, shared per organisation.
+Headers `X-RateLimit-{Limit,Remaining,Reset}`; a `429` carries `Retry-After`.
