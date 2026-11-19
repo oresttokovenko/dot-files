@@ -24,7 +24,9 @@
     "npm:pi-subagents",
     "npm:pi-context-view",
     "npm:pi-web-access",
-    "npm:pi-claude-bridge"
+    "npm:pi-claude-bridge",
+    "npm:pi-better-render",
+    "npm:pi-polish"
   ],
   "piVimMode": {
     "preset": "prompt-safe",
@@ -85,11 +87,16 @@
   },
   "extensionChangelogVersions": {
     "{\"source\":\"npm:@narumitw/pi-starship\",\"scope\":\"user\"}": "0.67.2",
-    "{\"source\":\"npm:pi-copy-message\",\"scope\":\"user\"}": "4.0.13",
+    "{\"source\":\"npm:pi-copy-message\",\"scope\":\"user\"}": "4.0.15",
     "{\"source\":\"npm:pi-effort\",\"scope\":\"user\"}": "0.1.1",
     "{\"source\":\"npm:pi-autoresearch\",\"scope\":\"user\"}": "1.9.0",
-    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.88.1",
+    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.89.0",
     "{\"source\":\"npm:pi-context-view\",\"scope\":\"user\"}": "0.8.4",
-    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.47.0"
+    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.48.0"
+  },
+  "pi-effort": {
+    "modelEffort": {
+      "opencode-go/kimi-k3.1-pro": "high"
+    }
   }
 }
