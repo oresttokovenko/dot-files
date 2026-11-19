@@ -1,0 +1,11 @@
+{
+  "components": {
+    "editor": { "enabled": false },
+    "userMessages": { "enabled": false },
+    "thinkingSteps": { "enabled": false },
+    "workingLine": { "enabled": false },
+    "toolDisplay": { "enabled": false },
+    "footer": { "style": "native" },
+    "selectorBorders": { "enabled": false }
+  }
+}

@@ -26,7 +26,7 @@
     "npm:pi-web-access",
     "npm:pi-claude-bridge",
     "npm:pi-better-render",
-    "npm:@heyhuynhgiabuu/pi-pretty"
+    "npm:pi-zentui"
   ],
   "piVimMode": {
     "preset": "prompt-safe",
