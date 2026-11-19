@@ -25,7 +25,8 @@
     "npm:pi-web-access",
     "npm:pi-claude-bridge",
     "npm:pi-better-render",
-    "npm:pi-zentui"
+    "npm:pi-zentui",
+    "npm:@narumitw/pi-starship"
   ],
   "piVimMode": {
     "preset": "prompt-safe",

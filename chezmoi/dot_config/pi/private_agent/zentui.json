@@ -5,7 +5,7 @@
     "thinkingSteps": { "enabled": false },
     "workingLine": { "enabled": false },
     "toolDisplay": { "enabled": true, "style": "opencode" },
-    "footer": { "style": "starship" },
+    "footer": { "style": "native" },
     "selectorBorders": { "enabled": false }
   }
 }
