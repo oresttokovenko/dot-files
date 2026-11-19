@@ -15,7 +15,6 @@
   "packages": [
     "npm:pi-vimmode",
     "npm:@xynogen/pix-gate",
-    "npm:@narumitw/pi-starship",
     "npm:pi-session-summary",
     "npm:pi-copy-message",
     "npm:pi-effort",

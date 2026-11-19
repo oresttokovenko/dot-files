@@ -1,11 +1,11 @@
 {
   "components": {
     "editor": { "enabled": false },
-    "userMessages": { "enabled": false },
+    "userMessages": { "enabled": true, "style": "framed" },
     "thinkingSteps": { "enabled": false },
     "workingLine": { "enabled": false },
-    "toolDisplay": { "enabled": false },
-    "footer": { "style": "native" },
+    "toolDisplay": { "enabled": true, "style": "opencode" },
+    "footer": { "style": "starship" },
     "selectorBorders": { "enabled": false }
   }
 }
