@@ -1,11 +1,14 @@
 {
+  "icons": {
+    "mode": "nerd"
+  },
   "components": {
     "editor": { "enabled": false },
-    "userMessages": { "enabled": true, "style": "framed" },
+    "userMessages": { "enabled": true, "style": "compact" },
     "thinkingSteps": { "enabled": false },
     "workingLine": { "enabled": false },
     "toolDisplay": { "enabled": true, "style": "opencode" },
     "footer": { "style": "native" },
-    "selectorBorders": { "enabled": false }
+    "selectorBorders": { "enabled": true }
   }
 }
