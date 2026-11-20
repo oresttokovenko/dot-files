@@ -153,6 +153,17 @@ branchify() {
   echo "$result" | pbcopy
 }
 
+# One-off CLI question to the cheap model: llm "how do I use rg to ..."
+# -nt + a 60-token system prompt skips pi's 23.7k-token coding-agent prompt and its
+# tool schemas, which dominate latency. :high, not :low — simple questions think
+# the same either way (~0.4s apart) but :low hedges and gets facts wrong. True
+# non-reasoning is unavailable: this model maps :off to nothing. Median to first
+# answer 2026-11-18: 3.6s here vs 11.2s for the full agent prompt at :max.
+llm() {
+  pi -p -nt --system-prompt 'Answer briefly and concretely. Shell/CLI expert.' \
+    --model opencode-go/deepseek-v4.1-flash:high -- "$*"
+}
+
 # Modern Tree replacement
 tree() {
   local level=${1:-2}
